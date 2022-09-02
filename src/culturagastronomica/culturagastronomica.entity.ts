@@ -1,8 +1,13 @@
 import { RegionEntity } from 'src/region/region.entity';
+import { RecetaEntity } from '../receta/receta.entity';
+import { PaisEntity } from '../pais/pais.entity';
 import {
   Column,
   Entity,
   JoinColumn,
+  JoinTable,
+  ManyToMany,
+  OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
@@ -21,4 +26,12 @@ export class CulturaGastronomicaEntity {
   @OneToOne(() => RegionEntity, (region) => region.culturagastronomica)
   @JoinColumn()
   region: RegionEntity;
+
+  @OneToMany(() => RecetaEntity, (receta) => receta.culturagastronomica)
+  recetas: RecetaEntity[];
+
+  @ManyToMany( () => PaisEntity, (pais) => pais.culturasgastronomicas  )
+  @JoinTable()
+  paises: PaisEntity[];
+
 }
