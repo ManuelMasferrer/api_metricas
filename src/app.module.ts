@@ -6,6 +6,8 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { RegionEntity } from './region/region.entity';
 import { CulturaGastronomicaEntity } from './culturagastronomica/culturagastronomica.entity';
+import { RecetaModule } from './receta/receta.module';
+import { PaisModule } from './pais/pais.module';
 
 @Module({
   imports: [
@@ -23,6 +25,8 @@ import { CulturaGastronomicaEntity } from './culturagastronomica/culturagastrono
       synchronize: true,
       keepConnectionAlive: true,
     }),
+    RecetaModule,
+    PaisModule,
   ],
   controllers: [AppController],
   providers: [AppService],
