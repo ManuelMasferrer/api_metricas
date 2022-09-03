@@ -1,6 +1,6 @@
-import { RegionEntity } from 'src/region/region.entity';
-import { RecetaEntity } from '../receta/receta.entity';
-import { PaisEntity } from '../pais/pais.entity';
+import { RegionEntity } from '../region/region.entity';
+/*import { RecetaEntity } from '../receta/receta.entity';
+import { PaisEntity } from '../pais/pais.entity';*/
 import {
   Column,
   Entity,
@@ -10,12 +10,13 @@ import {
   OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
+  Relation,
 } from 'typeorm';
 
 @Entity()
 export class CulturaGastronomicaEntity {
   @PrimaryGeneratedColumn('uuid')
-  id: number;
+  id: string;
 
   @Column()
   nombre: string;
@@ -23,15 +24,16 @@ export class CulturaGastronomicaEntity {
   @Column()
   descripcion: string;
 
-  @OneToOne(() => RegionEntity, (region) => region.culturagastronomica)
-  @JoinColumn()
-  region: RegionEntity;
+  @OneToOne(() => RegionEntity, (region) => region.culturagastronomica, {
+    cascade: true,
+  })
+  region: Relation<RegionEntity>;
 
-  @OneToMany(() => RecetaEntity, (receta) => receta.culturagastronomica)
+  /*@OneToMany(() => RecetaEntity, (receta) => receta.culturagastronomica)
   recetas: RecetaEntity[];
 
-  @ManyToMany( () => PaisEntity, (pais) => pais.culturasgastronomicas  )
+  @ManyToMany( () => PaisEntity, (pais) => pais.culturasgastronomicas)
   @JoinTable()
-  paises: PaisEntity[];
+  paises: PaisEntity[];*/
 
 }

@@ -1,4 +1,4 @@
-import { CulturaGastronomicaEntity } from "src/culturagastronomica/culturagastronomica.entity";
+import { CulturaGastronomicaEntity } from "../culturagastronomica/culturagastronomica.entity";
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
@@ -17,6 +17,6 @@ export class RecetaEntity {
     @Column()
     video: string;
 
-    @ManyToOne(() => CulturaGastronomicaEntity, culturagastronomica => culturagastronomica.recetas )
-    culturagastronomica: CulturaGastronomicaEntity;
+    /*@ManyToOne(() => CulturaGastronomicaEntity, culturagastronomica => culturagastronomica.recetas )
+    culturagastronomica: CulturaGastronomicaEntity;*/
 }

@@ -1,17 +1,18 @@
-import { CulturaGastronomicaEntity } from 'src/culturagastronomica/culturagastronomica.entity';
-import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { CulturaGastronomicaEntity } from '../culturagastronomica/culturagastronomica.entity';
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn, Relation } from 'typeorm';
 
 @Entity()
 export class RegionEntity {
   @PrimaryGeneratedColumn('uuid')
-  id: number;
+  id: string;
 
   @Column()
   nombre: string;
 
   @OneToOne(
     () => CulturaGastronomicaEntity,
-    (culturagastronomica) => culturagastronomica.region,
+    (culturagastronomica) => culturagastronomica.region
   )
-  culturagastronomica: CulturaGastronomicaEntity;
+  @JoinColumn()
+  culturagastronomica: Relation<CulturaGastronomicaEntity>;
 }
