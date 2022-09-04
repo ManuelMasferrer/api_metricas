@@ -184,7 +184,7 @@ describe('CulturaRecetaService', () => {
     await expect(()=> service.associateRecetaCultura("0", [newReceta])).rejects.toHaveProperty("message", "La cultura gastronomica con el id proporcionado no ha sido encontrada"); 
   });
 
-  it('associateArtworksMuseum should throw an exception for an invalid artwork', async () => {
+  it('associateRecetaCultura debe arrojar una excepcion para una receta invalida', async () => {
     const newReceta: RecetaEntity = recetasList[0];
     newReceta.id = "0";
 
