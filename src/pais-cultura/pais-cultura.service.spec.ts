@@ -210,16 +210,5 @@ describe('PaisCulturaService', () => {
     await expect(()=> service.deleteCulturaFromPais(culturagastronomica.id, "0")).rejects.toHaveProperty("message", "El pais con el id proporcionado no ha sido encontrado"); 
   });
 
-  // it('deleteCulturaFromPais debe arrojar una excepcion para una cultura gastronomica no asociada a un pais', async () => {
-  //   const newCultura: CulturaGastronomicaEntity = await culturaGastronomicaRepository.save({
-  //     nombre: faker.company.name(),
-  //     descripcion: faker.commerce.productDescription(),
-  //     region: region,
-  //     recetas: [],
-  //     paises: [],
-  //   });
-
-  //   await expect(()=> service.deleteCulturaFromPais(newCultura.id, pais.id)).rejects.toHaveProperty("message", "La cultura gastronomica con el id proporcionado no esta asociada a la cultura gastronomica"); 
-  // }); 
 
 });
