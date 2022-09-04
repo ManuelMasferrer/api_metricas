@@ -10,6 +10,7 @@ import { RecetaModule } from './receta/receta.module';
 import { PaisModule } from './pais/pais.module';
 import { RecetaEntity } from './receta/receta.entity';
 import { PaisEntity } from './pais/pais.entity';
+import { CulturaRecetaModule } from './cultura-receta/cultura-receta.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { PaisEntity } from './pais/pais.entity';
     }),
     RecetaModule,
     PaisModule,
+    CulturaRecetaModule,
   ],
   controllers: [AppController],
   providers: [AppService],
