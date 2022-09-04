@@ -16,6 +16,8 @@ import { CulturaPaisModule } from './cultura-pais/cultura-pais.module';
 import { PaisCulturaModule } from './pais-cultura/pais-cultura.module';
 import { CiudadModule } from './ciudad/ciudad.module';
 import { CategoriaproductoModule } from './categoriaproducto/categoriaproducto.module';
+import { ProductoModule } from './producto/producto.module';
+import { RestauranteModule } from './restaurante/restaurante.module';
 
 @Module({
   imports: [
@@ -41,6 +43,8 @@ import { CategoriaproductoModule } from './categoriaproducto/categoriaproducto.m
     PaisCulturaModule,
     CiudadModule,
     CategoriaproductoModule,
+    ProductoModule,
+    RestauranteModule,
   ],
   controllers: [AppController],
   providers: [AppService],
