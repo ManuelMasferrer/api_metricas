@@ -3,6 +3,7 @@ import { ProductoEntity } from './producto.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { BusinessError, BusinessLogicException } from '../shared/errors/business-errors';
 import { Repository } from 'typeorm';
+import { CulturaGastronomicaEntity } from 'src/culturagastronomica/culturagastronomica.entity';
 
 @Injectable()
 export class ProductoService {
@@ -13,25 +14,12 @@ export class ProductoService {
     async findAll(): Promise<ProductoEntity[]> {
         return await this.productoRepository.find({ relations: ["recetas"] });
     }
-
     async findOne(id: string): Promise<ProductoEntity> {
         const producto: ProductoEntity = await this.productoRepository.findOne({where: {id}, relations: ["receta"] } );
         if (!producto)
           throw new BusinessLogicException("El producto no existe", BusinessError.NOT_FOUND);
-   
         return producto;
     }
-
-    async findCategoriasByProducto(id: string): Promise<ProductoEntity> {
-        const producto: ProductoEntity = await this.productoRepository.findOne({where: {id}, relations: ["receta"] } );     
-        if (!producto)
-          throw new BusinessLogicException("El producto no existe", BusinessError.NOT_FOUND);
-   
-        
-          return producto;
-    }
-
-
     async create(producto: ProductoEntity): Promise<ProductoEntity> {
         return await this.productoRepository.save(producto);
     }
