@@ -9,6 +9,7 @@ import { RegionService } from "../region/region.service";
 import { RecetaEntity } from '../receta/receta.entity';
 import { PaisEntity } from './pais.entity';
 import { PaisService } from "./pais.service";
+import { PaisDto } from "./pais.dto";
 
 describe('PaisService', () => {
     let service: PaisService;
@@ -41,13 +42,6 @@ describe('PaisService', () => {
         region.nombre = faker.commerce.productName();
         
         for(let i = 0; i < 5; i++){
-            // const cultura: CulturaGastronomicaEntity = await repository.save({
-            //     nombre: faker.company.name(),
-            //     descripcion: faker.commerce.productDescription(),
-            //     region: region,
-            //     recetas: [],
-            //     paises: []
-            // })
             const pais: PaisEntity = await repository.save({
                 nombre: faker.address.country()
             })
@@ -67,28 +61,28 @@ describe('PaisService', () => {
     });
 
     it('findAll debe retornar todos los paises', async () =>{
-        const paises: PaisEntity[] = await service.findAll();
+        const paises: PaisDto[] = await service.findAll();
         expect(paises).not.toBeNull();
         expect(paises).toHaveLength(paisesList.length);
     });
 
     it('findOne debe retornar un pais por id', async () => {
-        const storedPais: PaisEntity = paisesList[0];
-        const pais: PaisEntity = await service.finOne(storedPais.id);
+        const storedPais: PaisDto = paisesList[0];
+        const pais: PaisDto = await service.findOne(storedPais.id);
         expect(pais).not.toBeNull;
         expect(pais.nombre).toEqual(storedPais.nombre)
     });
 
     it('findOne lanzar excepcion para un pais invalido', async () => {
-        await expect(() => service.finOne("0")).rejects.toHaveProperty("message", "El pais con el id proporcionado no ha sido encontrado")
+        await expect(() => service.findOne("0")).rejects.toHaveProperty("message", "El pais con el id proporcionado no ha sido encontrado")
     });
 
     it('Actualizar o modificar un pais', async ()=> {
         const pais: PaisEntity = paisesList[0];
         pais.nombre = "Nuevo nombre";
-        const updatedPais: PaisEntity = await service.update(pais.id, pais);
+        const updatedPais: PaisDto = await service.update(pais.id, pais);
         expect(updatedPais).not.toBeNull();
-        const storedPais: PaisEntity = await repository.findOne({ where: { id: pais.id } })
+        const storedPais: PaisDto = await repository.findOne({ where: { id: pais.id } })
         expect(storedPais).not.toBeNull();
         expect(storedPais.nombre).toEqual(pais.nombre)
         
