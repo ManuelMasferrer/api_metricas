@@ -14,6 +14,8 @@ import { PaisEntity } from './pais/pais.entity';
 import { CulturaRecetaModule } from './cultura-receta/cultura-receta.module';
 import { CulturaPaisModule } from './cultura-pais/cultura-pais.module';
 import { PaisCulturaModule } from './pais-cultura/pais-cultura.module';
+import { CiudadModule } from './ciudad/ciudad.module';
+import { CategoriaproductoModule } from './categoriaproducto/categoriaproducto.module';
 
 @Module({
   imports: [
@@ -37,6 +39,8 @@ import { PaisCulturaModule } from './pais-cultura/pais-cultura.module';
     CulturaRecetaModule,
     CulturaPaisModule,
     PaisCulturaModule,
+    CiudadModule,
+    CategoriaproductoModule,
   ],
   controllers: [AppController],
   providers: [AppService],
