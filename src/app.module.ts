@@ -14,6 +14,7 @@ import { PaisEntity } from './pais/pais.entity';
 import { CulturaRecetaModule } from './cultura-receta/cultura-receta.module';
 import { CulturaPaisModule } from './cultura-pais/cultura-pais.module';
 import { PaisCulturaModule } from './pais-cultura/pais-cultura.module';
+<<<<<<< HEAD
 import { CiudadModule } from './ciudad/ciudad.module';
 import { CategoriaproductoModule } from './categoriaproducto/categoriaproducto.module';
 <<<<<<< HEAD
@@ -27,6 +28,8 @@ import { CulturaRestauranteModule } from './cultura-restaurante/cultura-restaura
 import { CulturaProductoModule } from './cultura-producto/cultura-producto.module';
 =======
 >>>>>>> ee351af (Entities ciudad, categoria)
+=======
+>>>>>>> 533d1fd (merch)
 
 @Module({
   imports: [
@@ -40,7 +43,11 @@ import { CulturaProductoModule } from './cultura-producto/cultura-producto.modul
       username: 'postgres',
       password: 'postgres',
       database: 'culturagastronomica',
+<<<<<<< HEAD
       entities: [RegionEntity, CulturaGastronomicaEntity, RecetaEntity, PaisEntity, ProductoEntity, CiudadEntity, RestauranteEntity, CategoriaproductoEntity],
+=======
+      entities: [RegionEntity, CulturaGastronomicaEntity, RecetaEntity, PaisEntity],
+>>>>>>> 533d1fd (merch)
       dropSchema: true,
       synchronize: true,
       keepConnectionAlive: true,
@@ -53,12 +60,18 @@ import { CulturaProductoModule } from './cultura-producto/cultura-producto.modul
     CiudadModule,
     CategoriaproductoModule,
 <<<<<<< HEAD
+<<<<<<< HEAD
     ProductoModule,
     RestauranteModule,
     CulturaRestauranteModule,
     CulturaProductoModule,
 =======
 >>>>>>> ee351af (Entities ciudad, categoria)
+=======
+    CulturaRecetaModule,
+    CulturaPaisModule,
+    PaisCulturaModule,
+>>>>>>> 533d1fd (merch)
   ],
   controllers: [AppController],
   providers: [AppService],
