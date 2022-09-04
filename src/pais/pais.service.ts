@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { BusinessError, BusinessLogicException } from '../shared/errors/business-errors';
 import { Repository } from 'typeorm';
 import { PaisEntity } from './pais.entity';
+import { PaisDto } from './pais.dto';
 
 @Injectable()
 export class PaisService {
@@ -11,11 +12,11 @@ export class PaisService {
         private readonly paisRepository: Repository<PaisEntity>
       ){}
 
-    async findAll(): Promise<PaisEntity[]>{
+    async findAll(): Promise<PaisDto[]>{
         return await this.paisRepository.find({ relations: {culturasgastronomicas: true,},});
     }
 
-    async finOne(id: string): Promise<PaisEntity>{
+    async findOne(id: string): Promise<PaisDto>{
         const pais: PaisEntity = await this.paisRepository.findOne({where: {id}});
         if (!pais)
             throw new BusinessLogicException("El pais con el id proporcionado no ha sido encontrado", BusinessError.NOT_FOUND);

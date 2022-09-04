@@ -9,8 +9,8 @@ export class CiudadEntity {
     @Column()
     nombre: string;
 
-    @ManyToOne(() => CiudadEntity, ciudad => ciudad.restaurante)      
-        ciudades: CiudadEntity;
+    // @ManyToOne(() => CiudadEntity, ciudad => ciudad.restaurante)      
+    //     ciudades: CiudadEntity;
    
     
 }
