@@ -48,7 +48,7 @@ export class CulturaPaisService {
         const culturagastronomica = await this.culturaGastronomicaRepository.findOne({where:{id: culturaId}, relations: ["paises"]});
         if (!culturagastronomica)
             throw new BusinessLogicException("La cultura gastronomica con el id proporcionado no ha sido encontrada", BusinessError.NOT_FOUND);
-        return culturagastronomica.paises.filter(p => p.constructor.name === "Pais")
+        return culturagastronomica.paises;
     }
 
     async associateCulturaPais(culturaId: string, paises: PaisEntity[]): Promise<CulturaGastronomicaEntity> {
@@ -75,6 +75,7 @@ export class CulturaPaisService {
             throw new BusinessLogicException("La cultura gastronomica con el id proporcionado no ha sido encontrada", BusinessError.NOT_FOUND);
         
         culturagastronomica.paises = culturagastronomica.paises.filter(e => e.id !== paisId);
+        
         return await this.culturaGastronomicaRepository.save(culturagastronomica);
     }
 }

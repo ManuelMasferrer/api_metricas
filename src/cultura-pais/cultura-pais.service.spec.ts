@@ -17,6 +17,7 @@ describe('CulturaPaisService', () => {
   let recetasList: RecetaEntity[];
   let paisesList: PaisEntity[];
   let region: RegionEntity;
+  let culturagastronomica: CulturaGastronomicaEntity;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -51,24 +52,21 @@ describe('CulturaPaisService', () => {
       
   }
 
-    // paisesList = [];
-    // for(let i =0; i< 5; i++) {
-    //   const pais: PaisEntity = await paisRepository.save({
-    //     nombre: faker.address.country(),
-    //   })
-    //   paisesList.push(pais);
-    // }
+    paisesList = [];
+    for(let i =0; i< 5; i++) {
+      const pais: PaisEntity = await paisRepository.save({
+        nombre: faker.address.country(),
+      })
+      paisesList.push(pais);
+    }  
 
-    // const region = new RegionEntity();
-    // region.nombre = faker.commerce.productName();  
-    // paisesList:  paisesList = [];
-    // culturagastronomica = await culturaGastronomicaRepository.save({
-    //   nombre: faker.company.name(),
-    //   descripcion: faker.commerce.productDescription(),
-    //   region: region,
-    //   recetas: recetasList,
-    //   paises: paisesList,
-    // })
+    culturagastronomica = await culturaGastronomicaRepository.save({
+      nombre: faker.company.name(),
+      descripcion: faker.commerce.productDescription(),
+      region: region,
+      recetas: recetasList,
+      paises: paisesList,
+    })
   }
 
   it('el servicio debe estar definido', () => {
@@ -86,7 +84,7 @@ describe('CulturaPaisService', () => {
 
     const newPais: PaisEntity = await paisRepository.save({
       nombre: faker.address.country(),
-      culturasgastronomicas: []
+      culturasgastronomicas: [],
     })
 
     const resultado: CulturaGastronomicaEntity = await service.addCulturaGastronomicaPais(newCultura.id, newPais.id);
@@ -96,5 +94,113 @@ describe('CulturaPaisService', () => {
     expect(resultado.paises[0].nombre).toBe(newPais.nombre);
 
   });
+
+  it('addCulturaGastronomicaPais debe producir una excepcion para un pais invalido', async () => {
+    const newCulturaGastronomica: CulturaGastronomicaEntity = await culturaGastronomicaRepository.save({
+      nombre: faker.company.name(),
+      descripcion: faker.commerce.productDescription(),
+    })
+  
+    await expect(() => service.addCulturaGastronomicaPais(newCulturaGastronomica.id, "0")).rejects.toHaveProperty("message", "El pais con el id proporcionado no ha sido encontrado");
+  });
+
+  it('addCulturaGastronomicaPais debe producir una excepcion para una cultura gastronomica invalida', async () => {
+    const newPais: PaisEntity = await paisRepository.save({
+      nombre: faker.address.country(),
+      culturasgastronomicas: [],
+    });
+
+    await expect (() => service.addCulturaGastronomicaPais("0", newPais.id,)).rejects.toHaveProperty("message", "La cultura gastronomica con el id proporcionado no ha sido encontrada");
+  });
+  
+  it('findPaisbyCulturaId debe retornar un pais de una cultura gastronomica', async () => {
+    const pais: PaisEntity = paisesList[0];
+    const storedPais: PaisEntity = await service.findPaisbyCulturaId(pais.id, culturagastronomica.id,  )
+    expect(storedPais).not.toBeNull();
+    expect(storedPais.nombre).toBe(pais.nombre);
+  });
+
+  it('findPaisbyCulturaId debe arrojar una excepcion para una cultura invalida', async () => {
+    const pais: PaisEntity = paisesList[0];
+    await expect(()=> service.findPaisbyCulturaId(pais.id, "0")).rejects.toHaveProperty("message", "La cultura gastronomica con el id proporcionado no ha sido encontrada"); 
+  });
+
+  it('findPaisbyCulturaId debe arrojar una excepcion para un pais invalido', async () => {
+
+    await expect(()=> service.findPaisbyCulturaId("0", culturagastronomica.id)).rejects.toHaveProperty("message", "El pais con el id proporcionado no ha sido encontrado"); 
+  });
+
+  it('findPaisbyCulturaId debe arrojar una excepcion para un pais no asociado a una cultura gastronomica', async () => {
+    const newPais: PaisEntity = await paisRepository.save({
+      nombre: faker.address.country(),
+      culturasgastronomicas: [],
+    });
+
+    await expect(()=> service.findPaisbyCulturaId(newPais.id, culturagastronomica.id)).rejects.toHaveProperty("message", "El pais con el id proporcionado no esta asociado a la cultura gastronomica"); 
+  });
+
+  it('findPaisesByCulturaId debe retornar los paises de una cultura gastronomicas', async ()=>{
+    const paises: PaisEntity[] = await service.findPaisesByCulturaId(culturagastronomica.id);
+    expect(paises.length).toBe(5)
+  });
+
+  it('findPaisesByCulturaId debe arrojar una excepcion para una cultura gastronomica invalida', async () => {
+    await expect(()=> service.findPaisesByCulturaId("0")).rejects.toHaveProperty("message", "La cultura gastronomica con el id proporcionado no ha sido encontrada"); 
+  });
+
+
+  it('associateCulturaPais debe actualizar la lista de paises de una cultura gastronomica', async () => {
+    const newPais: PaisEntity = await paisRepository.save({
+      nombre: faker.address.country(),
+      culturasgastronomicas: [],
+    });
+
+    const updatedCultura: CulturaGastronomicaEntity = await service.associateCulturaPais(culturagastronomica.id, [newPais]);
+    expect(updatedCultura.paises.length).toBe(1);
+
+    expect(updatedCultura.paises[0].nombre).toBe(newPais.nombre);
+
+  });
+
+  it('associateCulturaPais debe arrojar una excepcion para una cultura gastronomica invalida', async () => {
+    const newPais: PaisEntity = await paisRepository.save({
+      nombre: faker.address.country(),
+      culturasgastronomicas: [],
+    });
+
+    await expect(()=> service.associateCulturaPais("0", [newPais])).rejects.toHaveProperty("message", "La cultura gastronomica con el id proporcionado no ha sido encontrada"); 
+  });
+
+  // it('updateCulturasFromPais debe arrojar una excepcion para un pais invalido', async () => {
+  //   const newPais: PaisEntity = await paisRepository.save({
+  //     nombre: faker.address.country(),
+  //     culturasgastronomicas: [],
+  //   });
+  //   newPais.id = "0";
+
+  //   await expect(()=> service.associateCulturaPais(culturagastronomica.id, [newPais])).rejects.toHaveProperty("message", "El pais con el id proporcionado no ha sido encontrado"); 
+  // });  
+
+  it('deletePaisToCultura debe eliminar un pais de una cultura gastronomica', async () => {
+    const pais: PaisEntity = paisesList[0];
+    
+    await service.deletePaisToCultura(pais.id, culturagastronomica.id);
+
+    const storedCultura: CulturaGastronomicaEntity = await culturaGastronomicaRepository.findOne({where: {id: culturagastronomica.id}, relations: ["paises"]});
+    const deletedPais: PaisEntity = storedCultura.paises.find(a => a.id === pais.id);
+
+    expect(deletedPais).toBeUndefined();
+
+  });
+
+  it('deletePaisToCultura  debe arrojar una excepcion para un pais invalido', async () => {
+    await expect(()=> service.deletePaisToCultura("0", culturagastronomica.id)).rejects.toHaveProperty("message", "El pais con el id proporcionado no ha sido encontrado"); 
+  });
+
+  it('deletePaisToCultura  debe arrojar una excepcion para una cultura gastronomica invalida', async () => {
+    const pais: PaisEntity = paisesList[0];
+    await expect(()=> service.deletePaisToCultura(pais.id, "0")).rejects.toHaveProperty("message", "La cultura gastronomica con el id proporcionado no ha sido encontrada"); 
+  });
+
 
 });
