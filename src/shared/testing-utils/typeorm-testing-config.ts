@@ -13,5 +13,5 @@ export const TypeOrmTestingConfig = () => [
         synchronize: true,
         keepConnectionAlive: true
     }),
-    TypeOrmModule.forFeature([CulturaGastronomicaEntity, RegionEntity]),
+    TypeOrmModule.forFeature([CulturaGastronomicaEntity, RegionEntity, RecetaEntity, PaisEntity]),
 ];

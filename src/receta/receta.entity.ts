@@ -8,15 +8,19 @@ export class RecetaEntity {
 
     @Column()
     nombre: string;
+
     @Column()
     descripcion: string;
+
     @Column()
     foto: string;
+
     @Column()
     preparacion: string;
+    
     @Column()
     video: string;
 
-    /*@ManyToOne(() => CulturaGastronomicaEntity, culturagastronomica => culturagastronomica.recetas )
-    culturagastronomica: CulturaGastronomicaEntity;*/
+    @ManyToOne(() => CulturaGastronomicaEntity, culturagastronomica => culturagastronomica.recetas )
+    culturagastronomica: CulturaGastronomicaEntity;
 }

@@ -1,6 +1,6 @@
 import { RegionEntity } from '../region/region.entity';
-/*import { RecetaEntity } from '../receta/receta.entity';
-import { PaisEntity } from '../pais/pais.entity';*/
+import { RecetaEntity } from '../receta/receta.entity';
+import { PaisEntity } from '../pais/pais.entity';
 import {
   Column,
   Entity,
@@ -12,6 +12,7 @@ import {
   PrimaryGeneratedColumn,
   Relation,
 } from 'typeorm';
+
 
 @Entity()
 export class CulturaGastronomicaEntity {
@@ -29,11 +30,11 @@ export class CulturaGastronomicaEntity {
   })
   region: Relation<RegionEntity>;
 
-  /*@OneToMany(() => RecetaEntity, (receta) => receta.culturagastronomica)
+  @OneToMany(() => RecetaEntity, (receta) => receta.culturagastronomica)
   recetas: RecetaEntity[];
 
   @ManyToMany( () => PaisEntity, (pais) => pais.culturasgastronomicas)
   @JoinTable()
-  paises: PaisEntity[];*/
+  paises: PaisEntity[];
 
 }
