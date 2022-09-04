@@ -15,7 +15,7 @@ export class RegionService {
         return await this.regionRepository.find({ relations: {culturagastronomica: true,},});
     }
 
-    async finOne(id: string): Promise<RegionEntity>{
+    async findOne(id: string): Promise<RegionEntity>{
         const region: RegionEntity = await this.regionRepository.findOne({where: {id}});
         if (!region)
             throw new BusinessLogicException("La region con el id no a sido encontrada", BusinessError.NOT_FOUND);

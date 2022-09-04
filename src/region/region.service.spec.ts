@@ -67,13 +67,13 @@ describe('RegionService', () => {
 
     it('findOne debe retornar una region gastronomica por id', async () => {
         const storedCulturaGastronomica: CulturaGastronomicaEntity = culturaList[0];
-        const region: RegionEntity = await service.finOne(storedCulturaGastronomica.region.id);
+        const region: RegionEntity = await service.findOne(storedCulturaGastronomica.region.id);
         expect(region).not.toBeNull;
         expect(region.nombre).toEqual(storedCulturaGastronomica.nombre)
     });
 
     it('findOne lanzar excepcion para una region gastronomica invalida', async () => {
-        await expect(() => service.finOne("0")).rejects.toHaveProperty("message", "La region con el id no a sido encontrada")
+        await expect(() => service.findOne("0")).rejects.toHaveProperty("message", "La region con el id no a sido encontrada")
     });
 
     it('Actualizar o modificar una region gastronomica', async ()=> {

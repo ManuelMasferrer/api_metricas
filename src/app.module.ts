@@ -1,3 +1,4 @@
+import { CulturaRegionModule } from './cultura-region/cultura-region.module';
 import { RegionModule } from './region/region.module';
 import { CulturaGastronomicaModule } from './culturagastronomica/culturagastronomica.module';
 import { Module } from '@nestjs/common';
@@ -14,6 +15,7 @@ import { CulturaRecetaModule } from './cultura-receta/cultura-receta.module';
 
 @Module({
   imports: [
+    CulturaRegionModule,
     RegionModule,
     CulturaGastronomicaModule,
     TypeOrmModule.forRoot({
@@ -35,4 +37,4 @@ import { CulturaRecetaModule } from './cultura-receta/cultura-receta.module';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }
