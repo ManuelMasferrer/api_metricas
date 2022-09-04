@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+<<<<<<< HEAD
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { TypeOrmTestingConfig } from '../shared/testing-utils/typeorm-testing-config';
@@ -48,3 +49,8 @@ export class CategoriaproductoService {
 //         await this.culturaRepository.remove(cultura);
 //     }
 }
+=======
+
+@Injectable()
+export class CategoriaproductoService {}
+>>>>>>> 375460a (actuliza entidad)

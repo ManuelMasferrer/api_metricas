@@ -15,8 +15,21 @@ import {
 =======
 // import { Producto } from '../producto/producto.entity';
 
+<<<<<<< HEAD
 import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
 >>>>>>> ee351af (Entities ciudad, categoria)
+=======
+import {
+    Column,
+    Entity,
+    JoinColumn,
+    JoinTable,
+    ManyToMany,
+    OneToMany,
+    OneToOne,
+    PrimaryGeneratedColumn,
+  } from 'typeorm';
+>>>>>>> 375460a (actuliza entidad)
 
 @Entity()
 export class CategoriaproductoEntity {
@@ -28,6 +41,7 @@ export class CategoriaproductoEntity {
     nombre: string;
    
 <<<<<<< HEAD
+<<<<<<< HEAD
     @OneToMany(() => ProductoEntity, producto => producto.categoria )
     productos: ProductoEntity[];
 
@@ -35,6 +49,11 @@ export class CategoriaproductoEntity {
 =======
     // @ManyToOne(() => CategoriaproductoEntity, Producto => Producto.categoria )
     // categoriaproducto: catetoriaproducto.Entity;
+=======
+    @ManyToOne(() => CategoriaproductoEntity, Producto => Producto.categoria )
+    categoriaproducto: catetoriaproducto.Entity;
+    
+>>>>>>> 375460a (actuliza entidad)
 }
     
 >>>>>>> ee351af (Entities ciudad, categoria)
