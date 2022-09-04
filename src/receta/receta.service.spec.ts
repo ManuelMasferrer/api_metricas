@@ -52,7 +52,7 @@ describe('RecetaService', () => {
   // }
   }
 
-  it('should be defined', () => {
+  it('el servicio debe estar definido', () => {
     expect(service).toBeDefined();
   });
 
