@@ -8,6 +8,8 @@ import { RegionEntity } from './region/region.entity';
 import { CulturaGastronomicaEntity } from './culturagastronomica/culturagastronomica.entity';
 import { RecetaModule } from './receta/receta.module';
 import { PaisModule } from './pais/pais.module';
+import { ProductoModule } from './producto/producto.module';
+import { RestauranteModule } from './restaurante/restaurante.module';
 
 @Module({
   imports: [
@@ -27,6 +29,8 @@ import { PaisModule } from './pais/pais.module';
     }),
     RecetaModule,
     PaisModule,
+    ProductoModule,
+    RestauranteModule,
   ],
   controllers: [AppController],
   providers: [AppService],
