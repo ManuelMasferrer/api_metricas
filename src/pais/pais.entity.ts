@@ -9,7 +9,7 @@ export class PaisEntity {
     @Column()
     nombre: string;
 
-    /*@ManyToMany(() => CulturaGastronomicaEntity, (culturagastronomica) => culturagastronomica.paises)
-    culturasgastronomicas: CulturaGastronomicaEntity[];*/
+    @ManyToMany(() => CulturaGastronomicaEntity, (culturagastronomica) => culturagastronomica.paises)
+    culturasgastronomicas: CulturaGastronomicaEntity[];
 
 }

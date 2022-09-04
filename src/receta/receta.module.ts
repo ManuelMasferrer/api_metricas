@@ -4,7 +4,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { RecetaEntity } from './receta.entity';
 
 @Module({
-  providers: [RecetaService],
-  imports: [TypeOrmModule.forFeature([RecetaEntity])]
+  imports: [TypeOrmModule.forFeature([RecetaEntity])],
+  controllers: [],
+  providers: [RecetaService,],
 })
-export class RecetaModule {}
+export class RecetaModule {
+  // constructor(private readonly recetaService: RecetaService ){}
+}

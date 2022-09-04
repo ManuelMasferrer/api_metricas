@@ -8,6 +8,8 @@ import { RegionEntity } from './region/region.entity';
 import { CulturaGastronomicaEntity } from './culturagastronomica/culturagastronomica.entity';
 import { RecetaModule } from './receta/receta.module';
 import { PaisModule } from './pais/pais.module';
+import { RecetaEntity } from './receta/receta.entity';
+import { PaisEntity } from './pais/pais.entity';
 
 @Module({
   imports: [
@@ -20,7 +22,7 @@ import { PaisModule } from './pais/pais.module';
       username: 'postgres',
       password: 'postgres',
       database: 'culturagastronomica',
-      entities: [RegionEntity, CulturaGastronomicaEntity],
+      entities: [RegionEntity, CulturaGastronomicaEntity, RecetaEntity, PaisEntity],
       dropSchema: true,
       synchronize: true,
       keepConnectionAlive: true,
