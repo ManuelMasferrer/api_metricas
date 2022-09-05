@@ -1,6 +1,6 @@
 import { CategoriaproductoEntity } from '../categoriaproducto/categoriaproducto.entity'
 /* eslint-disable prettier/prettier */
-import { Column, Entity, ManyToMany, JoinTable, PrimaryGeneratedColumn, OneToMany, ManyToOne } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
 import { CulturaGastronomicaEntity } from '../culturagastronomica/culturagastronomica.entity';
 @Entity()
 export class ProductoEntity {
