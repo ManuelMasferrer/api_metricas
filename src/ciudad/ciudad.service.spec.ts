@@ -12,8 +12,7 @@ describe('CiudadService', () => {
   let service: CiudadService;
   let repository: Repository<CiudadEntity>;
   let CiudadesList: CiudadEntity[];
-  let restaurante = new RestauranteEntity();
-  
+  let restaurantesList: RestauranteEntity[];
 
     beforeEach(async () =>{
       const module: TestingModule = await Test.createTestingModule({
@@ -29,20 +28,20 @@ describe('CiudadService', () => {
     const seeDatabase = async () =>{
       repository.clear();
       CiudadesList = [];
-      const restaurante = new RestauranteEntity();
-      restaurante.nombre = faker.commerce.productName();
+      restaurantesList = []
+      // restaurante.nombre = faker.commerce.productName();
       
       for(let i = 0; i < 5; i++){
 
         const Ciudad: CiudadEntity = await repository.save({
-              nombre: faker.address.country()
+              nombre: faker.address.cityName(),
           })
           CiudadesList.push(Ciudad);
           
       }
-      restaurante.nombre = faker.company.name();
-      restaurante.michelin = faker.commerce.productDescription();
-      restaurante.fechaMichelin= faker.date.birthdate().toString();
+      // restaurante.nombre = faker.company.name();
+      // restaurante.michelin = faker.commerce.productDescription();
+      // restaurante.fechaMichelin= faker.date.birthdate().toString();
       
     }
 

@@ -14,7 +14,7 @@ export class RestauranteEntity {
     @Column()
     fechaMichelin: string;
    
-    @ManyToOne(() => CiudadEntity, ciudad => ciudad.id)
+    @ManyToOne(() => CiudadEntity, ciudad => ciudad.restaurantes)
     ciudad: CiudadEntity;
 
   
