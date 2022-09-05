@@ -18,6 +18,8 @@ import { CiudadModule } from './ciudad/ciudad.module';
 import { CategoriaproductoModule } from './categoriaproducto/categoriaproducto.module';
 import { ProductoModule } from './producto/producto.module';
 import { RestauranteModule } from './restaurante/restaurante.module';
+import { CiudadEntity } from './ciudad/ciudad.entity';
+import { RestauranteEntity } from './restaurante/restaurante.entity';
 import { ProductoEntity } from './producto/producto.entity';
 import { CiudadEntity } from './ciudad/ciudad.entity';
 
@@ -33,7 +35,8 @@ import { CiudadEntity } from './ciudad/ciudad.entity';
       username: 'postgres',
       password: 'postgres',
       database: 'culturagastronomica',
-      entities: [RegionEntity, CulturaGastronomicaEntity, RecetaEntity, PaisEntity, ProductoEntity, CiudadEntity],
+      entities: [RegionEntity, CulturaGastronomicaEntity, RecetaEntity, RestauranteEntity, PaisEntity, CiudadEntity],
+
       dropSchema: true,
       synchronize: true,
       keepConnectionAlive: true,
