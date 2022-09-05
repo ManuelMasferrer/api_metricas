@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsNumber, IsString } from "class-validator";
+import { IsNotEmpty, IsString } from "class-validator";
 import { CulturaGastronomicaEntity } from '../culturagastronomica/culturagastronomica.entity';
 
 export class RecetaDto {
