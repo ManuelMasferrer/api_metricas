@@ -19,5 +19,9 @@ export class ProductoEntity {
  @ManyToOne(() => CulturaGastronomicaEntity, culturaGastronomica => culturaGastronomica.productos )
  culturaGastronomica: CulturaGastronomicaEntity;
 
+ @ManyToOne(() => CategoriaproductoEntity, categoria => categoria.productos )
+ categoriaProducto: CategoriaproductoEntity;
+ 
+
 }
 
