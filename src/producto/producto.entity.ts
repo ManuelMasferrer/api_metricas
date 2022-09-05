@@ -1,6 +1,7 @@
-import { RecetaEntity } from '../receta/receta.entity';
+import { CategoriaproductoEntity } from '../categoriaproducto/categoriaproducto.entity'
 /* eslint-disable prettier/prettier */
-import { Column, Entity, ManyToMany, JoinTable, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToMany, JoinTable, PrimaryGeneratedColumn, OneToMany, ManyToOne } from 'typeorm';
+import { CulturaGastronomicaEntity } from '../culturagastronomica/culturagastronomica.entity';
 @Entity()
 export class ProductoEntity {
  @PrimaryGeneratedColumn('uuid')
@@ -12,20 +13,11 @@ export class ProductoEntity {
  @Column()
  descripcion: string;
  
- @Column()
-  categoria: CATEGORIA;
+ @OneToMany(() => CategoriaproductoEntity, categoria => categoria.id )
+ categoria: CategoriaproductoEntity[];
 
- @ManyToMany(() => RecetaEntity, receta => receta.id)
- @JoinTable()
-   recetas: RecetaEntity[];
+ @OneToMany(() => CulturaGastronomicaEntity, culturaGastronomica => culturaGastronomica.id )
+ culturaGastronomica: CulturaGastronomicaEntity[];
 
 }
 
-export enum CATEGORIA {
-    Condimentos = 0,
-    Colorantes = 1,
-    Proteinas = 2,
-    Verduras = 3,
-    Frutas = 4,
-    Legumbres = 5
-}
