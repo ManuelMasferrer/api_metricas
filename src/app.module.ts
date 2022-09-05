@@ -34,8 +34,7 @@ import { ProductoEntity } from './producto/producto.entity';
       username: 'postgres',
       password: 'postgres',
       database: 'culturagastronomica',
-      entities: [RegionEntity, CulturaGastronomicaEntity, RecetaEntity, RestauranteEntity, PaisEntity, CiudadEntity],
-
+      entities: [RegionEntity, CulturaGastronomicaEntity, RecetaEntity, PaisEntity, ProductoEntity, CiudadEntity, RestauranteEntity],
       dropSchema: true,
       synchronize: true,
       keepConnectionAlive: true,

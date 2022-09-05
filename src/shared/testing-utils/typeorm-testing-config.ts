@@ -9,6 +9,7 @@ import { CategoriaproductoEntity } from "../../categoriaproducto/categoriaproduc
 import { ProductoEntity } from "../../producto/producto.entity";
 
 
+
 export const TypeOrmTestingConfig = () => [
     TypeOrmModule.forRoot({
         type: 'sqlite',

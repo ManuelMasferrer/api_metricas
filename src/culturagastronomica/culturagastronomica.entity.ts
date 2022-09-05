@@ -12,6 +12,7 @@ import {
   PrimaryGeneratedColumn,
   Relation,
 } from 'typeorm';
+import { ProductoEntity } from '../producto/producto.entity';
 
 
 @Entity()
@@ -36,5 +37,9 @@ export class CulturaGastronomicaEntity {
   @ManyToMany( () => PaisEntity, (pais) => pais.culturasgastronomicas)
   @JoinTable()
   paises: PaisEntity[];
+
+  @OneToMany(() => ProductoEntity, (producto) => producto.culturaGastronomica)
+  productos: ProductoEntity[];
+
 
 }
