@@ -13,11 +13,11 @@ export class ProductoEntity {
  @Column()
  descripcion: string;
  
- @OneToMany(() => CategoriaproductoEntity, categoria => categoria.id )
- categoria: CategoriaproductoEntity[];
+ @ManyToOne(() => CategoriaproductoEntity, categoria => categoria.productos )
+ categoria: CategoriaproductoEntity;
 
- @OneToMany(() => CulturaGastronomicaEntity, culturaGastronomica => culturaGastronomica.id )
- culturaGastronomica: CulturaGastronomicaEntity[];
+ @ManyToOne(() => CulturaGastronomicaEntity, culturaGastronomica => culturaGastronomica.productos )
+ culturaGastronomica: CulturaGastronomicaEntity;
 
 }
 

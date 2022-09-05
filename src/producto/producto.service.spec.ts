@@ -5,13 +5,15 @@ import { TypeOrmTestingConfig } from '../shared/testing-utils/typeorm-testing-co
 import { ProductoEntity } from './producto.entity';
 import { ProductoService } from './producto.service';
 import { faker } from '@faker-js/faker';
-import { CulturaGastronomicaEntity } from 'src/culturagastronomica/culturagastronomica.entity';
-import { CategoriaproductoEntity } from 'src/categoriaproducto/categoriaproducto.entity';
+import { CulturaGastronomicaEntity } from '../culturagastronomica/culturagastronomica.entity';
+import { CategoriaproductoEntity } from '../categoriaproducto/categoriaproducto.entity';
 
 describe('ProductoService', () => {
   let service: ProductoService;
   let repository: Repository<ProductoEntity>;
-  let productosList: ProductoEntity[]
+  let productosList: ProductoEntity[];
+  let culturaGastronomica = new CulturaGastronomicaEntity();
+  let categoria = new CategoriaproductoEntity();
 
 
   beforeEach(async () => {
@@ -28,18 +30,18 @@ describe('ProductoService', () => {
   const seedDatabase = async () => {
     repository.clear();
     productosList = [];
-    const categoria = new CategoriaproductoEntity();
     categoria.nombre = faker.commerce.productName();
-    const culturaGastronomica = new CulturaGastronomicaEntity();
     culturaGastronomica.nombre = faker.commerce.department();
+    culturaGastronomica.productos = [];
+    categoria.productos=[];
+
     for(let i = 0; i < 5; i++){
-        /*const producto: ProductoEntity = await repository.save({
+        const producto: ProductoEntity = await repository.save({
           nombre: faker.company.name(),
-          descripcion: faker.commerce.productDescription(),
-          categoria: categoria,
-          culturaGastronomica: culturaGastronomica })
+          descripcion: faker.commerce.productDescription(), 
+        });
       productosList.push(producto);
-        */    }
+            }
   }
 
   it('should be defined', () => {

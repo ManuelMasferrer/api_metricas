@@ -30,7 +30,7 @@ export class ProductoService {
     /*
     TRAER CATEGORIAS ASOCIDAS POR PRODUCTO
     */
-    async findCategoriasbyProducto(id:string): Promise<CategoriaproductoEntity[]>{
+    async findCategoriasbyProducto(id:string): Promise<CategoriaproductoEntity>{
         const producto: ProductoEntity = await this.productoRepository.findOne({where: {id}, relations: ["categoria"] } );
         if (!producto)
           throw new BusinessLogicException("El producto no existe", BusinessError.NOT_FOUND);
@@ -39,7 +39,7 @@ export class ProductoService {
     /*
     TRAER CULTURAS GASTRONOMICAS ASOCIDAS POR PRODUCTO
     */
-    async findCulturasbyProducto(id:string): Promise<CulturaGastronomicaEntity[]>{
+    async findCulturasbyProducto(id:string): Promise<CulturaGastronomicaEntity>{
         const producto: ProductoEntity = await this.productoRepository.findOne({where: {id}, relations: ["culturaGastronomica"] } );
         if (!producto)
           throw new BusinessLogicException("El producto no existe", BusinessError.NOT_FOUND);
