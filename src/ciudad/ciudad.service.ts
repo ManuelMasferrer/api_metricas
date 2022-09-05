@@ -4,6 +4,7 @@ import { BusinessError, BusinessLogicException } from '../shared/errors/business
 import { Repository } from 'typeorm';
 import { CiudadEntity } from './ciudad.entity';
 
+
 @Injectable()
 export class CiudadService {
     constructor(
@@ -23,7 +24,7 @@ export class CiudadService {
         return ciudad;
     }
 
- 
+
 
 
 }

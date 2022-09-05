@@ -3,6 +3,7 @@ import { CiudadService } from './ciudad.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CiudadEntity } from './ciudad.entity';
 
+
 @Module({
     imports: [TypeOrmModule.forFeature([CiudadEntity])],
     controllers: [],

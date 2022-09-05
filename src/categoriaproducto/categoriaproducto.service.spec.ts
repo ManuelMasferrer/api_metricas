@@ -5,7 +5,7 @@ import { CategoriaproductoService } from '../categoriaproducto/categoriaproducto
 import { CategoriaproductoEntity } from '../categoriaproducto/categoriaproducto.entity';
 import { ProductoService } from '../producto/producto.service';
 import { ProductoEntity } from '../producto/producto.entity';
-
+import { CulturaGastronomicaEntity } from '../culturagastronomica/culturagastronomica.entity';
 import { Repository } from "typeorm/repository/Repository";
 import { TypeOrmTestingConfig } from "../shared/testing-utils/typeorm-testing-config";
 
@@ -42,7 +42,7 @@ describe('CategoriaproductoService', () => {
       const Categoriaproducto: CategoriaproductoEntity = await repository.save({
             nombre: faker.address.country()
         })
-        CategoriaproductoEntity.push(Categoriaproducto);
+        CategoriaproductoList.push(Categoriaproducto);
         
     }
     producto.nombre = faker.company.name();
@@ -60,29 +60,10 @@ describe('CategoriaproductoService', () => {
         expect(categorias).toHaveLength(CategoriaproductoList.length);
     });
 
-    it('findOne debe retornar una categorias por id', async () => {
-        const storedCulturaGastronomica: CulturaGastronomicaEntity = CategoriaproductoList[0];
-        const categorias: CategoriaproductoEntity = await service.findOne(storedCulturaGastronomica.categorias.id);
-        expect(categorias).not.toBeNull;
-        expect(categorias.nombre).toEqual(storedCulturaGastronomica.nombre)
-    });
-
-    it('findOne lanzar excepcion para una categorias invalida', async () => {
+   it('findOne lanzar excepcion para una categorias invalida', async () => {
         await expect(() => service.findOne("0")).rejects.toHaveProperty("message", "La categorias con el id no a sido encontrada")
     });
 
  
-    it('update actualizacion invalida dado a una categorias invalida', async () => {
-        let categorias: CategoriaproductoEntity = CategoriaproductoList[0].categorias;
-        categorias = {
-          ...categorias, nombre: "New name"
-        }
-        await expect(() => service.update("0", categorias)).rejects.toHaveProperty("message", "La categorias con el id no a sido encontrada")
-      });
 
-    it('delete fallido por una categorias invalida', async () => {
-        const categorias: CategoriaproductoEntity = CategoriaproductoList[0].categorias;
-        await service.delete(categorias.id);
-        await expect(() => service.delete("0")).rejects.toHaveProperty("message", "La categorias con el id no a sido encontrada")
-    });
 });
