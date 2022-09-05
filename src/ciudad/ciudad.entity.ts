@@ -1,4 +1,5 @@
-import { Column, Entity, JoinTable, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinTable, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { RestauranteEntity } from '../restaurante/restaurante.entity';
 
 @Entity()
 export class CiudadEntity {
@@ -9,8 +10,8 @@ export class CiudadEntity {
     @Column()
     nombre: string;
 
-    // @ManyToOne(() => CiudadEntity, ciudad => ciudad.restaurante)      
-    //     ciudades: CiudadEntity;
+    @OneToMany(() => RestauranteEntity, restaurante => restaurante.ciudad)      
+    restaurantes: RestauranteEntity[];
    
     
 }

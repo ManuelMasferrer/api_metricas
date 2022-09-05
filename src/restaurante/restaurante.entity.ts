@@ -1,6 +1,11 @@
+
 import { CiudadEntity } from '../ciudad/ciudad.entity';
 import { CulturaGastronomicaEntity } from '../culturagastronomica/culturagastronomica.entity';
-import { Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { Column, Entity,ManyToOne, ManyToMany, JoinTable, PrimaryGeneratedColumn } from 'typeorm';
+import { CiudadEntity } from '../ciudad/ciudad.entity';
+import { TypeOrmModule } from '@nestjs/typeorm';
+
+@Entity()
 export class RestauranteEntity {
     @PrimaryGeneratedColumn('uuid')
     id: string;
@@ -13,6 +18,7 @@ export class RestauranteEntity {
     
     @Column()
     fechaMichelin: string;
+
 
     @OneToMany(() => CiudadEntity, ciudad => ciudad.id)
     ciudad: CiudadEntity;

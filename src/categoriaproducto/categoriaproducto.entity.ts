@@ -1,7 +1,16 @@
-
-
 import { ProductoEntity } from '../producto/producto.entity';
-import { Column, Entity, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import {
+    Column,
+    Entity,
+    JoinColumn,
+    JoinTable,
+    ManyToMany,
+    OneToMany,
+    OneToOne,
+    ManyToOne,
+    PrimaryGeneratedColumn,
+  } from 'typeorm';
+
 
 @Entity()
 export class CategoriaproductoEntity {
@@ -14,4 +23,5 @@ export class CategoriaproductoEntity {
    
     @OneToMany(() => ProductoEntity, producto => producto.categoria )
     productos: ProductoEntity[];
+
 }
