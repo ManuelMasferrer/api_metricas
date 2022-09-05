@@ -1,8 +1,7 @@
 
 import { CiudadEntity } from '../ciudad/ciudad.entity';
 import { CulturaGastronomicaEntity } from '../culturagastronomica/culturagastronomica.entity';
-import { Column, Entity,ManyToOne, ManyToMany, JoinTable, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { Column, Entity,ManyToOne, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 
 @Entity()
 export class RestauranteEntity {
