@@ -21,7 +21,7 @@ export class CategoriaproductoService {
         return await this.culturaRepository.find({ relations: {region: true,},});
     }
 
-    async finOne(id: string): Promise<CategoriaproductoEntity>{
+    async findOne(id: string): Promise<CategoriaproductoEntity>{
         const cultura: CategoriaproductoEntity = await this.culturaRepository.findOne({where: {id}, relations: {region: true,},});
         if (!cultura)
             throw new BusinessLogicException("La cultura gastronomica con el id no a sido encontrada", BusinessError.NOT_FOUND);

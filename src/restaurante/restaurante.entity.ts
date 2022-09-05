@@ -1,4 +1,6 @@
-import { Column, Entity, ManyToMany, JoinTable, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity,ManyToOne, ManyToMany, JoinTable, PrimaryGeneratedColumn } from 'typeorm';
+import { CiudadEntity } from '../ciudad/ciudad.entity';
+
 export class RestauranteEntity {
     @PrimaryGeneratedColumn('uuid')
     id: string;
@@ -12,12 +14,10 @@ export class RestauranteEntity {
     @Column()
     fechaMichelin: string;
    
-   /*@ManyToOne(() => PaisEntity, pais => pais.id)
-    pais: PaisEntity;
     @ManyToOne(() => CiudadEntity, ciudad => ciudad.id)
     ciudad: CiudadEntity;
 
-  */
+  
 
 }
 

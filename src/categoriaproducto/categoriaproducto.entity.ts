@@ -8,6 +8,7 @@ import {
     ManyToMany,
     OneToMany,
     OneToOne,
+    ManyToOne,
     PrimaryGeneratedColumn,
   } from 'typeorm';
 
@@ -20,7 +21,7 @@ export class CategoriaproductoEntity {
     @Column()
     nombre: string;
    
-    @ManyToOne(() => CategoriaproductoEntity, Producto => Producto.categoria )
-    categoriaproducto: catetoriaproducto.Entity;
+    @ManyToOne(() => CategoriaproductoEntity, Producto => Producto.categoriaproducto )
+    categoriaproducto: CategoriaproductoEntity;
     
 }
