@@ -4,7 +4,6 @@ import { PaisEntity } from '../pais/pais.entity';
 import {
   Column,
   Entity,
-  JoinColumn,
   JoinTable,
   ManyToMany,
   OneToMany,
