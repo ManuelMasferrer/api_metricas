@@ -1,4 +1,6 @@
-import { Column, Entity, ManyToMany, JoinTable, PrimaryGeneratedColumn } from 'typeorm';
+import { CiudadEntity } from '../ciudad/ciudad.entity';
+import { CulturaGastronomicaEntity } from '../culturagastronomica/culturagastronomica.entity';
+import { Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 export class RestauranteEntity {
     @PrimaryGeneratedColumn('uuid')
     id: string;
@@ -11,13 +13,12 @@ export class RestauranteEntity {
     
     @Column()
     fechaMichelin: string;
-   
-   /*@ManyToOne(() => PaisEntity, pais => pais.id)
-    pais: PaisEntity;
-    @ManyToOne(() => CiudadEntity, ciudad => ciudad.id)
+
+    @OneToMany(() => CiudadEntity, ciudad => ciudad.id)
     ciudad: CiudadEntity;
 
-  */
+    @OneToMany(() => CulturaGastronomicaEntity, culturaGastronomica => culturaGastronomica.id)
+    culturaGastronomica: CulturaGastronomicaEntity[];
 
 }
 

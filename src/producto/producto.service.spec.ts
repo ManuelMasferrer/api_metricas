@@ -32,15 +32,14 @@ describe('ProductoService', () => {
     categoria.nombre = faker.commerce.productName();
     const culturaGastronomica = new CulturaGastronomicaEntity();
     culturaGastronomica.nombre = faker.commerce.department();
-    
     for(let i = 0; i < 5; i++){
-        const producto: ProductoEntity = await repository.save({
-        nombre: faker.company.name(),
-        descripcion: faker.commerce.productDescription(),
-        categoria: categoria,
-        culturaGastronomica: culturaGastronomica })
+        /*const producto: ProductoEntity = await repository.save({
+          nombre: faker.company.name(),
+          descripcion: faker.commerce.productDescription(),
+          categoria: categoria,
+          culturaGastronomica: culturaGastronomica })
       productosList.push(producto);
-    }
+        */    }
   }
 
   it('should be defined', () => {
