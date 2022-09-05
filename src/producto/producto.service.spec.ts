@@ -5,7 +5,7 @@ import { TypeOrmTestingConfig } from '../shared/testing-utils/typeorm-testing-co
 import { ProductoEntity } from './producto.entity';
 import { ProductoService } from './producto.service';
 import { faker } from '@faker-js/faker';
-import { CulturaGastronomicaEntity, CulturaGastronomicaEntity } from '../culturagastronomica/culturagastronomica.entity';
+import { CulturaGastronomicaEntity } from '../culturagastronomica/culturagastronomica.entity';
 import { CategoriaproductoEntity } from '../categoriaproducto/categoriaproducto.entity';
 
 describe('ProductoService', () => {
