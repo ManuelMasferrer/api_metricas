@@ -21,7 +21,6 @@ import { RestauranteModule } from './restaurante/restaurante.module';
 import { CiudadEntity } from './ciudad/ciudad.entity';
 import { RestauranteEntity } from './restaurante/restaurante.entity';
 import { ProductoEntity } from './producto/producto.entity';
-import { CiudadEntity } from './ciudad/ciudad.entity';
 
 @Module({
   imports: [
