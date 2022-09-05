@@ -1,8 +1,7 @@
 
 import { CiudadEntity } from '../ciudad/ciudad.entity';
 import { CulturaGastronomicaEntity } from '../culturagastronomica/culturagastronomica.entity';
-import { Column, Entity,ManyToOne, ManyToMany, JoinTable, PrimaryGeneratedColumn } from 'typeorm';
-import { CiudadEntity } from '../ciudad/ciudad.entity';
+import { Column, Entity,ManyToOne, ManyToMany, JoinTable, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Entity()
@@ -20,7 +19,7 @@ export class RestauranteEntity {
     fechaMichelin: string;
 
 
-    @OneToMany(() => CiudadEntity, ciudad => ciudad.id)
+    @ManyToOne(() => CiudadEntity, ciudad => ciudad.id)
     ciudad: CiudadEntity;
 
     @OneToMany(() => CulturaGastronomicaEntity, culturaGastronomica => culturaGastronomica.id)

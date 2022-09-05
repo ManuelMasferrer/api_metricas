@@ -13,7 +13,7 @@ export class CiudadService {
       ){}
 
     async findAll(): Promise<CiudadEntity[]>{
-        return await this.ciudadRepository.find({ relations: {restaurantes: true,},});
+        return await this.ciudadRepository.find({ relations: {restaurantes: true,}});
     }
 
     async finOne(id: string): Promise<CiudadEntity>{

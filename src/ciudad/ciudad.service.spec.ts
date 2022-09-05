@@ -35,6 +35,7 @@ describe('CiudadService', () => {
 
         const Ciudad: CiudadEntity = await repository.save({
               nombre: faker.address.cityName(),
+              restaurantes: restaurantesList,
           })
           CiudadesList.push(Ciudad);
           
