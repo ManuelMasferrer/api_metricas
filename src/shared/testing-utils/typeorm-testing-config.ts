@@ -8,6 +8,7 @@ import { RestauranteEntity } from "../../restaurante/restaurante.entity";
 import { CategoriaproductoEntity } from "../../categoriaproducto/categoriaproducto.entity";
 import { ProductoEntity } from "../../producto/producto.entity";
 
+
 export const TypeOrmTestingConfig = () => [
     TypeOrmModule.forRoot({
         type: 'sqlite',
@@ -18,4 +19,5 @@ export const TypeOrmTestingConfig = () => [
         keepConnectionAlive: true
     }),
     TypeOrmModule.forFeature([CulturaGastronomicaEntity, RegionEntity, RecetaEntity, PaisEntity, CiudadEntity, RestauranteEntity, CategoriaproductoEntity, ProductoEntity]),
+
 ];
