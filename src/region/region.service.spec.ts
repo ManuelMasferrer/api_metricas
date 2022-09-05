@@ -39,7 +39,8 @@ describe('RegionService', () => {
                 descripcion: faker.commerce.productDescription(),
                 region: region,
                 recetas: [],
-                paises: []
+                paises: [],
+                productos: []
             })
             culturaList.push(cultura);
             
