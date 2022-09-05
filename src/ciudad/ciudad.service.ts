@@ -19,7 +19,7 @@ export class CiudadService {
     async finOne(id: string): Promise<CiudadEntity>{
         const ciudad: CiudadEntity = await this.ciudadRepository.findOne({where: {id}});
         if (!ciudad)
-            throw new BusinessLogicException("El ciudad con el id proporcionado no ha sido encontrado", BusinessError.NOT_FOUND);
+            throw new BusinessLogicException("El Ciudad con el id proporcionado no ha sido encontrado", BusinessError.NOT_FOUND);
 
         return ciudad;
     }

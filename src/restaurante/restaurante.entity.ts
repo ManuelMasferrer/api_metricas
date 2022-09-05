@@ -2,6 +2,7 @@ import { Column, Entity,ManyToOne, ManyToMany, JoinTable, PrimaryGeneratedColumn
 import { CiudadEntity } from '../ciudad/ciudad.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
+@Entity()
 export class RestauranteEntity {
     @PrimaryGeneratedColumn('uuid')
     id: string;
