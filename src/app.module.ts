@@ -21,6 +21,7 @@ import { RestauranteModule } from './restaurante/restaurante.module';
 import { CiudadEntity } from './ciudad/ciudad.entity';
 import { RestauranteEntity } from './restaurante/restaurante.entity';
 import { ProductoEntity } from './producto/producto.entity';
+import { CategoriaproductoEntity } from './categoriaproducto/categoriaproducto.entity';
 
 @Module({
   imports: [
@@ -34,7 +35,7 @@ import { ProductoEntity } from './producto/producto.entity';
       username: 'postgres',
       password: 'postgres',
       database: 'culturagastronomica',
-      entities: [RegionEntity, CulturaGastronomicaEntity, RecetaEntity, PaisEntity, ProductoEntity, CiudadEntity, RestauranteEntity],
+      entities: [RegionEntity, CulturaGastronomicaEntity, RecetaEntity, PaisEntity, ProductoEntity, CiudadEntity, RestauranteEntity, CategoriaproductoEntity],
       dropSchema: true,
       synchronize: true,
       keepConnectionAlive: true,

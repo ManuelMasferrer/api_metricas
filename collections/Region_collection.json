@@ -1,0 +1,482 @@
+{
+	"info": {
+		"_postman_id": "d1c8638d-d7fd-4a87-bb42-26e95221df3f",
+		"name": "Region",
+		"description": "Region perteneciente a una cultura gastronomica",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Obtener listado de regiones",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Numero de regiones > ' + 0, function () {",
+							"   var data = pm.response.json()",
+							"   pm.expect(data.length).to.greaterThan(0)",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/regiones",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"regiones"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener listado de regiones",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/regiones",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"regiones"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "[\n    {\n        \"culturagastronomicaid\": \"abcdserers234\",\n        \"nombre\": \"Region Mediterranea\"\n    },\n    {\n        \"culturagastronomicaid\": \"abcdserers244\",\n        \"nombre\": \"Region Sudamericana\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Obtener region",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/regiones/:regionid",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"regiones",
+						":regionid"
+					],
+					"variable": [
+						{
+							"key": "regionid",
+							"value": "1fafc1bd-bfd8-47dc-8c24-619891ba36ad"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener region",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/regiones/{{culturagastronomicaid}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"regiones",
+								"{{culturagastronomicaid}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\n    \"culturagastronomica_id\": \"abcdserers234\",\n    \"nombre\": \"Region Mediterranea\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener region no existente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"La region con el id no a sido encontrada\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/regiones/00000000-0000-0000-0000-000000000000",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"regiones",
+						"00000000-0000-0000-0000-000000000000"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener region no existente",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/regiones/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"regiones",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"La region con el ID proporcionado no existe\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Actualizar una region",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Mediterranea\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/regiones/:regionid",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"regiones",
+						":regionid"
+					],
+					"variable": [
+						{
+							"key": "regionid",
+							"value": "1fafc1bd-bfd8-47dc-8c24-619891ba36ad"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Actualizar una region",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"uiu2165131-52123\",\n    \"nombre\": \"Mediterranea\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/regiones/{{regionid}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"regiones",
+								"{{regionid}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\n    \"id\":\"uuid\",\n    \"nombre\": \"Pacifica\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Eliminar una region",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"   pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/regiones/:regionid",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"regiones",
+						":regionid"
+					],
+					"variable": [
+						{
+							"key": "regionid",
+							"value": "1fafc1bd-bfd8-47dc-8c24-619891ba36ad"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Eliminar una region",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/regiones/{{regionid}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"regiones",
+								"{{regionid}}"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Crear una region",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()",
+							"pm.globals.set(\"region_id\", data.id);",
+							"",
+							"pm.test(\"Status code is 201\", function () {",
+							"   pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Atlantico\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/regiones",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"regiones"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar una region que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"La region con el id no a sido encontrada\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Mediterranea\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/regiones/:regionid",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"regiones",
+						":regionid"
+					],
+					"variable": [
+						{
+							"key": "regionid",
+							"value": "1fafc1bd-bfd8-47dc-8c24-619891ba36ae"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar una region no existente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"La region con el id no a sido encontrada\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/regiones/:regionid",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"regiones",
+						":regionid"
+					],
+					"variable": [
+						{
+							"key": "regionid",
+							"value": "1fafc1bd-bfd8-47dc-8c24-619891ba36ae"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
