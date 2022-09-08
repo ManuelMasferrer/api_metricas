@@ -1,0 +1,588 @@
+{
+	"info": {
+		"_postman_id": "983b2e8a-9115-47b7-b59d-3350f97fae74",
+		"name": "CulturaGastronomica",
+		"description": "# IntroducciÃ³n\n\nConsulta Culturas Gastronomicas\n\n# Overview\n\nCrear, actualizar, eliminar y seleccionar las culturas gastronomicas a partir de ciertos criterios.\n\n# Authentication\n\n# Error Codes\n\n404\n\n500\n\n# Rate limit\n\nIs there a limit to the number of requests a user can send?",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Obtener una cultura gastronomica",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Codigo de estado es 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/culturasgastronomicas/:culturaid",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturasgastronomicas",
+						":culturaid"
+					],
+					"variable": [
+						{
+							"key": "culturaid",
+							"value": "a956de3c-d8ea-4991-9b89-d04811e8085e"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener cultura gastronomica",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/culturagastronomica/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturagastronomica",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{ \r\n    \"id\": 12345678, \r\n    \"nombre\":\"Cultura Mediterraneaâ,âdescripcionâ: âCultura que abarca paÃ­ses colindantes al mar mediterrÃ¡neo.\" \r\n} "
+				}
+			]
+		},
+		{
+			"name": "Obtener cultura gastronomica no existente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Codigo de estado es 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Obtener mensaje de error\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"La cultura gastronomica con el id no a sido encontrada\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/culturasgastronomicas/00000000-0000-0000-0000-000000000000",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturasgastronomicas",
+						"00000000-0000-0000-0000-000000000000"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener cultura gastronomica",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/culturagastronomica/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturagastronomica",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "[ \r\n   { \r\n     \"status_code\": 404, \r\n\r\n    \"message\": \"Not Found\"\r\n    } \r\n\r\n] "
+				}
+			]
+		},
+		{
+			"name": "Obtener listado de culturas gastronomicas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Numero de culturas gastronomicas > ' + 0, function () {",
+							"   var data = pm.response.json()",
+							"   pm.expect(data.length).to.greaterThan(0)",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/culturasgastronomicas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturasgastronomicas"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener listado de culturas",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/culturagastronomica",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturagastronomica"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "[ \r\n    { \r\n        \"id\": 12345678, \r\n        \"nombre\": \"Cultura Mediterranea\",\r\n        \"descripcion\": \"Cultura que abarca paÃ­ses colindantes al mar mediterrÃ¡neo.\"\r\n    },\r\n    { \r\n        \"id\": 9874561, \r\n        \"nombre\": \"Cultura Oriental\",\r\n        \"descripcion\": \"Cultura que abarca paÃ­ses colindantes a la zona oriental.\"\r\n    } \r\n\r\n] "
+				}
+			]
+		},
+		{
+			"name": "Agregar una nueva cultura gastronomica",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()",
+							"pm.globals.set(\"region_id\", data.id);",
+							"",
+							"pm.test(\"Codigo de estado es 201\", function () {",
+							"   pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\":\"Criolla\",\n    \"descripcion\":\"gastronomica colombiana y tipica de la región andina\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/culturasgastronomicas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturasgastronomicas"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Agregar una nueva cultura gastronÃ³mica",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/culturagastronomica",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturagastronomica"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "[ \r\n    { \r\n        \"status_code\": 200,\r\n        \"message\":\"Agregada correctamente\"\r\n    } \r\n\r\n] "
+				}
+			]
+		},
+		{
+			"name": "Actualizar una cultura gastronomica",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Codigo de estado es 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\":\"Boyaca\",\n    \"descripcion\":\"gastronomica tipica de la región andina\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/culturasgastronomicas/:culturaid",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturasgastronomicas",
+						":culturaid"
+					],
+					"variable": [
+						{
+							"key": "culturaid",
+							"value": "a956de3c-d8ea-4991-9b89-d04811e8085e"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Actualizar la informaciÃ³n de una cultura especÃ­fica",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/culturagastronomica/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturagastronomica",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Actualizar una cultura gastronomica no existente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Codigo de estado is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Obtener mensaje de error\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"La cultura gastronomica con el id no a sido encontrada\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\":\"Boyaca\",\n    \"descripcion\":\"gastronomica tipica de la región andina\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/culturasgastronomicas/:culturaid",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturasgastronomicas",
+						":culturaid"
+					],
+					"variable": [
+						{
+							"key": "culturaid",
+							"value": "a956de3c-d8ea-4991-9b89-d04811e8085e"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Actualizar la informaciÃ³n de una cultura especÃ­fica",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/culturagastronomica/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturagastronomica",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": null
+								}
+							]
+						}
+					},
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Eliminar una cultura gastronomica",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Codigo de estado es 204\", function () {",
+							"   pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/culturasgastronomicas/:culturaid",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturasgastronomicas",
+						":culturaid"
+					],
+					"variable": [
+						{
+							"key": "culturaid",
+							"value": "a956de3c-d8ea-4991-9b89-d04811e8085e"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Eliminar la informaciÃ³n de una cultura especÃ­fica",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/culturagastronomicas/:id_cultura",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturagastronomicas",
+								":id_cultura"
+							],
+							"variable": [
+								{
+									"key": "id_cultura",
+									"value": null
+								}
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Eliminar una cultura gastronomica no existente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Codigo de estado es 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Obtener mensaje de error\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"La cultura gastronomica con el id no a sido encontrada\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/culturasgastronomicas/:culturaid",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturasgastronomicas",
+						":culturaid"
+					],
+					"variable": [
+						{
+							"key": "culturaid",
+							"value": "a956de3c-d8ea-4991-9b89-d04811e8085f"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Eliminar la informaciÃ³n de una cultura especÃ­fica",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/culturagastronomicas/:id_cultura",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturagastronomicas",
+								":id_cultura"
+							],
+							"variable": [
+								{
+									"key": "id_cultura",
+									"value": null
+								}
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "basic"
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": " http://localhost:3000/api/v1",
+			"type": "string"
+		}
+	]
+}
