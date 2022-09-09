@@ -12,7 +12,7 @@ import {
   Relation,
 } from 'typeorm';
 import { ProductoEntity } from '../producto/producto.entity';
-import { RestauranteEntity } from 'src/restaurante/restaurante.entity';
+import { RestauranteEntity } from '../restaurante/restaurante.entity';
 
 
 @Entity()
@@ -34,7 +34,7 @@ export class CulturaGastronomicaEntity {
   @OneToMany(() => RecetaEntity, (receta) => receta.culturagastronomica)
   recetas: RecetaEntity[];
 
-  @OneToMany(()=> RestauranteEntity, (restaurante) => restaurante.culturaGastronomica)
+  @OneToMany(()=> RestauranteEntity, (restaurante) => restaurante.culturagastronomica)
   restaurantes: RestauranteEntity[];
 
   @ManyToMany( () => PaisEntity, (pais) => pais.culturasgastronomicas)
