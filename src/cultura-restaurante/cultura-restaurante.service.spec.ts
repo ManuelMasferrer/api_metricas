@@ -188,6 +188,39 @@ describe('CulturaRestauranteService', () => {
     await expect(()=> service.associateRestauranteCultura(culturagastronomica.id, [newRestaurante])).rejects.toHaveProperty("message", "El restaurante con el id proporcionado no ha sido encontrado"); 
   });
 
+  it('deleteRestauranteToCultura debe eliminar un restaurante de una cultura gastronomica', async () => {
+    const restaurante: RestauranteEntity = restaurantesList[0];
+    
+    await service.deleteRestauranteToCultura(culturagastronomica.id, restaurante.id);
+
+    const storedCulturaGastronomica: CulturaGastronomicaEntity = await culturaRepository.findOne({where: {id: culturagastronomica.id}, relations: ["restaurantes"]});
+    const deletedRestaurante: RestauranteEntity = storedCulturaGastronomica.restaurantes.find(a => a.id === restaurante.id);
+
+    expect(deletedRestaurante).toBeUndefined();
+
+  });
+
+  it('deleteRestauranteToCultura debe arrojar una excepcion para un restaurante invalido', async () => {
+    await expect(()=> service.deleteRestauranteToCultura(culturagastronomica.id, "0")).rejects.toHaveProperty("message", "El restaurante con el id proporcionado no ha sido encontrado"); 
+  });
+
+  it('deleteRestauranteToCultura debe arrojar una excepcion para una cultura gastronomica invalida', async () => {
+    const restaurante: RestauranteEntity = restaurantesList[0];
+    await expect(()=> service.deleteRestauranteToCultura("0", restaurante.id)).rejects.toHaveProperty("message", "La cultura gastronomica con el id proporcionado no ha sido encontrada"); 
+  });
+
+  it('deleteRestauranteToCultura debe arrojar una excepcion para un restaurante no asociado a una cultura gastronomica', async () => {
+    const fec: string =  new Date("2018-03-16").toISOString()
+    const newRestaurante: RestauranteEntity = await restauranteRepository.save({
+      nombre: faker.company.name(),
+      michelin: 2,
+      fechaMichelin: fec 
+    })
+
+
+    await expect(()=> service.deleteRestauranteToCultura(culturagastronomica.id, newRestaurante.id)).rejects.toHaveProperty("message", "El restaurante con el id proporcionado no esta asociado a la cultura gastronomica"); 
+  }); 
+
 
 
 

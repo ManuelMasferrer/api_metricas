@@ -29,13 +29,14 @@ export class RestauranteService {
     }
     /*
     TRAER CULTURAS GASTRONOMICAS ASOCIDAS POR RESTAURANTE
-    */
+
     async findCulturasbyRestaurante(id:string): Promise<CulturaGastronomicaEntity[]>{
-        const restaurante: RestauranteEntity = await this.restauranteRepository.findOne({where: {id}, relations: ["culturaGastronomica"] } );
+        const restaurante: RestauranteEntity = await this.restauranteRepository.findOne({where: {id}, relations: ["culturagastronomica"] } );
         if (!restaurante)
           throw new BusinessLogicException("El restaurante no existe", BusinessError.NOT_FOUND);
-        return restaurante.culturaGastronomica; 
+        return restaurante.culturagastronomica[0]; 
     }
+        */
 
     /*
     TRAER Obtener un restaurante con cultura gastronómica en especifico
