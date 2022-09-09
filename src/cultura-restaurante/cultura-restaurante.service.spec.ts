@@ -104,5 +104,93 @@ describe('CulturaRestauranteService', () => {
     await expect(() => service.addRestauranteCultura(newCulturaGastronomica.id, "0")).rejects.toHaveProperty("message", "El restaurante con el id proporcionado no ha sido encontrado");
   });
 
+  it('addCulturaRestaurante debe producir una excepcion para una cultura gastronomica invalida', async () => {
+    const fec: string =  new Date("2018-03-16").toISOString()
+    const newRestaurante: RestauranteEntity = await restauranteRepository.save({
+      nombre: faker.company.name(),
+      michelin: 2,
+      fechaMichelin: fec 
+    })
+
+    await expect (() => service.addRestauranteCultura("0", newRestaurante.id)).rejects.toHaveProperty("message", "La cultura gastronomica con el id proporcionado no ha sido encontrada");
+  });
+
+  it('findRestauranteByCulturaIdRestauranteId debe retornar un restaurante de una cultura gastronomica', async () => {
+    const restaurante: RestauranteEntity = restaurantesList[0];
+    const storedRestaurante: RestauranteEntity = await service.findRestauranteByCulturaIdRestauranteId(culturagastronomica.id, restaurante.id, )
+    expect(storedRestaurante).not.toBeNull();
+    expect(storedRestaurante.nombre).toBe(restaurante.nombre);
+    expect(storedRestaurante.michelin).toBe(restaurante.michelin);
+    expect(storedRestaurante.fechaMichelin).toBe(restaurante.fechaMichelin);
+  });
+
+  it('findRestauranteByCulturaIdRestauranteId debe arrojar una excepcion para un restaurante invalido', async () => {
+    await expect(()=> service.findRestauranteByCulturaIdRestauranteId(culturagastronomica.id, "0")).rejects.toHaveProperty("message", "El restaurante con el id proporcionado no ha sido encontrado"); 
+  });
+
+  it('findRestauranteByCulturaIdRestauranteId debe arrojar una excepcion para una cultura gastronomica invalida', async () => {
+    const restaurante: RestauranteEntity = restaurantesList[0];
+    await expect(()=> service.findRestauranteByCulturaIdRestauranteId("0", restaurante.id)).rejects.toHaveProperty("message", "La cultura gastronomica con el id proporcionado no ha sido encontrada"); 
+  });
+
+  it('findRestauranteByCulturaIdRestauranteId debe arrojar una excepcion para una receta no asociada a una cultura gastronomica', async () => {
+    const fec: string =  new Date("2018-03-16").toISOString()
+    const newRestaurante: RestauranteEntity = await restauranteRepository.save({
+      nombre: faker.company.name(),
+      michelin: 2,
+      fechaMichelin: fec 
+    })
+
+    await expect(()=> service.findRestauranteByCulturaIdRestauranteId(culturagastronomica.id, newRestaurante.id)).rejects.toHaveProperty("message", "El restaurante con el id proporcionado no esta asociado a la cultura gastronomica"); 
+  });
+
+  it('findRestauranteByCulturaId debe retornar los restaurantes de una cultura gastronomica', async ()=>{
+    const restaurantes: RestauranteEntity[] = await service.findRestaurantesByCulturaId(culturagastronomica.id);
+    expect(restaurantes.length).toBe(5)
+  });
+
+  it('findRestauranteByCulturaId debe arrojar una excepcion para una cultura gastronomica invalida', async () => {
+    await expect(()=> service.findRestaurantesByCulturaId("0")).rejects.toHaveProperty("message", "La cultura gastronomica con el id proporcionado no ha sido encontrada"); 
+  });
+
+  it('associateRestauranteCultura debe actualizar la lista de restaurantes de una cultura gastronomica', async () => {
+    const fec: string =  new Date("2018-03-16").toISOString()
+    const newRestaurante: RestauranteEntity = await restauranteRepository.save({
+      nombre: faker.company.name(),
+      michelin: 2,
+      fechaMichelin: fec 
+    })
+
+    const updatedCulturaGastronomica: CulturaGastronomicaEntity = await service.associateRestauranteCultura(culturagastronomica.id, [newRestaurante]);
+    expect(updatedCulturaGastronomica.restaurantes.length).toBe(1);
+
+    expect(updatedCulturaGastronomica.restaurantes[0].nombre).toBe(newRestaurante.nombre);
+    expect(updatedCulturaGastronomica.restaurantes[0].michelin).toBe(newRestaurante.michelin);
+    expect(updatedCulturaGastronomica.restaurantes[0].fechaMichelin).toBe(newRestaurante.fechaMichelin);
+
+  });
+
+  it('associateRestauranteCultura debe arrojar una excepcion para una cultura gastronomica invalida', async () => {
+    const fec: string =  new Date("2018-03-16").toISOString()
+    const newRestaurante: RestauranteEntity = await restauranteRepository.save({
+      nombre: faker.company.name(),
+      michelin: 2,
+      fechaMichelin: fec 
+    })
+
+    await expect(()=> service.associateRestauranteCultura("0", [newRestaurante])).rejects.toHaveProperty("message", "La cultura gastronomica con el id proporcionado no ha sido encontrada"); 
+  });
+
+  it('associateRestauranteCultura debe arrojar una excepcion para un restaurante invalido', async () => {
+    const newRestaurante: RestauranteEntity = restaurantesList[0];
+    newRestaurante.id = "0";
+
+    await expect(()=> service.associateRestauranteCultura(culturagastronomica.id, [newRestaurante])).rejects.toHaveProperty("message", "El restaurante con el id proporcionado no ha sido encontrado"); 
+  });
+
+
+
+
+
  
 });
