@@ -12,7 +12,7 @@ export class RestauranteEntity {
     nombre: string;
     
     @Column()
-    michelin: string;
+    michelin: number;
     
     @Column()
     fechaMichelin: string;
@@ -21,8 +21,8 @@ export class RestauranteEntity {
     @ManyToOne(() => CiudadEntity, ciudad => ciudad.id)
     ciudad: CiudadEntity;
 
-    @OneToMany(() => CulturaGastronomicaEntity, culturaGastronomica => culturaGastronomica.id)
-    culturaGastronomica: CulturaGastronomicaEntity[];
+    @ManyToOne(() => CulturaGastronomicaEntity, culturagastronomica => culturagastronomica.recetas )
+    culturagastronomica: CulturaGastronomicaEntity;
 
 }
 
