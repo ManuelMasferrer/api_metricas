@@ -22,6 +22,7 @@ import { CiudadEntity } from './ciudad/ciudad.entity';
 import { RestauranteEntity } from './restaurante/restaurante.entity';
 import { ProductoEntity } from './producto/producto.entity';
 import { CategoriaproductoEntity } from './categoriaproducto/categoriaproducto.entity';
+import { CulturaRestauranteModule } from './cultura-restaurante/cultura-restaurante.module';
 
 @Module({
   imports: [
@@ -49,6 +50,7 @@ import { CategoriaproductoEntity } from './categoriaproducto/categoriaproducto.e
     CategoriaproductoModule,
     ProductoModule,
     RestauranteModule,
+    CulturaRestauranteModule,
   ],
   controllers: [AppController],
   providers: [AppService],
