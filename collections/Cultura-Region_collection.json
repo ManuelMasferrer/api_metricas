@@ -1,0 +1,484 @@
+{
+	"info": {
+		"_postman_id": "3b22dfb9-cb4e-4e8f-bc1b-50fbf1571be0",
+		"name": "Cultura-Region",
+		"description": "Asociación entre una cultura y una region",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Agregar una región a una cultura gastronomica",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()",
+							"pm.globals.set(\"region_id\", data.id);",
+							"",
+							"pm.test(\"Codigo de estado es 201\", function () {",
+							"   pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/culturasgastronomicas/:culturaid/regiones/:regionId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturasgastronomicas",
+						":culturaid",
+						"regiones",
+						":regionId"
+					],
+					"variable": [
+						{
+							"key": "culturaid",
+							"value": "5b7d9c6f-5a83-4a39-867e-a0feecfa1e9d"
+						},
+						{
+							"key": "regionId",
+							"value": "c372c143-20e9-4a26-846e-d28118cddc13"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Regiones de una cultura gastronomica",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Codigo de estado es 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/culturasgastronomicas/:culturaId/regiones",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturasgastronomicas",
+						":culturaId",
+						"regiones"
+					],
+					"variable": [
+						{
+							"key": "culturaId",
+							"value": "daa59b94-2bcc-4b37-9725-6cd15f7c1d6a"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Regiones de una cultura gastronomica no existente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Codigo de estado es 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Obtener mensaje de error\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"La cultura con id no ha sido encontrada\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/culturasgastronomicas/:culturaId/regiones",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturasgastronomicas",
+						":culturaId",
+						"regiones"
+					],
+					"variable": [
+						{
+							"key": "culturaId",
+							"value": "daa59b94-2bcc-4b37-9725-6cd15f7c1d6a"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener cultura gastronomica por region",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Codigo de estado es 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/culturasgastronomicas/regiones/:regionId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturasgastronomicas",
+						"regiones",
+						":regionId"
+					],
+					"variable": [
+						{
+							"key": "regionId",
+							"value": "73d4adfc-ea9e-49dc-b09d-80210e1027a8"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener cultura gastronomica por region no existente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Codigo de estado es 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Obtener mensaje de error\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"La region id no ha sido encontrada\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/culturasgastronomicas/regiones/:regionId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturasgastronomicas",
+						"regiones",
+						":regionId"
+					],
+					"variable": [
+						{
+							"key": "regionId",
+							"value": "73d4adfc-ea9e-49dc-b09d-80210e1027a8"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar una región a cultura gastronomica",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Codigo de estado es 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Boyaca\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/culturasgastronomicas/:culturaid/regiones/",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturasgastronomicas",
+						":culturaid",
+						"regiones",
+						""
+					],
+					"variable": [
+						{
+							"key": "culturaid",
+							"value": "65003063-e2f7-4dd2-a253-5901369bc547"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar una región a cultura gastronomica no existente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Codigo de estado is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Obtener mensaje de error\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"La cultura con id no ha sido encontrada\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Boyaca\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/culturasgastronomicas/:culturaid/regiones/",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturasgastronomicas",
+						":culturaid",
+						"regiones",
+						""
+					],
+					"variable": [
+						{
+							"key": "culturaid",
+							"value": "65003063-e2f7-4dd2-a253-5901369bc547"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar una region de cultura",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Codigo de estado es 204\", function () {",
+							"   pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/culturasgastronomicas/:culturaid/regiones/:regionId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturasgastronomicas",
+						":culturaid",
+						"regiones",
+						":regionId"
+					],
+					"variable": [
+						{
+							"key": "culturaid",
+							"value": "2928a03d-6218-43f3-9293-83a46cbe9e70"
+						},
+						{
+							"key": "regionId",
+							"value": "69c0c584-53dd-48db-ae1a-1ad7e497ea83"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar una region de cultura no existente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Codigo de estado es 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Obtener mensaje de error\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"La cultura con id no ha sido encontrada\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/culturasgastronomicas/:culturaid/regiones/:regionId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturasgastronomicas",
+						":culturaid",
+						"regiones",
+						":regionId"
+					],
+					"variable": [
+						{
+							"key": "culturaid",
+							"value": "2928a03d-6218-43f3-9293-83a46cbe9e70"
+						},
+						{
+							"key": "regionId",
+							"value": "69c0c584-53dd-48db-ae1a-1ad7e497ea83"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar una region no existente a una cultura",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Codigo de estado es 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Obtener mensaje de error\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"La region id no ha sido encontrada\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/culturasgastronomicas/:culturaid/regiones/:regionId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturasgastronomicas",
+						":culturaid",
+						"regiones",
+						":regionId"
+					],
+					"variable": [
+						{
+							"key": "culturaid",
+							"value": "2928a03d-6218-43f3-9293-83a46cbe9e70"
+						},
+						{
+							"key": "regionId",
+							"value": "69c0c584-53dd-48db-ae1a-1ad7e497ea83"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "{{baseUrl}}",
+			"value": " http://localhost:3000/api/v1"
+		}
+	]
+}
