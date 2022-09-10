@@ -115,5 +115,4 @@ describe('CulturaRegion', () => {
         await service.deleteRegionIdCulturaId(newCulturaGastronomica.id, newRegion.id);
         await expect(() => service.deleteRegionIdCulturaId("0",newRegion.id)).rejects.toHaveProperty("message", "La cultura con id no ha sido encontrada")
     });
-    
 });
