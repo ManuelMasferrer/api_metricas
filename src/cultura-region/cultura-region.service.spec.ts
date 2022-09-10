@@ -66,6 +66,14 @@ describe('CulturaRegion', () => {
         expect(storedCultura).not.toBeNull();
     });
 
+    it('findCulturaRegionId econtrar Cultura por una id region no existente ', async () =>{
+        await expect(() => service.findCulturaPorRegionId("0")).rejects.toHaveProperty("message", "La region id no ha sido encontrada")
+    });
+
+    it('findRegionCultura econtrar Cultura por una id region no existente ', async () =>{
+        await expect(() => service.findRegionPorCulturaId("0")).rejects.toHaveProperty("message", "La cultura con id no ha sido encontrada")
+    });
+
     it('findRegionCulturaId econtrar region por una id cultura ', async () =>{
         const newRegion: RegionEntity = await regionRepository.save({
             nombre: faker.commerce.productName()
