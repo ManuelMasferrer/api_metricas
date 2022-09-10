@@ -1,3 +1,4 @@
+import { CulturaRegionController } from './cultura-region.controller';
 import { CulturaRegionService } from './cultura-region.service';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -6,7 +7,8 @@ import { RegionEntity } from '../region/region.entity';
 
 @Module({
     imports: [TypeOrmModule.forFeature([CulturaGastronomicaEntity, RegionEntity])],
-    controllers: [],
+    controllers: [
+        CulturaRegionController, ],
     providers: [
         CulturaRegionService,],
 })
