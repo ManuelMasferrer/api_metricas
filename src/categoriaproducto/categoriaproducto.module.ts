@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+<<<<<<< HEAD
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CategoriaproductoEntity } from './categoriaproducto.entity';
 import { CategoriaproductoService } from './categoriaproducto.service';
@@ -9,3 +10,12 @@ import { CategoriaproductoService } from './categoriaproducto.service';
     providers: [CategoriaproductoService,],
   })
 export class CategoriaproductoModule {}
+=======
+
+@Module({
+    imports: [],
+    controllers: [],
+    providers: [],
+  })
+export class CategoriaproductoModule {}
+>>>>>>> ee351af (Entities ciudad, categoria)

@@ -16,6 +16,7 @@ import { CulturaPaisModule } from './cultura-pais/cultura-pais.module';
 import { PaisCulturaModule } from './pais-cultura/pais-cultura.module';
 import { CiudadModule } from './ciudad/ciudad.module';
 import { CategoriaproductoModule } from './categoriaproducto/categoriaproducto.module';
+<<<<<<< HEAD
 import { ProductoModule } from './producto/producto.module';
 import { RestauranteModule } from './restaurante/restaurante.module';
 import { CiudadEntity } from './ciudad/ciudad.entity';
@@ -24,6 +25,8 @@ import { ProductoEntity } from './producto/producto.entity';
 import { CategoriaproductoEntity } from './categoriaproducto/categoriaproducto.entity';
 import { CulturaRestauranteModule } from './cultura-restaurante/cultura-restaurante.module';
 import { CulturaProductoModule } from './cultura-producto/cultura-producto.module';
+=======
+>>>>>>> ee351af (Entities ciudad, categoria)
 
 @Module({
   imports: [
@@ -49,10 +52,13 @@ import { CulturaProductoModule } from './cultura-producto/cultura-producto.modul
     PaisCulturaModule,
     CiudadModule,
     CategoriaproductoModule,
+<<<<<<< HEAD
     ProductoModule,
     RestauranteModule,
     CulturaRestauranteModule,
     CulturaProductoModule,
+=======
+>>>>>>> ee351af (Entities ciudad, categoria)
   ],
   controllers: [AppController],
   providers: [AppService],
