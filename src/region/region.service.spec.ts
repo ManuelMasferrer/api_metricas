@@ -6,8 +6,6 @@ import { TypeOrmTestingConfig } from "../shared/testing-utils/typeorm-testing-co
 import { Repository } from "typeorm/repository/Repository";
 import { RegionEntity } from "./region.entity";
 import { RegionService } from "./region.service";
-import { RecetaEntity } from '../receta/receta.entity';
-import { PaisEntity } from '../pais/pais.entity';
 
 describe('RegionService', () => {
     let service: RegionService;
@@ -40,7 +38,8 @@ describe('RegionService', () => {
                 region: region,
                 recetas: [],
                 paises: [],
-                productos: []
+                productos: [],
+                restaurantes: []
             })
             culturaList.push(cultura);
             
