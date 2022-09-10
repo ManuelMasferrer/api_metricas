@@ -18,7 +18,7 @@ export class CulturaProductoService {
     async addProductoCultura(culturaId: string, productoId: string): Promise<CulturaGastronomicaEntity> {
         const producto: ProductoEntity = await this.productoRepository.findOne({where: {id:productoId}});
         if(!producto)
-            throw new BusinessLogicException("El restaurante con el id proporcionado no ha sido encontrado", BusinessError.NOT_FOUND);
+            throw new BusinessLogicException("El producto con el id proporcionado no ha sido encontrado", BusinessError.NOT_FOUND);
         
         const culturagastronomica: CulturaGastronomicaEntity = await this.culturaGastronomicaRepository.findOne({where: {id: culturaId}, relations: ["region", "recetas", "paises", "restaurantes", "productos"]});
         if (!culturagastronomica)
@@ -30,7 +30,7 @@ export class CulturaProductoService {
 
     }
 
-    async findProductoByCulturaIdRestauranteId(culturaId: string, productoId: string): Promise<ProductoEntity> {
+    async findProductoByCulturaIdProductoId(culturaId: string, productoId: string): Promise<ProductoEntity> {
         const producto: ProductoEntity = await this.productoRepository.findOne({where: {id: productoId}})
         if (!producto)
             throw new BusinessLogicException("El producto con el id proporcionado no ha sido encontrado", BusinessError.NOT_FOUND);
@@ -88,6 +88,8 @@ export class CulturaProductoService {
         culturagastronomica.productos = culturagastronomica.productos.filter(e => e.id !== productoId )
         await this.culturaGastronomicaRepository.save(culturagastronomica)    
     }
+
+    
 
 
 
