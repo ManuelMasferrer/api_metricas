@@ -25,4 +25,5 @@ export class RecetaDto {
 
     readonly id: string;
 
+    readonly culturagastronomica: CulturaGastronomicaEntity;
 }
