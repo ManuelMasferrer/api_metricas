@@ -79,5 +79,33 @@ describe('CulturaRegion', () => {
         expect(storedRegion).not.toBeNull();
         expect(storedRegion.nombre).toBe(newRegion.nombre);
     });
+
+    it('UpdateRegion associateRegionaCulturaId', async () =>{
+        const newRegion: RegionEntity = await regionRepository.save({
+            nombre: faker.commerce.productName()
+        })
+        const newCulturaGastronomica: CulturaGastronomicaEntity = await culturaRepository.save({
+            nombre: faker.company.name(),
+            descripcion: faker.commerce.productDescription(),
+            region: newRegion
+        })
+        const updateCultura: CulturaGastronomicaEntity = await service.associateRegionaCulturaId(newCulturaGastronomica.id, newRegion);
+        expect(updateCultura).not.toBeNull();
+        expect(updateCultura.region.nombre).toBe(newRegion.nombre);
+    });
+
+    it('deleteRegionIdCulturaId eliminar una cultura no existente',async () => {
+        const newRegion: RegionEntity = await regionRepository.save({
+            nombre: faker.commerce.productName()
+        })
+        const newCulturaGastronomica: CulturaGastronomicaEntity = await culturaRepository.save({
+            nombre: faker.company.name(),
+            descripcion: faker.commerce.productDescription(),
+            region: newRegion
+        })
+
+        await service.deleteRegionIdCulturaId(newCulturaGastronomica.id, newRegion.id);
+        await expect(() => service.deleteRegionIdCulturaId("0",newRegion.id)).rejects.toHaveProperty("message", "La cultura con id no ha sido encontrada")
+    });
     
 });
