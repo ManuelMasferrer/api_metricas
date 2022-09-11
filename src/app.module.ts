@@ -35,7 +35,7 @@ import { CulturaProductoModule } from './cultura-producto/cultura-producto.modul
       host: 'localhost',
       port: 5432,
       username: 'postgres',
-      password: '123456',
+      password: 'postgres',
       database: 'culturagastronomica',
       entities: [RegionEntity, CulturaGastronomicaEntity, RecetaEntity, PaisEntity, ProductoEntity, CiudadEntity, RestauranteEntity, CategoriaproductoEntity],
       dropSchema: true,
