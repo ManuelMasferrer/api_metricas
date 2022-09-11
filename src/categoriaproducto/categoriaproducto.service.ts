@@ -7,7 +7,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { CategoriaproductoEntity } from './categoriaproducto.entity';
 import { faker } from '@faker-js/faker';
 import { RegionEntity } from '../region/region.entity';
-import { BusinessLogicException } from 'src/shared/errors/business-errors';
+import { BusinessError, BusinessLogicException } from '../shared/errors/business-errors';
 
 
 @Injectable()
@@ -18,33 +18,33 @@ export class CategoriaproductoService {
         private readonly categoriaRepository: Repository<CategoriaproductoEntity>
     ){}
 
-//     async findAll(): Promise<CategoriaproductoEntity[]>{
-//         return await this.culturaRepository.find({ relations: {region: true,},});
-//     }
+    async findAll(): Promise<CategoriaproductoEntity[]>{
+        return await this.categoriaRepository.find({ relations: {productos: true,},});
+    }
 
-//     async findOne(id: string): Promise<CategoriaproductoEntity>{
-//         const cultura: CategoriaproductoEntity = await this.culturaRepository.findOne({where: {id}, relations: {region: true,},});
-//         if (!cultura)
-//             throw new BusinessLogicException("La cultura gastronomica con el id no a sido encontrada", BusinessError.NOT_FOUND);
+    async findOne(id: string): Promise<CategoriaproductoEntity>{
+        const categoria: CategoriaproductoEntity = await this.categoriaRepository.findOne({where: {id}, relations: {productos: true,},});
+        if (!categoria)
+            throw new BusinessLogicException("La categoria con el id no a sido encontrada", BusinessError.NOT_FOUND);
 
-//         return cultura;
-//     }
+        return categoria;
+    }
 
-//     async create(cultura: CategoriaproductoEntity): Promise<CategoriaproductoEntity>{
-//         return await this.culturaRepository.save(cultura);
-//     }
+    async create(categoria: CategoriaproductoEntity): Promise<CategoriaproductoEntity>{
+        return await this.categoriaRepository.save(categoria);
+    }
 
-//     async update(id: string, cultura: CategoriaproductoEntity): Promise<CategoriaproductoEntity>{
-//         const persistedCultura: CategoriaproductoEntity = await this.culturaRepository.findOne({where:{id}});
-//         if (!persistedCultura)
-//             throw new BusinessLogicException("La cultura gastronomica con el id no a sido encontrada", BusinessError.NOT_FOUND);
-//         return await this.culturaRepository.save({...persistedCultura, ...cultura});
-//     }
+    async update(id: string, categoria: CategoriaproductoEntity): Promise<CategoriaproductoEntity>{
+        const persistedcategoria: CategoriaproductoEntity = await this.categoriaRepository.findOne({where:{id}});
+        if (!persistedcategoria)
+            throw new BusinessLogicException("La categoria con el id no a sido encontrada", BusinessError.NOT_FOUND);
+        return await this.categoriaRepository.save({...persistedcategoria, ...categoria});
+    }
 
-//     async delete(id: string){
-//         const cultura: CategoriaproductoEntity = await this.culturaRepository.findOne({where:{id}});
-//         if (!cultura)
-//             throw new BusinessLogicException("La cultura gastronomica con el id no a sido encontrada", BusinessError.NOT_FOUND);
-//         await this.culturaRepository.remove(cultura);
-//     }
+    async delete(id: string){
+        const categoria: CategoriaproductoEntity = await this.categoriaRepository.findOne({where:{id}});
+        if (!categoria)
+            throw new BusinessLogicException("La categoria con el id no a sido encontrada", BusinessError.NOT_FOUND);
+        await this.categoriaRepository.remove(categoria);
+    }
 }
