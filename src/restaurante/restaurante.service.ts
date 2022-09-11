@@ -14,7 +14,7 @@ export class RestauranteService {
     TRAER TODOS LOS RESTAURANTES
     */
     async findAll(): Promise<RestauranteEntity[]> {
-        return await this.restauranteRepository.find();
+        return this.restauranteRepository.find();
     }
 
      /*
@@ -41,7 +41,7 @@ export class RestauranteService {
     CREACION RESTAURANTE
     */
     async create(restaurante: RestauranteEntity): Promise<RestauranteEntity> {
-        return await this.restauranteRepository.save(restaurante);
+        return this.restauranteRepository.save(restaurante);
     }
     /*
     ACTUALIZACION RESTAURANTE
@@ -50,9 +50,8 @@ export class RestauranteService {
         const persistedRestaurante: RestauranteEntity = await this.restauranteRepository.findOne({where:{id}});
         if (!persistedRestaurante)
           throw new BusinessLogicException("El restaurante con el id proporcionado no ha sido encontrado.", BusinessError.NOT_FOUND);
-        
-          restaurante.id =id;  
-        return await this.restauranteRepository.save(restaurante);
+        restaurante.id =id;  
+        return this.restauranteRepository.save(restaurante);
     }
     /*
     ELIMINAR PRODUCTO
@@ -60,8 +59,7 @@ export class RestauranteService {
    async delete(id: string) {
         const restaurante: RestauranteEntity = await this.restauranteRepository.findOne({where:{id}});
         if (!restaurante)
-        throw new BusinessLogicException("El restaurante con el id proporcionado no ha sido encontrado.", BusinessError.NOT_FOUND);
-    
+            throw new BusinessLogicException("El restaurante con el id proporcionado no ha sido encontrado.", BusinessError.NOT_FOUND);
         await this.restauranteRepository.remove(restaurante);
     }
 
