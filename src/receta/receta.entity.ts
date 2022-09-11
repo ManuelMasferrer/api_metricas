@@ -1,5 +1,5 @@
 import { CulturaGastronomicaEntity } from "../culturagastronomica/culturagastronomica.entity";
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn, Relation } from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class RecetaEntity {

@@ -181,9 +181,9 @@ describe('PaisCulturaService', () => {
   });
 
   it('deleteCulturaFromPais debe arrojar una excepcion para un pais invalido', async () => {
-    // const culturagastronomica: CulturaGastronomicaEntity = culturasList[0];
     await expect(()=> service.deletePaisFromCultura(culturagastronomica.id, "0")).rejects.toHaveProperty("message", "El pais con el id proporcionado no ha sido encontrado"); 
   });
 
 
+  
 });
