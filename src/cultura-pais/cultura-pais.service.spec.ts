@@ -155,10 +155,10 @@ describe('CulturaPaisService', () => {
       culturasgastronomicas: [],
     });
 
-    const updatedCultura: CulturaGastronomicaEntity = await service.associateCulturaPais(culturagastronomica.id, [newPais]);
-    expect(updatedCultura.paises.length).toBe(1);
+    const updatedCultura: CulturaGastronomicaEntity = await service.associateCulturaPais(culturagastronomica.id, newPais);
+    expect(updatedCultura.paises.length).toBe(6);
 
-    expect(updatedCultura.paises[0].nombre).toBe(newPais.nombre);
+    expect(updatedCultura.paises[5].nombre).toBe(newPais.nombre);
 
   });
 
@@ -168,18 +168,17 @@ describe('CulturaPaisService', () => {
       culturasgastronomicas: [],
     });
 
-    await expect(()=> service.associateCulturaPais("0", [newPais])).rejects.toHaveProperty("message", "La cultura gastronomica con el id proporcionado no ha sido encontrada"); 
+    await expect(()=> service.associateCulturaPais("0", newPais)).rejects.toHaveProperty("message", "La cultura gastronomica con el id proporcionado no ha sido encontrada"); 
   });
 
-  // it('updateCulturasFromPais debe arrojar una excepcion para un pais invalido', async () => {
-  //   const newPais: PaisEntity = await paisRepository.save({
-  //     nombre: faker.address.country(),
-  //     culturasgastronomicas: [],
-  //   });
-  //   newPais.id = "0";
+  it('updateCulturasFromPais debe arrojar una excepcion para un pais invalido', async () => {
+    const newPais: PaisEntity = await paisRepository.save({
+      nombre: faker.address.country()
+    });
+    newPais.id = "0";
 
-  //   await expect(()=> service.associateCulturaPais(culturagastronomica.id, [newPais])).rejects.toHaveProperty("message", "El pais con el id proporcionado no ha sido encontrado"); 
-  // });  
+    await expect(()=> service.associateCulturaPais(culturagastronomica.id, newPais)).rejects.toHaveProperty("message", "El pais con el id proporcionado no ha sido encontrado"); 
+  });  
 
   it('deletePaisToCultura debe eliminar un pais de una cultura gastronomica', async () => {
     const pais: PaisEntity = paisesList[0];
