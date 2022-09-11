@@ -104,7 +104,6 @@ describe('CulturaRecetaService', () => {
   });
 
   it('findRecetaFromCultura debe retornar una receta de una cultura gastronomica', async () => {
-    // const receta: RecetaEntity = recetasList[0];
     const cultura: CulturaGastronomicaEntity = await culturaGastronomicaRepository.save(culturagastronomica)
     const storedReceta: RecetaEntity = await service.findRecetaFromCultura(cultura.id, receta.id, )
     expect(storedReceta).not.toBeNull();
@@ -145,7 +144,6 @@ describe('CulturaRecetaService', () => {
   });
 
   it('findCulturaFromReceta debe retornar la cultura gastronomica a la que pertenece una receta', async ()=>{
-    // const receta: RecetaEntity = recetas;
     const storedCultura: CulturaGastronomicaEntity = await service.findCulturaFromReceta(receta.id);
     expect(storedCultura).not.toBeNull();
   });

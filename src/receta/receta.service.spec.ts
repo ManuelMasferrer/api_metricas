@@ -13,7 +13,6 @@ describe('RecetaService', () => {
   let service: RecetaService;
   let repository: Repository<RecetaEntity>;
   let recetasList: RecetaEntity[];
-  // let recetaData = new RecetaEntity();
   let regionData = new RegionEntity();
   let culturaGastronomicaData = new CulturaGastronomicaEntity();
 
@@ -41,15 +40,11 @@ describe('RecetaService', () => {
         recetasList.push(receta);
     }
  
-
-  // const culturaData = async () =>{
-
     culturaGastronomicaData.nombre = faker.company.name();
     culturaGastronomicaData.descripcion = faker.commerce.productDescription();
     culturaGastronomicaData.region= regionData;
     culturaGastronomicaData.recetas= [];
     culturaGastronomicaData.paises= [];
-  // }
   }
 
   it('el servicio debe estar definido', () => {

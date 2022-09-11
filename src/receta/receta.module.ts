@@ -6,9 +6,7 @@ import { RecetaController } from './receta.controller';
 
 @Module({
   imports: [TypeOrmModule.forFeature([RecetaEntity])],
-  controllers: [RecetaController],
+  controllers: [RecetaController,],
   providers: [RecetaService,],
 })
-export class RecetaModule {
-  // constructor(private readonly recetaService: RecetaService ){}
-}
+export class RecetaModule {}
