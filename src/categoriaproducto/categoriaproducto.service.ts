@@ -5,6 +5,7 @@ import { TypeOrmTestingConfig } from '../shared/testing-utils/typeorm-testing-co
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CategoriaproductoEntity } from './categoriaproducto.entity';
+import {Pro}
 import { faker } from '@faker-js/faker';
 import { RegionEntity } from '../region/region.entity';
 import { BusinessLogicException } from 'src/shared/errors/business-errors';
@@ -19,7 +20,7 @@ export class CategoriaproductoService {
     ){}
 
     async findAll(): Promise<CategoriaproductoEntity[]>{
-        return await this.categoriaRepository.find({ relations: {region: true,},});
+        return await this.categoriaRepository.find({ relations: {productos: true,},});
     }
 
     async findOne(id: string): Promise<CategoriaproductoEntity>{
