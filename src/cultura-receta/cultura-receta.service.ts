@@ -15,7 +15,7 @@ export class CulturaRecetaService {
         private readonly recetaRepository: Repository<RecetaEntity>
     ) {}
 
-    async addRecetaCultura(culturaId: string, recetaId: string): Promise<CulturaGastronomicaEntity> {
+    async addRecetaToCultura(culturaId: string, recetaId: string): Promise<CulturaGastronomicaEntity> {
         const receta: RecetaEntity = await this.recetaRepository.findOne({where: {id: recetaId}});
         if (!receta)
             throw new BusinessLogicException("La receta con el id proporcionado no ha sido encontrada", BusinessError.NOT_FOUND);
@@ -63,19 +63,20 @@ export class CulturaRecetaService {
         return culturagastronomica.recetas;
     }
 
-    async associateRecetaCultura(culturaId: string, recetas: RecetaEntity[]): Promise<CulturaGastronomicaEntity> {
+    async associateRecetaCultura(culturaId: string, recetaToAdd: RecetaEntity): Promise<CulturaGastronomicaEntity> {
         const culturagastronomica: CulturaGastronomicaEntity = await this.culturaGastronomicaRepository.findOne({where: {id: culturaId}, relations: ["recetas"]});
         
         if (!culturagastronomica)
             throw new BusinessLogicException("La cultura gastronomica con el id proporcionado no ha sido encontrada", BusinessError.NOT_FOUND);
         
+        const recetas: RecetaEntity[] = culturagastronomica.recetas    
         for (let i = 0; i <  recetas.length; i++) {
-            const receta: RecetaEntity = await this.recetaRepository.findOne({where: {id: recetas[i].id}})
+            const receta: RecetaEntity = await this.recetaRepository.findOne({where: {id: recetaToAdd.id}})
             if (!receta)
                 throw new BusinessLogicException("La receta con el id proporcionado no ha sido encontrada", BusinessError.NOT_FOUND);
         }
         
-        culturagastronomica.recetas = recetas;
+        culturagastronomica.recetas.push(recetaToAdd);
         return this.culturaGastronomicaRepository.save(culturagastronomica);    
     }
 

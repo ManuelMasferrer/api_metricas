@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, UseInterceptors } from '@nestjs/common';
 import { RecetaService } from './receta.service';
 import { BusinessErrorsInterceptor } from '../shared/interceptors/business-errors.interceptor';
 import { RecetaDto } from './receta.dto';
@@ -33,6 +33,7 @@ export class RecetaController {
     }
 
     @Delete(':recetaId')
+    @HttpCode(204)
     async delete(@Param('recetaId') recetaId: string){
         return await this.recetaService.delete(recetaId)
     }

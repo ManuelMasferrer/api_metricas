@@ -68,7 +68,7 @@ describe('CulturaRecetaService', () => {
       descripcion: faker.commerce.productDescription(),
     })
 
-    const resultado: CulturaGastronomicaEntity = await service.addRecetaCultura(newCulturaGastronomica.id, newReceta.id);
+    const resultado: CulturaGastronomicaEntity = await service.addRecetaToCultura(newCulturaGastronomica.id, newReceta.id);
 
     expect(resultado.recetas.length).toBe(1);
     expect(resultado.recetas[0]).not.toBeNull();
@@ -82,16 +82,16 @@ describe('CulturaRecetaService', () => {
 
 
 
-  it('addRecetaCultura debe producir una excepcion para una receta invalida', async () => {
+  it('addRecetaToCultura debe producir una excepcion para una receta invalida', async () => {
     const newCulturaGastronomica: CulturaGastronomicaEntity = await culturaGastronomicaRepository.save({
       nombre: faker.company.name(),
       descripcion: faker.commerce.productDescription(),
     })
   
-    await expect(() => service.addRecetaCultura(newCulturaGastronomica.id, "0")).rejects.toHaveProperty("message", "La receta con el id proporcionado no ha sido encontrada");
+    await expect(() => service.addRecetaToCultura(newCulturaGastronomica.id, "0")).rejects.toHaveProperty("message", "La receta con el id proporcionado no ha sido encontrada");
   });
 
-  it('addRecetaCultura debe producir una excepcion para una cultura gastronomica invalida', async () => {
+  it('addRecetaToCultura debe producir una excepcion para una cultura gastronomica invalida', async () => {
     const newReceta: RecetaEntity = await recetaRepository.save({
       nombre: faker.lorem.words(), 
       descripcion: faker.lorem.sentence(),
@@ -100,7 +100,7 @@ describe('CulturaRecetaService', () => {
       video: faker.image.imageUrl()
     });
 
-    await expect (() => service.addRecetaCultura("0", newReceta.id)).rejects.toHaveProperty("message", "La cultura gastronomica con el id proporcionado no ha sido encontrada");
+    await expect (() => service.addRecetaToCultura("0", newReceta.id)).rejects.toHaveProperty("message", "La cultura gastronomica con el id proporcionado no ha sido encontrada");
   });
 
   it('findRecetaFromCultura debe retornar una receta de una cultura gastronomica', async () => {
@@ -163,14 +163,13 @@ describe('CulturaRecetaService', () => {
       video: faker.image.imageUrl()
     });
 
-    const updatedCulturaGastronomica: CulturaGastronomicaEntity = await service.associateRecetaCultura(culturagastronomica.id, [newReceta]);
-    expect(updatedCulturaGastronomica.recetas.length).toBe(1);
-
-    expect(updatedCulturaGastronomica.recetas[0].nombre).toBe(newReceta.nombre);
-    expect(updatedCulturaGastronomica.recetas[0].descripcion).toBe(newReceta.descripcion);
-    expect(updatedCulturaGastronomica.recetas[0].foto).toBe(newReceta.foto);
-    expect(updatedCulturaGastronomica.recetas[0].preparacion).toBe(newReceta.preparacion);
-    expect(updatedCulturaGastronomica.recetas[0].video).toBe(newReceta.video);
+    const updatedCulturaGastronomica: CulturaGastronomicaEntity = await service.associateRecetaCultura(culturagastronomica.id, newReceta);
+    expect(updatedCulturaGastronomica.recetas.length).toBe(2);
+    expect(updatedCulturaGastronomica.recetas[1].nombre).toBe(newReceta.nombre);
+    expect(updatedCulturaGastronomica.recetas[1].descripcion).toBe(newReceta.descripcion);
+    expect(updatedCulturaGastronomica.recetas[1].foto).toBe(newReceta.foto);
+    expect(updatedCulturaGastronomica.recetas[1].preparacion).toBe(newReceta.preparacion);
+    expect(updatedCulturaGastronomica.recetas[1].video).toBe(newReceta.video);
   });
 
   it('associateRecetaCultura debe arrojar una excepcion para una cultura gastronomica invalida', async () => {
@@ -182,14 +181,14 @@ describe('CulturaRecetaService', () => {
       video: faker.image.imageUrl()
     });
 
-    await expect(()=> service.associateRecetaCultura("0", [newReceta])).rejects.toHaveProperty("message", "La cultura gastronomica con el id proporcionado no ha sido encontrada"); 
+    await expect(()=> service.associateRecetaCultura("0", newReceta)).rejects.toHaveProperty("message", "La cultura gastronomica con el id proporcionado no ha sido encontrada"); 
   });
 
   it('associateRecetaCultura debe arrojar una excepcion para una receta invalida', async () => {
     const newReceta: RecetaEntity = receta;
     newReceta.id = "0";
 
-    await expect(()=> service.associateRecetaCultura(culturagastronomica.id, [newReceta])).rejects.toHaveProperty("message", "La receta con el id proporcionado no ha sido encontrada"); 
+    await expect(()=> service.associateRecetaCultura(culturagastronomica.id, newReceta)).rejects.toHaveProperty("message", "La receta con el id proporcionado no ha sido encontrada"); 
   });
 
   it('deleteRecetaToCultura debe eliminar una receta de una cultura gastronomica', async () => {
