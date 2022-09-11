@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, UseInterceptors } from '@nestjs/common';
 import { BusinessErrorsInterceptor } from '../shared/interceptors/business-errors.interceptor';
 import { PaisDto } from './pais.dto';
 import { PaisEntity } from './pais.entity';
@@ -33,6 +33,7 @@ export class PaisController {
     }    
 
     @Delete('paisId')
+    @HttpCode(204)
     async delete(@Param(':paisId') paisId: string){
         return await this.paisService.delete(paisId)
     }
