@@ -34,7 +34,7 @@ export class ProductoService {
         const producto: ProductoEntity = await this.productoRepository.findOne({where: {id}, relations: ["categoria"] } );
         if (!producto)
           throw new BusinessLogicException("El producto no existe", BusinessError.NOT_FOUND);
-        return producto.categoria; 
+        return producto.categoriaProducto; 
     }
     /*
     TRAER CULTURAS GASTRONOMICAS ASOCIDAS POR PRODUCTO
