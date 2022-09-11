@@ -8,7 +8,7 @@ export class ProductoDto {
 
     @IsString()
     @IsNotEmpty()
-    readonly description: string;
+    readonly descripcion: string;
 
     readonly id: string;
 
