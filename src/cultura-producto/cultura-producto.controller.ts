@@ -25,14 +25,14 @@ export class CulturaProductoController {
     }
 
     @Put(':culturaId/productos')
-    async associateProductosCultura(@Body() productosDto: ProductoDto[], @Param('culturaId') culturaId: string):Promise<any>{
+    async associateProductosCultura(@Body() productosDto: ProductoDto[], @Param('culturaId') culturaId: string){
        const productos = plainToInstance(ProductoEntity, productosDto)
        return this.culturaProductoService.associateProductoCultura(culturaId, productos);
     }
 
     @Delete(':culturaId/productos/:productoId')
     @HttpCode(204)
-    async deleteArtworkMuseum(@Param('culturaId') culturaId: string, @Param('productoId') productoId: string): Promise<any>{
+    async deleteArtworkMuseum(@Param('culturaId') culturaId: string, @Param('productoId') productoId: string){
        return this.culturaProductoService.deleteProductoToCultura(culturaId, productoId);
     }
 
