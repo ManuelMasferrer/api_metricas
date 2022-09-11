@@ -38,5 +38,4 @@ export class RestauranteController {
         return this.restauranteService.delete(restauranteId);
     }
 
-
 }
