@@ -5,8 +5,6 @@ import { CulturaGastronomicaEntity } from "../culturagastronomica/culturagastron
 import { TypeOrmTestingConfig } from "../shared/testing-utils/typeorm-testing-config";
 import { Repository } from "typeorm/repository/Repository";
 import { RegionEntity } from "../region/region.entity";
-import { RegionService } from "../region/region.service";
-import { RecetaEntity } from '../receta/receta.entity';
 import { PaisEntity } from './pais.entity';
 import { PaisService } from "./pais.service";
 import { PaisDto } from "./pais.dto";
@@ -15,11 +13,8 @@ describe('PaisService', () => {
     let service: PaisService;
     let repository: Repository<PaisEntity>;
     let paisesList: PaisEntity[];
-    let culturaList: CulturaGastronomicaEntity[];
-    let recetasList: RecetaEntity[];
     let regionData = new RegionEntity();
     let culturaGastronomicaData = new CulturaGastronomicaEntity();
-    let recetaData =new RecetaEntity();
 
 
     beforeEach(async () =>{
@@ -36,8 +31,6 @@ describe('PaisService', () => {
     const seeDatabase = async () =>{
         repository.clear();
         paisesList = [];
-        culturaList = [];
-        recetasList = [];
         const region = new RegionEntity();
         region.nombre = faker.commerce.productName();
         

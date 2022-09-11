@@ -25,13 +25,22 @@ export class CulturaRecetaService {
             throw new BusinessLogicException("La cultura gastronomica con el id proporcionado no ha sido encontrada", BusinessError.NOT_FOUND);
          
         culturagastronomica.recetas = [...culturagastronomica.recetas, receta];
-        return await this.culturaGastronomicaRepository.save(culturagastronomica)
+        return this.culturaGastronomicaRepository.save(culturagastronomica)
    
 
     }
 
-    async findRecetaByCulturaIdRecetaId(culturaId: string, recetaId: string): Promise<RecetaEntity> {
+    async findCulturaFromReceta(recetaId: string): Promise<CulturaGastronomicaEntity> {
         const receta: RecetaEntity = await this.recetaRepository.findOne({where: {id: recetaId}})
+        if (!receta)
+            throw new BusinessLogicException("La receta con el id proporcionado no ha sido encontrada", BusinessError.NOT_FOUND);
+        
+        return receta.culturagastronomica;    
+   
+    }   
+
+    async findRecetaFromCultura(culturaId: string, recetaId: string){
+        const receta: RecetaEntity = await this.recetaRepository.findOne({where: {id: recetaId}});
         if (!receta)
             throw new BusinessLogicException("La receta con el id proporcionado no ha sido encontrada", BusinessError.NOT_FOUND);
         
@@ -44,11 +53,10 @@ export class CulturaRecetaService {
         if(!culturaReceta)
             throw new BusinessLogicException("La receta con el id proporcionado no esta asociada a la cultura gastronomica", BusinessError.PRECONDITION_FAILED)
         
-        return culturaReceta;    
-   
-    }   
+        return culturaReceta;
+    }
     
-    async findRecetasByCulturaId(culturaId: string): Promise<RecetaEntity[]> {
+    async findRecetasFromCultura(culturaId: string): Promise<RecetaEntity[]> {
         const culturagastronomica: CulturaGastronomicaEntity = await this.culturaGastronomicaRepository.findOne({where: {id: culturaId}, relations: ["recetas"]});
         if (!culturagastronomica)
             throw new BusinessLogicException("La cultura gastronomica con el id proporcionado no ha sido encontrada", BusinessError.NOT_FOUND);
@@ -68,7 +76,7 @@ export class CulturaRecetaService {
         }
         
         culturagastronomica.recetas = recetas;
-        return await this.culturaGastronomicaRepository.save(culturagastronomica);    
+        return this.culturaGastronomicaRepository.save(culturagastronomica);    
     }
 
     async deleteRecetaToCultura(culturaId: string, recetaId: string) {
