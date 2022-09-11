@@ -15,37 +15,20 @@ export class PaisCulturaService {
         private readonly culturaGastronomicaRepository: Repository<CulturaGastronomicaEntity>
     ){}
 
-    async addCulturaToPais(paisId: string, culturaId: string): Promise<PaisEntity> {
-        const pais = await this.paisRepository.findOne({where: {id: paisId}, relations: ["culturasgastronomicas"] });
+    async addPaisToCultura(culturaId: string, paisId: string): Promise<CulturaGastronomicaEntity> {
+        const pais = await this.paisRepository.findOne({where: {id: paisId}});
         if (!pais)
             throw new BusinessLogicException("El pais con el id proporcionado no ha sido encontrado", BusinessError.NOT_FOUND)
         
-        const culturagastronomica = await this.culturaGastronomicaRepository.findOne({where:{id: culturaId}, relations: ["paises"]});
+        const culturagastronomica = await this.culturaGastronomicaRepository.findOne({where:{id: culturaId}, relations: ["region", "recetas", "paises"]});
         if (!culturagastronomica)
             throw new BusinessLogicException("La cultura gastronomica con el id proporcionado no ha sido encontrada", BusinessError.NOT_FOUND);
         
-        pais.culturasgastronomicas = [...pais.culturasgastronomicas, culturagastronomica];
-        return await this.paisRepository.save(pais);
+        culturagastronomica.paises = [...culturagastronomica.paises, pais];
+        return await this.culturaGastronomicaRepository.save(culturagastronomica);
     }
 
-    async findCulturaByPais(culturaId: string, paisId: string): Promise<CulturaGastronomicaEntity> {
-        const pais = await this.paisRepository.findOne({where: {id: paisId}, relations: ["culturasgastronomicas"] });
-        if (!pais)
-            throw new BusinessLogicException("El pais con el id proporcionado no ha sido encontrado", BusinessError.NOT_FOUND)
-        
-        const culturagastronomica = await this.culturaGastronomicaRepository.findOne({where:{id: culturaId},});
-        if (!culturagastronomica)
-            throw new BusinessLogicException("La cultura gastronomica con el id proporcionado no ha sido encontrada", BusinessError.NOT_FOUND);
-
-        const paisCultura = pais.culturasgastronomicas.find(e => e.id === culturagastronomica.id);
-
-        if (!paisCultura)
-            throw new BusinessLogicException("La cultura gastronomica con el id proporcionado no esta asociada al pais", BusinessError.NOT_FOUND)
-        
-        return paisCultura;     
-    }
-
-    async findCulturasByPais(paisId: string): Promise<CulturaGastronomicaEntity[]> {
+    async findCulturasFromPais(paisId: string): Promise<CulturaGastronomicaEntity[]> {
         const pais = await this.paisRepository.findOne({where: {id: paisId}, relations:["culturasgastronomicas"] });
         if (!pais)
             throw new BusinessLogicException("El pais con el id proporcionado no ha sido encontrado", BusinessError.NOT_FOUND)
@@ -53,32 +36,67 @@ export class PaisCulturaService {
         return pais.culturasgastronomicas;
     }
 
-    async updateCulturasFromPais(paisId: string, culturasgastronomicas: CulturaGastronomicaEntity[]): Promise<PaisEntity> {
-        const pais = await this.paisRepository.findOne({where: {id: paisId}, relations:["culturasgastronomicas"] });
+    async findPaisesFromCultura(culturaId: string): Promise<PaisEntity[]>{
+        const culturagastronomica = await this.culturaGastronomicaRepository.findOne({where:{id: culturaId}, relations: ["paises"]});
+        if (!culturagastronomica)
+            throw new BusinessLogicException("La cultura gastronomica con el id proporcionado no ha sido encontrada", BusinessError.NOT_FOUND);
+
+        return culturagastronomica.paises;
+
+    }
+
+    async findPaisFromCultura(culturaId: string, paisId: string) {
+        const pais: PaisEntity = await this.paisRepository.findOne({where: {id: paisId} });
+        if (!pais)
+            throw new BusinessLogicException("El pais con el id proporcionado no ha sido encontrado", BusinessError.NOT_FOUND)
+        
+        const culturagastronomica = await this.culturaGastronomicaRepository.findOne({where:{id: culturaId}, relations: ["paises"]});
+        if (!culturagastronomica)
+            throw new BusinessLogicException("La cultura gastronomica con el id proporcionado no ha sido encontrada", BusinessError.NOT_FOUND);
+
+        const culturaPais = culturagastronomica.paises.find(e => e.id === pais.id);
+
+        if (!culturaPais)
+            throw new BusinessLogicException("El pais con el id proporcionado no esta asociado a la cultura gastronomica", BusinessError.NOT_FOUND)
+        
+        return culturaPais;     
+    }
+
+
+
+    async updateCulturasPais(culturaId: string, paisToAdd: PaisEntity): Promise<CulturaGastronomicaEntity> {
+        const culturagastronomica = await this.culturaGastronomicaRepository.findOne({where:{id: culturaId}, relations: ["paises"]});
+        if (!culturagastronomica)
+            throw new BusinessLogicException("La cultura gastronomica con el id proporcionado no ha sido encontrada", BusinessError.NOT_FOUND);
+
+        
+        const paises: PaisEntity[] = culturagastronomica.paises;
+        for (let i = 0; i < paises.length; i++){
+            const pais: PaisEntity = await this.paisRepository.findOne({where: {id: paisToAdd.id}})
+            if (!pais)
+            throw new BusinessLogicException("El pais con el id proporcionado no ha sido encontrado", BusinessError.NOT_FOUND);
+        }
+
+        culturagastronomica.paises.push(paisToAdd);
+        return this.culturaGastronomicaRepository.save(culturagastronomica);
+    }
+    
+
+    async deletePaisFromCultura(culturaId: string, paisId: string) {
+        const pais:PaisEntity = await this.paisRepository.findOne({where: {id: paisId}});
         if (!pais)
             throw new BusinessLogicException("El pais con el id proporcionado no ha sido encontrado", BusinessError.NOT_FOUND);
         
-        for(let culturaEntity of culturasgastronomicas) {
-            const culturagastronomica = await this.culturaGastronomicaRepository.findOne({where:{id: culturaEntity.id}});
-            if (!culturagastronomica)
-                throw new BusinessLogicException("La cultura gastronomica con el id proporcionado no ha sido encontrada", BusinessError.NOT_FOUND);
-
-        pais.culturasgastronomicas = culturasgastronomicas;
-        return await this.paisRepository.save(pais);
-        }
-    }
-
-    async deleteCulturaFromPais(culturaId: string, paisId: string) {
-        const culturagastronomica = await this.culturaGastronomicaRepository.findOne({where:{id: culturaId},});
+        const culturagastronomica = await this.culturaGastronomicaRepository.findOne({where:{id: culturaId}, relations:["paises"]});
         if (!culturagastronomica)
             throw new BusinessLogicException("La cultura gastronomica con el id proporcionado no ha sido encontrada", BusinessError.NOT_FOUND);
         
-        const pais = await this.paisRepository.findOne({where: {id: paisId}, relations:["culturasgastronomicas"] });
-        if (!pais)
-            throw new BusinessLogicException("El pais con el id proporcionado no ha sido encontrado", BusinessError.NOT_FOUND);
-         
-        pais.culturasgastronomicas = pais.culturasgastronomicas.filter(e => e.id !== culturaId)
-        await this.paisRepository.save(pais);
+        const culturaPais: PaisEntity = culturagastronomica.paises.find(e => e.id === paisId)
+        if (!culturaPais) {
+            throw new BusinessLogicException("La cultura gastronomica con el id proporcionado no esta asociada al pais", BusinessError.NOT_FOUND)}
+            
+        culturagastronomica.paises = culturagastronomica.paises.filter(e => e.id !== paisId)
+        await this.culturaGastronomicaRepository.save(culturagastronomica);
     }
 
     

@@ -5,30 +5,30 @@ import { RecetaDto } from './receta.dto';
 import { RecetaEntity } from './receta.entity';
 import { plainToInstance } from 'class-transformer';
 
-@Controller('receta')
+@Controller('recetas')
 @UseInterceptors(BusinessErrorsInterceptor)
 export class RecetaController {
     constructor(private readonly recetaService: RecetaService){}
 
     @Get()
     async findAll() {
-        await this.recetaService.findAll();
+        return await this.recetaService.findAll();
     }
 
     @Get(':recetaId')
     async findOne(@Param('recetaId') recetaId: string){
-        await this.recetaService.findOne(recetaId);
+        return await this.recetaService.findOne(recetaId);
     }
 
     @Post()
     async create(@Body() recetaDto: RecetaDto){
-        const receta: RecetaEntity = plainToInstance(RecetaEntity, RecetaDto);
+        const receta: RecetaEntity = plainToInstance(RecetaEntity, recetaDto);
         return await this.recetaService.create(receta);
     }
 
     @Put(':recetaId')
     async update(@Param('recetaId') recetaId: string,  @Body() recetaDto: RecetaDto) {
-        const receta: RecetaEntity = plainToInstance(RecetaEntity, RecetaDto);
+        const receta: RecetaEntity = plainToInstance(RecetaEntity, recetaDto);
         return await this.recetaService.update(recetaId, receta);
     }
 
