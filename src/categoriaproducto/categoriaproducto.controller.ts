@@ -1,9 +1,12 @@
 import { Controller } from '@nestjs/common';
 import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, UseInterceptors } from '@nestjs/common';
 import { ProductoService } from './producto.service';
+import { ProductoEntity } from './producto.entity';
+
 import { BusinessErrorsInterceptor } from '../shared/interceptors/business-errors.interceptor';
-import { CategoriaProductoDto } from './categoriaproducto.dto';
-import { categoriaproductoEntity } from './categoriaproducto.entity';
+import { CategoraproductoDto } from './categoriaproducto.dto';
+import { CategoriaproductoEntity } from './categoriaproducto.entity';
+
 import { plainToInstance } from 'class-transformer';
 
 

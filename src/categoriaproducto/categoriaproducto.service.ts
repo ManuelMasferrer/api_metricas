@@ -5,10 +5,9 @@ import { TypeOrmTestingConfig } from '../shared/testing-utils/typeorm-testing-co
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CategoriaproductoEntity } from './categoriaproducto.entity';
-import {Pro}
 import { faker } from '@faker-js/faker';
 import { RegionEntity } from '../region/region.entity';
-import { BusinessLogicException } from 'src/shared/errors/business-errors';
+import { BusinessError, BusinessLogicException } from '../shared/errors/business-errors';
 
 
 @Injectable()
@@ -24,7 +23,7 @@ export class CategoriaproductoService {
     }
 
     async findOne(id: string): Promise<CategoriaproductoEntity>{
-        const categoria: CategoriaproductoEntity = await this.categoriaRepository.findOne({where: {id}, relations: {region: true,},});
+        const categoria: CategoriaproductoEntity = await this.categoriaRepository.findOne({where: {id}, relations: {productos: true,},});
         if (!categoria)
             throw new BusinessLogicException("La categoria con el id no a sido encontrada", BusinessError.NOT_FOUND);
 
