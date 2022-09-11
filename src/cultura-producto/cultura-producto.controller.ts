@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, UseInterceptors } from '@nestjs/common';
 import { plainToInstance } from 'class-transformer';
-import { ProductoDto } from 'src/producto/producto.dto';
-import { ProductoEntity } from 'src/producto/producto.entity';
+import { ProductoDto } from '../producto/producto.dto';
+import { ProductoEntity } from '../producto/producto.entity';
 import { BusinessErrorsInterceptor } from '../shared/interceptors/business-errors.interceptor';
 import { CulturaProductoService } from './cultura-producto.service';
 
@@ -25,7 +25,7 @@ export class CulturaProductoController {
     }
 
     @Put(':culturaId/productos')
-    async associateProductosCultura(@Body() productosDto: ProductoDto[], @Param('culturaId') culturaId: string): Promise<import("e:/Documentos/MISO/Semestre 4/APIS/MISW4403_202214_Equipo28/src/culturagastronomica/culturagastronomica.entity").CulturaGastronomicaEntity>{
+    async associateProductosCultura(@Body() productosDto: ProductoDto[], @Param('culturaId') culturaId: string):Promise<any>{
        const productos = plainToInstance(ProductoEntity, productosDto)
        return this.culturaProductoService.associateProductoCultura(culturaId, productos);
     }
