@@ -13,9 +13,6 @@ export class ProductoEntity {
  @Column()
  descripcion: string;
  
- @ManyToOne(() => CategoriaproductoEntity, categoria => categoria.productos )
- categoria: CategoriaproductoEntity;
-
  @ManyToOne(() => CulturaGastronomicaEntity, culturaGastronomica => culturaGastronomica.productos )
  culturaGastronomica: CulturaGastronomicaEntity;
 
