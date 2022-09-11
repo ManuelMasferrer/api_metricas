@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { faker } from "@faker-js/faker";
 import { getRepositoryToken } from "@nestjs/typeorm";
 import { Test, TestingModule } from '@nestjs/testing';
@@ -22,21 +21,10 @@ describe('CategoriaproductoService', () => {
     
     const module: TestingModule = await Test.createTestingModule({
       imports: [...TypeOrmTestingConfig()],
-=======
-import { Test, TestingModule } from '@nestjs/testing';
-import { CategoriaproductoService } from './categoriaproducto.service';
-
-describe('CategoriaproductoService', () => {
-  let service: CategoriaproductoService;
-
-  beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
->>>>>>> 375460a (actuliza entidad)
       providers: [CategoriaproductoService],
     }).compile();
 
     service = module.get<CategoriaproductoService>(CategoriaproductoService);
-<<<<<<< HEAD
     repository = module.get<Repository<CategoriaproductoEntity>>(getRepositoryToken(CategoriaproductoEntity));
     // await seeDatabase();
 
@@ -78,11 +66,4 @@ describe('CategoriaproductoService', () => {
 
  
 
-=======
-  });
-
-  it('should be defined', () => {
-    expect(service).toBeDefined();
-  });
->>>>>>> 375460a (actuliza entidad)
 });

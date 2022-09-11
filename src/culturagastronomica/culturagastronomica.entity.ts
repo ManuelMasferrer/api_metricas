@@ -1,6 +1,5 @@
 import { RegionEntity } from '../region/region.entity';
 import { RecetaEntity } from '../receta/receta.entity';
-<<<<<<< HEAD
 import { PaisEntity } from '../pais/pais.entity';
 import {
   Column,
@@ -15,10 +14,6 @@ import {
 import { ProductoEntity } from '../producto/producto.entity';
 import { RestauranteEntity } from '../restaurante/restaurante.entity';
 
-=======
-
-import {  Column,  Entity,  JoinColumn,  JoinTable,  ManyToMany,  OneToMany,  OneToOne,  PrimaryGeneratedColumn,} from 'typeorm';
->>>>>>> 375460a (actuliza entidad)
 
 @Entity()
 export class CulturaGastronomicaEntity {
@@ -39,7 +34,6 @@ export class CulturaGastronomicaEntity {
   @OneToMany(() => RecetaEntity, (receta) => receta.culturagastronomica)
   recetas: RecetaEntity[];
 
-<<<<<<< HEAD
   @OneToMany(()=> RestauranteEntity, (restaurante) => restaurante.culturagastronomica)
   restaurantes: RestauranteEntity[];
 
@@ -51,12 +45,4 @@ export class CulturaGastronomicaEntity {
   productos: ProductoEntity[];
 
 
-=======
-  /*
-  @ManyToMany( () => PaisEntity, (pais) => pais.culturasgastronomicas  )
-  @JoinTable()
-  paises: PaisEntity[];
-  */
-  
->>>>>>> 375460a (actuliza entidad)
 }
