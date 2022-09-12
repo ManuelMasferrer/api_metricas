@@ -1,0 +1,467 @@
+{
+	"info": {
+		"_postman_id": "6e143bfa-689b-4ef4-9c30-1a510734ca71",
+		"name": "Restaurantes",
+		"description": "Restaurantes pertenecientes a una cultura gastronomica",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Obtener un restaurante",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}restaurantes/{{restaurante_id}}",
+					"host": [
+						"{{baseUrl}}restaurantes"
+					],
+					"path": [
+						"{{restaurante_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener un restaurante",
+					"originalRequest": {
+						"method": "GET",
+						"header": []
+					},
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{ \n  \"id\":\"6c5d5ee-f79f-4201-b2cc-7f01484f182e\" \n  \"nombre\":\"elcielo\", \n  \"michellin\":\"1\", \n  \"fecha\":\"20/02/2021\" \n  \"CulturaGastronomica\":[{     \n        \"id\": 9874561, \n        \"nombre\": \"Cultura Oriental\",\n        \"descripcion\": \"Cultura que abarca países colindantes a la zona oriental.\"\n    }] \n} "
+				}
+			]
+		},
+		{
+			"name": "Obtener restaurantes no existente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"El restaurante con el id proporcionado no ha sido encontrado.\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/restaurante/{{restaurante_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"restaurante",
+						"{{restaurante_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener un restaurante no existente",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "restaurantes/{{id_restaurantes}}",
+							"host": [
+								"restaurantes"
+							],
+							"path": [
+								"{{id_restaurantes}}"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n   \"codigo\": \"404\",\n   \"descripcion\": \"El restaurante con el ID proporcionado no existe\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener un restaurante con sus culturas gastronómica",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "GET/restaurantes/{{id_restaurante}}/culturagastronomicas",
+					"host": [
+						"GET"
+					],
+					"path": [
+						"restaurantes",
+						"{{id_restaurante}}",
+						"culturagastronomicas"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener un restaurante con sus culturas gastronómica",
+					"originalRequest": {
+						"method": "GET",
+						"header": []
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{   \"nombre\":\"elcielo\", \n    \"michellin\":\"1\", \n    \"fecha\":\"20/02/2021\",\n    \"CulturaGastronomica\":[{ \n        \"id\": 9874561, \n        \"nombre\": \"Cultura Oriental\",\n        \"descripcion\": \"Cultura que abarca países colindantes a la zona oriental.\"\n    }] \n} s"
+				},
+				{
+					"name": "Obtener un restaurante con sus culturas gastronómica",
+					"originalRequest": {
+						"method": "GET",
+						"header": []
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"codigo\": \"404\",\n    \"descripcion\": \"El restaurante con el ID proporcionado no existe\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener un restaurante con cultura gastronómica en especifico",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Number of museums > ' + 0, function () {\r",
+							"   var data = pm.response.json()\r",
+							"   pm.expect(data.length).to.greaterThan(0)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/restaurante/{{restaurante_id}}/culturagastronomicas/{{id_culturas}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"restaurante",
+						"{{restaurante_id}}",
+						"culturagastronomicas",
+						"{{id_culturas}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener un restaurante con cultura gastronómica en especifico",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "/restaurantes/{{id_restarantes}}/culturagastronomicas/",
+							"path": [
+								"restaurantes",
+								"{{id_restarantes}}",
+								"culturagastronomicas",
+								""
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{ \n  \"nombre\":\"elcielo\", \n  \"michellin\":\"1\", \n  \"fecha\":\"20/02/2021\" ,\n  \"CulturaGastronomica\":[{ \n        \"id\": 9874561, \n        \"nombre\": \"Cultura Oriental\",\n        \"descripcion\": \"Cultura que abarca países colindantes a la zona oriental.\"\n    }] \n} "
+				}
+			]
+		},
+		{
+			"name": "Crear  restaurante",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"restaurante_id\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \r\n    \"nombre\":\"elcielo\", \r\n    \"michelin\":1 ,\r\n    \"fechaMichelin\":\"20/02/2021\"\r\n  } ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/restaurante",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"restaurante"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Crear  restaurante",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{  \n    \"nombre\":\"elcielo\", \n    \"michellin\":\"1\" ,\n    \"fecha\":\"20/02/2021\" ,\n  } ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{ \n  \"codigo\": \"201\", \n  \"descripción\": \"Restaurante Creado\" \n} \n\n "
+				}
+			]
+		},
+		{
+			"name": "Modificar cultura gastronómica de un restaurante",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \n   \"nombre\": \"oriental\",\n   \"descripcion\":\"gastronomía de paises orientales\"   \n} \n ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "restaurantes/{{id_cultura}}/culturagastronomicas",
+					"host": [
+						"restaurantes"
+					],
+					"path": [
+						"{{id_cultura}}",
+						"culturagastronomicas"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Modificar cultura gastronómica de un restaurante",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \n   \"nombre\": \"oriental\",\n   \"descripcion\":\"gastronomía de paises orientales\"   \n} \n ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "restaurantes/{{id_cultura}}/culturagastronomicas",
+							"host": [
+								"restaurantes"
+							],
+							"path": [
+								"{{id_cultura}}",
+								"culturagastronomicas"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{ \"id\":\"76a64803-d99b-44db-b8bc-b4bc462288bd\"\n   \"nombre\": \"oriental\",\n   \"descripcion\":\"gastronomía de paises orientales\"   \n} "
+				}
+			]
+		},
+		{
+			"name": "Eliminar restaurante",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"   pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/restaurante/{{restaurante_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"restaurante",
+						"{{restaurante_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Eliminar restaurante",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "/restaurantes/{{id_restaurante}}",
+							"path": [
+								"restaurantes",
+								"{{id_restaurante}}"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Obtener Listado de restaurantes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Number of restaurants > ' + 0, function () {\r",
+							"   var data = pm.response.json()\r",
+							"   pm.expect(data.length).to.greaterThan(0)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/restaurante",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"restaurante"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modificar informacion restaurante",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"nombre\":\"Chatas\", \r\n    \"michelin\": 3,\r\n    \"fechaMichelin\": \"20/02/2013\"\r\n\r\n} ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/restaurante/{{restaurante_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"restaurante",
+						"{{restaurante_id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
