@@ -15,7 +15,6 @@ describe('CategoriaproductoService', () => {
 
 
   beforeEach(async () => {
-    //repository.clear();    
     const module: TestingModule = await Test.createTestingModule({
       imports: [...TypeOrmTestingConfig()],
       providers: [CategoriaproductoService],

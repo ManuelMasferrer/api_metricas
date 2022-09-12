@@ -2,7 +2,7 @@ import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, UseIntercept
 import { ProductoService } from '../producto/producto.service';
 import { ProductoEntity } from '../producto/producto.entity';
 import { BusinessErrorsInterceptor } from '../shared/interceptors/business-errors.interceptor';
-import { CategoraproductoDto } from '../categoriaproducto/categoraproducto.dto';
+import { CategoriaproductoDto } from './categoriaproducto.dto';
 import { CategoriaproductoEntity } from '../categoriaproducto/categoriaproducto.entity';
 import {CategoriaproductoService}  from '../categoriaproducto/categoriaproducto.service';
 
@@ -24,15 +24,15 @@ export class CategoriaproductoController {
     }
 
     @Post()
-    async create(@Body() CategoriaProductoDto: CategoraproductoDto) {
-        const producto: CategoriaproductoEntity = plainToInstance(CategoriaproductoEntity, CategoriaProductoDto);
-        return this.categoriaProductoService.create(producto);
+    async create(@Body() CategoriaProductoDto: CategoriaproductoDto) {
+        const categoriaProducto: CategoriaproductoEntity = plainToInstance(CategoriaproductoEntity, CategoriaProductoDto);
+        return this.categoriaProductoService.create(categoriaProducto);
     }
 
     @Put(':categoriaId')
-    async update(@Param('categoriaId') categoriaId: string, @Body() CategoriaProductoDto: CategoraproductoDto) {
-        const producto: CategoriaproductoEntity = plainToInstance(CategoriaproductoEntity, CategoriaProductoDto);
-        return this.categoriaProductoService.update(categoriaId, producto);
+    async update(@Param('categoriaId') categoriaId: string, @Body() CategoriaProductoDto: CategoriaproductoDto) {
+        const categoriaProducto: CategoriaproductoEntity = plainToInstance(CategoriaproductoEntity, CategoriaProductoDto);
+        return this.categoriaProductoService.update(categoriaId, categoriaProducto);
     }
 
     @Delete(':categoriaId')
