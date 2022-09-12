@@ -12,7 +12,6 @@ import { PaisModule } from './pais/pais.module';
 import { RecetaEntity } from './receta/receta.entity';
 import { PaisEntity } from './pais/pais.entity';
 import { CulturaRecetaModule } from './cultura-receta/cultura-receta.module';
-import { CulturaPaisModule } from './cultura-pais/cultura-pais.module';
 import { PaisCulturaModule } from './pais-cultura/pais-cultura.module';
 import { CiudadModule } from './ciudad/ciudad.module';
 import { CategoriaproductoModule } from './categoriaproducto/categoriaproducto.module';
@@ -33,7 +32,6 @@ import { CulturaProductoModule } from './cultura-producto/cultura-producto.modul
     RecetaModule,
     PaisModule,
     CulturaRecetaModule,
-    CulturaPaisModule,
     PaisCulturaModule,
     CiudadModule,
     CategoriaproductoModule,
