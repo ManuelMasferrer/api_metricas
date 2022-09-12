@@ -1,3 +1,4 @@
+
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { BusinessError, BusinessLogicException } from '../shared/errors/business-errors';
@@ -16,7 +17,7 @@ export class CiudadService {
         return await this.ciudadRepository.find({ relations: {restaurantes: true,}});
     }
 
-    async finOne(id: string): Promise<CiudadEntity>{
+    async findOne(id: string): Promise<CiudadEntity>{
         const ciudad: CiudadEntity = await this.ciudadRepository.findOne({where: {id}});
         if (!ciudad)
             throw new BusinessLogicException("El Ciudad con el id proporcionado no ha sido encontrado", BusinessError.NOT_FOUND);

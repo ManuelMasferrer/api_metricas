@@ -1,3 +1,4 @@
+
 import { Injectable } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
@@ -17,6 +18,7 @@ export class CategoriaproductoService {
         @InjectRepository(CategoriaproductoEntity)
         private readonly categoriaRepository: Repository<CategoriaproductoEntity>
     ){}
+
 
     async findAll(): Promise<CategoriaproductoEntity[]>{
         return await this.categoriaRepository.find({ relations: {productos: true,},});
