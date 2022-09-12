@@ -21,6 +21,7 @@ export class RecetaEntity {
     @Column()
     video: string;
 
-    @ManyToOne(() => CulturaGastronomicaEntity, culturagastronomica => culturagastronomica.recetas )
-    culturagastronomica: CulturaGastronomicaEntity;
+    @ManyToOne(() => CulturaGastronomicaEntity, 
+    (culturagastronomica) => culturagastronomica.recetas)
+    culturagastronomica?: CulturaGastronomicaEntity;
 }

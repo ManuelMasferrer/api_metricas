@@ -3,7 +3,6 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { RecetaEntity } from './receta.entity';
 import { BusinessError, BusinessLogicException } from '../shared/errors/business-errors';
-import { RecetaDto} from './receta.dto'
 
 @Injectable()
 export class RecetaService {
@@ -12,23 +11,23 @@ export class RecetaService {
         private readonly recetaRepository: Repository<RecetaEntity>
     ){}
 
-    async findAll(): Promise<RecetaDto[]> {
-        return await this.recetaRepository.find({relations: {culturagastronomica: true}})
+    async findAll(): Promise<RecetaEntity[]>{
+        return await this.recetaRepository.find({ relations: ['culturagastronomica'] });
     }
 
-    async findOne(id: string): Promise<RecetaDto> {
-        const receta: RecetaEntity = await this.recetaRepository.findOne({where: {id}, relations: {culturagastronomica: true,},})
+    async findOne(id: string): Promise<RecetaEntity> {
+        const receta: RecetaEntity = await this.recetaRepository.findOne({where: {id}, relations: {culturagastronomica: true,},});
         if(!receta)
             throw new BusinessLogicException("La receta con el id proporcionado no ha sido encontrada", BusinessError.NOT_FOUND);
         return receta;
     }
 
-    async create(recetaDto: RecetaDto): Promise<RecetaDto> {
-        return await this.recetaRepository.save(recetaDto);
+    async create(receta: RecetaEntity): Promise<RecetaEntity> {
+        return await this.recetaRepository.save(receta);
     }
 
-    async update(id: string, receta: RecetaDto): Promise<RecetaDto> {
-        const persistedReceta: RecetaDto = await this.recetaRepository.findOne({where: {id}});
+    async update(id: string, receta: RecetaEntity): Promise<RecetaEntity> {
+        const persistedReceta: RecetaEntity = await this.recetaRepository.findOne({where: {id}});
         if(!persistedReceta)
             throw new BusinessLogicException("La receta con el id proporcionado no ha sido encontrada.", BusinessError.NOT_FOUND)
         return await this.recetaRepository.save({...persistedReceta, ...receta});

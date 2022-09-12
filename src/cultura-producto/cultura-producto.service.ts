@@ -25,7 +25,7 @@ export class CulturaProductoService {
             throw new BusinessLogicException("La cultura gastronomica con el id proporcionado no ha sido encontrada", BusinessError.NOT_FOUND);
             
         culturagastronomica.productos = [...culturagastronomica.productos, producto];
-        return await this.culturaGastronomicaRepository.save(culturagastronomica)
+        return this.culturaGastronomicaRepository.save(culturagastronomica)
        
 
     }
@@ -61,14 +61,14 @@ export class CulturaProductoService {
         if (!culturagastronomica)
             throw new BusinessLogicException("La cultura gastronomica con el id proporcionado no ha sido encontrada", BusinessError.NOT_FOUND);
         
-        for (let i = 0; i <  productos.length; i++) {
-            const producto: ProductoEntity = await this.productoRepository.findOne({where: {id: productos[i].id}})
+        for (const element of productos) {
+            const producto: ProductoEntity = await this.productoRepository.findOne({where: {id: element.id}})
             if (!producto)
                 throw new BusinessLogicException("El producto con el id proporcionado no ha sido encontrado", BusinessError.NOT_FOUND);
         }
         
         culturagastronomica.productos = productos;
-        return await this.culturaGastronomicaRepository.save(culturagastronomica);    
+        return this.culturaGastronomicaRepository.save(culturagastronomica);    
     }
 
     async deleteProductoToCultura(culturaId: string, productoId: string) {

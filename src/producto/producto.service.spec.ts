@@ -64,7 +64,7 @@ describe('ProductoService', () => {
      expect(producto.nombre).toEqual(storedProducto.nombre)
      expect(producto.descripcion).toEqual(storedProducto.descripcion)
      expect(producto.culturaGastronomica).toEqual(storedProducto.culturaGastronomica)
-     expect(producto.categoria).toEqual(storedProducto.categoria)
+     expect(producto.categoriaProducto).toEqual(storedProducto.categoriaProducto)
   });
 
   it('findOne deberia retornar una excepción por producto invalido', async () => {

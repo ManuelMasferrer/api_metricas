@@ -1,29 +1,27 @@
 import { IsNotEmpty, IsString } from "class-validator";
-import { CulturaGastronomicaEntity } from '../culturagastronomica/culturagastronomica.entity';
 
 export class RecetaDto {
-
-    @IsNotEmpty()
-    @IsString()
-    readonly nombre: string;
-
-    @IsNotEmpty()
-    @IsString()
-    readonly descripcion: string;
-
-    @IsNotEmpty()
-    @IsString()
-    readonly foto: string;
-
-    @IsNotEmpty()
-    @IsString()
-    readonly preparacion: string;
-
-    @IsNotEmpty()
-    @IsString()
-    readonly video: string;
-
+    
     readonly id: string;
 
-    readonly culturagastronomica: CulturaGastronomicaEntity;
+    @IsString()
+    @IsNotEmpty()
+    readonly nombre: string;
+
+    @IsString()
+    @IsNotEmpty()
+    readonly descripcion: string;
+
+    @IsString()
+    @IsNotEmpty()
+    readonly foto: string;
+
+    @IsString()
+    @IsNotEmpty()
+    readonly preparacion: string;
+
+    @IsString()
+    @IsNotEmpty()
+    readonly video: string;
+
 }
