@@ -1,0 +1,441 @@
+{
+	"info": {
+		"_postman_id": "e7f3b846-1984-4b2c-bc6e-de1b7a05c17b",
+		"name": "Categoria Producto",
+		"description": "Categoria de producto",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18244910"
+	},
+	"item": [
+		{
+			"name": "Obtener Listado de Categorias",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/categorias",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"categorias"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener Listado de Categorias",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/categorias",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categorias"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"nombre\": \"Proteina\"\n    },\n    {\n        \"id\": 2,\n        \"nombre\": \"Condimento\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Listado de Categorias No Existente",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/categorias",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"categorias"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Listado de Categorias No Existente",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/categorias",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categorias"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"codigo\": \"404\",\n    \"descripcion\": \"Listado de Categorias No Existente\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener Una Categoria",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/categorias/{{id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"categorias",
+						"{{id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener Una Categoria",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/categorias/{{categoria_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categorias",
+								"{{categoria_id}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"nombre\": \"Proteina\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener Una Categoria Invalida",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/categorias/{{categoria_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"categorias",
+						"{{categoria_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener Una Categoria Invalida",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/categorias/0002-21312-132132",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categorias",
+								"0002-21312-132132"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"codigo\": \"404\",\n    \"descripcion\": \"Listado de Categorias No Existente\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener los Productos de una Categoria",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/categorias/{{categoria_id}}/productos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"categorias",
+						"{{categoria_id}}",
+						"productos"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener los Productos de una Categoria",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/categorias/{{categoria_id}}/productos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categorias",
+								"{{categoria_id}}",
+								"productos"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{ \n    \"id\":1, \n    \"nombre\": \"Proteina\",\n    \"productos\":[{  \n        \"id\":1, \n        \"nombre\":\"pollo\", \n        \"descripcion\": \"pechuga\", \n        \"historia\":\"1989 pollo es un ave\", \n    }]\n} "
+				}
+			]
+		},
+		{
+			"name": "Obtener Productos a Partir de una Categoria",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/categorias/{{categoria_id}}/productos/{{producto_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"categorias",
+						"{{categoria_id}}",
+						"productos",
+						"{{producto_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener Productos a Partir de una Categoria",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/categorias/{{categoria_id}}/productos/{{producto_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categorias",
+								"{{categoria_id}}",
+								"productos",
+								"{{producto_id}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "[{  \n    \"id\":1, \n    \"nombre\":\"pollo\", \n    \"descripcion\": \"pechuga\", \n    \"historia\":\"1989 pollo es un ave\" \n}]"
+				}
+			]
+		},
+		{
+			"name": "Crear Categoria",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \n  \"id\": \"1\", \n  \"nombre\": \"Sal Marina\"\n} ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/categorias",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"categorias"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Crear Categoria",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \n  \"id\": \"1\", \n  \"nombre\": \"Sal Marina\"\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/categorias",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categorias"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"codigo\": \"201\",\n    \"descripción\": \"Categoria Creada\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Actualizar Categoria",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/categorias/{{categoria_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"categorias",
+						"{{categoria_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Actualizar Categoria",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/categorias/{{categoria_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categorias",
+								"{{categoria_id}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{ \n    \"id\":\"\",\n    \"nombre\": \"Sal Marina\" \n} "
+				}
+			]
+		},
+		{
+			"name": "Eliminar Categoria",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/categorias/{{categoria_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"categorias",
+						"{{categoria_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Eliminar Categoria",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/categorias/{{categoria_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categorias",
+								"{{categoria_id}}"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Eliminar Producto de Categoria",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/categorias/{{categoria_id}}/productos/{{producto_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"categorias",
+						"{{categoria_id}}",
+						"productos",
+						"{{producto_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Eliminar Producto de Categoria",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": []
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		}
+	]
+}
