@@ -1,0 +1,566 @@
+{
+	"info": {
+		"_postman_id": "ae931d9d-674e-49ea-999d-74e887984694",
+		"name": "Producto",
+		"description": "Producto perteneciente a una cultura gastronomica",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Obtener un producto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/producto/:producto_id",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"producto",
+						":producto_id"
+					],
+					"variable": [
+						{
+							"key": "producto_id",
+							"value": "{{producto_id}}"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener un producto",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/productos/{{producto_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"productos",
+								"{{producto_id}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{ \n   \"id\":\"8f256ef2-742c-43a8-8662-92c768aa2aa0\", \n   \"nombre\":\"pollo\", \n   \"descripcion\": \"pechuga\", \n   \"historia\":\"1989 pollo es un ave\", \n   \"categoriaProducto\":[{ \n        \"id\":\"1\", \n        \"nombre\": \"Proteina\"\n    }] \n} "
+				}
+			]
+		},
+		{
+			"name": "Obtener Listado de Productos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Number of productos > ' + 0, function () {\r",
+							"   var data = pm.response.json()\r",
+							"   pm.expect(data.length).to.greaterThan(0)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/producto",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"producto"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener Listado de Productos",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/productos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"productos"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"8f256ef2-742c-43a8-8662-92c768aa2aa0\",\n        \"nombre\": \"pollo\",\n        \"descripcion\": \"pechuga\",\n        \"historia\": \"1989 pollo es un ave\",\n        \"categoriaProducto\": [\n            {\n                \"id\": \"1\",\n                \"nombre\": \"Proteina\"\n            }\n        ]\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Obtener Categorias por Producto",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/producto/{{producto_id}}/categorias ",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"producto",
+						"{{producto_id}}",
+						"categorias "
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener Categorias por Producto",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/productos/{{producto_id}}/categorias ",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"productos",
+								"{{producto_id}}",
+								"categorias "
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"id\": \"8f256ef2-742c-43a8-8662-92c768aa2aa0\",\n    \"nombre\": \"Proteina\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener Cultura Gastronómica de un Producto",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/productos/{{producto_id}}/culturagastronomicas/",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"productos",
+						"{{producto_id}}",
+						"culturagastronomicas",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener Cultura Gastronómica de un Producto",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/productos/{{producto_id}}/culturagastronomicas/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"productos",
+								"{{producto_id}}",
+								"culturagastronomicas",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{ \n  \"id\":\"0cc4abfd-b1be-4a87-bfb1-3ff4a9278b3e\", \n  \"nombre\":\"carne\", \n  \"descripcion\": \"molida\", \n  \"historia\":\"1789 carne de res\", \n  \"culturaGastronomica\":[{\n    \"id\": \"12345678\",\n    \"nombre\":\"Cultura Mediterranea\", \n    \"descripcion\":\"Cultura que abarca países colindantes al mar mediterráneo.\"   \n  }] \n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener las Culturas Gastronómicas Pertenecientes a un Producto",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "productos/{{producto_id}}/culturagastronomicas/{{cultura_id}}",
+					"host": [
+						"productos"
+					],
+					"path": [
+						"{{producto_id}}",
+						"culturagastronomicas",
+						"{{cultura_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener las Culturas Gastronómicas Pertenecientes a un Producto",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "productos/{{producto_id}}/culturagastronomicas/{{cultura_id}}",
+							"host": [
+								"productos"
+							],
+							"path": [
+								"{{producto_id}}",
+								"culturagastronomicas",
+								"{{cultura_id}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{ \n    \"id\": \"12345678\",\n    \"nombre\":\"Cultura Mediterranea\", \n    \"descripcion\":\"Cultura que abarca países colindantes al mar mediterráneo.\"\n} "
+				}
+			]
+		},
+		{
+			"name": "Crear un Producto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"producto_id\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \n    \"nombre\":\"pollo\", \n    \"descripcion\": \"pechuga\"\n\n} ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/producto",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"producto"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Crear un Producto",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \n    \"nombre\":\"pollo\", \n    \"descripcion\": \"pechuga\", \n    \"historia\":\"1989 pollo es un ave\", \n    \"categoriaProducto\":[{ \n       \"id\":1, \n       \"nombre\": \"Proteina\" \n     }] \n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/productos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"productos"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{ \n  \"codigo\": \"201\", \n  \"descripción\": \"Producto Creado\" \n} "
+				}
+			]
+		},
+		{
+			"name": "Actualizar informacion de un producto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \n    \"nombre\":\"Chatas\", \n    \"descripcion\": \"Carne de res\"\n\n} ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/producto/{{producto_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"producto",
+						"{{producto_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Actualizar Cultura Gastronomica de un Producto",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \n\n      \"nombre\": \"Pacifico\",\n      \"descripcion\": \"Cultura del Mar Pacifico\"  \n\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/productos/{{producto_id}}/culturagastronomica/{{cultura_id}} ",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"productos",
+								"{{producto_id}}",
+								"culturagastronomica",
+								"{{cultura_id}} "
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{ \n   \"id\":2, \n   \"nombre\":\"carne\", \n   \"descripcion\": \"molida\", \n   \"historia\":\"1789 carne de res\", \n   \"culturaGastronomica\":[{ \n      \"id\": \"123\",\n      \"nombre\": \"Pacifico\",\n      \"descripcion\": \"Cultura Mar Pacifico\"\n    }] \n} "
+				}
+			]
+		},
+		{
+			"name": "Eliminar Producto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"   pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/producto/{{producto_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"producto",
+						"{{producto_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Eliminar Producto",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/productos/{{product_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"productos",
+								"{{product_id}}"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Eliminar Cultura Gastronómica del Producto",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/productos/{{producto_id}}/culturagastronomica/{{cultura_id}} ",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"productos",
+						"{{producto_id}}",
+						"culturagastronomica",
+						"{{cultura_id}} "
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Eliminar Cultura Gastronómica del Producto",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/productos/{{producto_id}}/culturagastronomica/{{cultura_id}} ",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"productos",
+								"{{producto_id}}",
+								"culturagastronomica",
+								"{{cultura_id}} "
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Obtener producto no existente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get expected error message\", function () {\r",
+							"   var data = pm.response.json();\r",
+							"   pm.expect(data.message).to.eql(\"El producto no existe\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/producto/:producto_id",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"producto",
+						":producto_id"
+					],
+					"variable": [
+						{
+							"key": "producto_id",
+							"value": "c6abf51d-add4-4a71-9adc-96348504d818"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener producto no existente",
+					"originalRequest": {
+						"method": "GET",
+						"header": []
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		}
+	]
+}
