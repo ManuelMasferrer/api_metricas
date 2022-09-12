@@ -1,0 +1,611 @@
+{
+	"info": {
+		"_postman_id": "f528013e-d315-48c6-b487-a6f80e34d24f",
+		"name": "Recetas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15486601"
+	},
+	"item": [
+		{
+			"name": "Agregar receta",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()",
+							"pm.globals.set(\"receta_id\", data.id);",
+							"",
+							"pm.test(\"Codigo de estado es 201\", function () {",
+							"   pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Arroz con pollo Peruano\",\n    \"descripcion\": \"Este es uno de los platos favoritos en las mesas peruanas.\",\n    \"foto\": \"http://comidasperuanas.net/wp-content/uploads/2015/07/Arroz-con-Pollo-Peruano-730x430.jpg\",\n    \"preparacion\": \"En una licuadora, licúa cilantro junto con la espinaca y agua como para hacer una pasta homogénea.\",\n    \"video\": \"https://www.youtube.com/watch?v=rmnkJ4M3TJU\",\n    \"id\": \"18500c6a-b54f-4aa3-885e-6bb29ccc62df\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/recetas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"recetas"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Agregar receta",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nombre\": \"Arroz con pollo Peruano\",\n  \t \"descripcion\": \"Este es uno de los platos favoritos en las mesas peruanas, ya sea con pato –tradicional en el norte del Perú- o con pollo. Es delicioso y tiene muchas variaciones. El arroz puede hacerse graneado o como un risotto y, aunque es verde y tiene bastante cilantro su sabor es bastante sutil. Pueden agregar otros vegetales, si desean.\",\n    \"foto\": \"http://comidasperuanas.net/wp-content/uploads/2015/07/Arroz-con-Pollo-Peruano-730x430.jpg\",\n   \t\"preparacion\": \"En una licuadora, licúa cilantro junto con la espinaca y agua como para hacer una pasta homogénea. Reserva. Seca el pollo con papel toalla y sazona con sal y pimienta. En una olla se calienta el aceite a fuego medio y se fríe el pollo hasta que esté dorado por ambos lados, unos 7 minutos. Retira de la olla y ponlo en un plato. En la misma olla fríe la cebolla, ajo y la pasta de ají amarillo, revolviendo por 5 minutos. Incorpora el cilantro y espinaca licuado, fríe por 3 minutos. Agrega la cerveza, caldo de pollo, y agrega el pollo en la olla. Hierve, tapa y baja el fuego. Cuece por 20 minutos. Corrige la sazón con más sal y pimienta si fuera necesario. En otra olla calienta 1 cucharada de aceite. Incorpora el arroz y revuélvelo bien. Agrega las arvejitas, zanahorias, pimiento, maíz, y 3 1/2 tazas del caldo que utilizaste para cocinar el pollo. Deja que rompa hervor, tapa, baja el fuego al mínimo y deja cocer por 20 a 25 minutos. Revuelve con un tenedor y volver a tapar. Cuando el arroz esté a punto, servir en cuatro platos, poner encima una pierna de pollo y Salsa Criolla al costado. Si quieren también un poco del juguito en el que se coció el pollo. Para hacer la Salsa Criolla, corta 1/2 cebolla roja en láminas muy delgadas a lo largo, lava bien y escurre. Mezcla con 1/2 tomate cortado en tiras muy finas, hojas de cilantro, sal, pimienta, jugo de 1 limón y 1 cucharada de aceite de oliva. Si desean le pueden agregar tiritas de ají.\",\n   \t\"video\": \"https://www.youtube.com/watch?v=rmnkJ4M3TJU\",\n    \"culturagastronomica\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/recetas",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"recetas"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"nombre\": \"Arroz con pollo Peruano\",\n    \"descripcion\": \"Este es uno de los platos favoritos en las mesas peruanas.\",\n    \"foto\": \"http://comidasperuanas.net/wp-content/uploads/2015/07/Arroz-con-Pollo-Peruano-730x430.jpg\",\n    \"preparacion\": \"En una licuadora, licúa cilantro junto con la espinaca y agua como para hacer una pasta homogénea.\",\n    \"video\": \"https://www.youtube.com/watch?v=rmnkJ4M3TJU\",\n    \"id\": \"18500c6a-b54f-4aa3-885e-6bb29ccc62df\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Actualizar receta",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Codigo de estado es 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\": \"Arroz con pollo o pato Peruano\",\n  \t\"descripcion\": \"Este es uno de los platos favoritos en las mesas peruanas, ya sea con pato –tradicional en el norte del Perú- o con pollo. Es delicioso y tiene muchas variaciones. El arroz puede hacerse graneado o como un risotto y, aunque es verde y tiene bastante cilantro su sabor es bastante sutil. Pueden agregar otros vegetales, si desean.\",\n    \"foto\": \"http://comidasperuanas.net/wp-content/uploads/2015/07/Arroz-con-Pollo-Peruano-730x430.jpg\",\n   \t\"preparacion\": \"En una licuadora, licúa cilantro junto con la espinaca y agua como para hacer una pasta homogénea. Reserva. Seca el pollo con papel toalla y sazona con sal y pimienta. En una olla se calienta el aceite a fuego medio y se fríe el pollo hasta que esté dorado por ambos lados, unos 7 minutos. Retira de la olla y ponlo en un plato. En la misma olla fríe la cebolla, ajo y la pasta de ají amarillo, revolviendo por 5 minutos. Incorpora el cilantro y espinaca licuado, fríe por 3 minutos. Agrega la cerveza, caldo de pollo, y agrega el pollo en la olla. Hierve, tapa y baja el fuego. Cuece por 20 minutos. Corrige la sazón con más sal y pimienta si fuera necesario. En otra olla calienta 1 cucharada de aceite. Incorpora el arroz y revuélvelo bien. Agrega las arvejitas, zanahorias, pimiento, maíz, y 3 1/2 tazas del caldo que utilizaste para cocinar el pollo. Deja que rompa hervor, tapa, baja el fuego al mínimo y deja cocer por 20 a 25 minutos. Revuelve con un tenedor y volver a tapar. Cuando el arroz esté a punto, servir en cuatro platos, poner encima una pierna de pollo y Salsa Criolla al costado. Si quieren también un poco del juguito en el que se coció el pollo. Para hacer la Salsa Criolla, corta 1/2 cebolla roja en láminas muy delgadas a lo largo, lava bien y escurre. Mezcla con 1/2 tomate cortado en tiras muy finas, hojas de cilantro, sal, pimienta, jugo de 1 limón y 1 cucharada de aceite de oliva. Si desean le pueden agregar tiritas de ají.\",\n   \t\"video\": \"https://www.youtube.com/watch?v=rmnkJ4M3TJU\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/recetas/:recetaId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"recetas",
+						":recetaId"
+					],
+					"variable": [
+						{
+							"key": "recetaId",
+							"value": "18500c6a-b54f-4aa3-885e-6bb29ccc62df"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Actualizar receta",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nombre\": \"Arroz con pollo o pato Peruano\",\n  \t\"descripcion\": \"Este es uno de los platos favoritos en las mesas peruanas, ya sea con pato –tradicional en el norte del Perú- o con pollo. Es delicioso y tiene muchas variaciones. El arroz puede hacerse graneado o como un risotto y, aunque es verde y tiene bastante cilantro su sabor es bastante sutil. Pueden agregar otros vegetales, si desean.\",\n    \"foto\": \"http://comidasperuanas.net/wp-content/uploads/2015/07/Arroz-con-Pollo-Peruano-730x430.jpg\",\n   \t\"preparacion\": \"En una licuadora, licúa cilantro junto con la espinaca y agua como para hacer una pasta homogénea. Reserva. Seca el pollo con papel toalla y sazona con sal y pimienta. En una olla se calienta el aceite a fuego medio y se fríe el pollo hasta que esté dorado por ambos lados, unos 7 minutos. Retira de la olla y ponlo en un plato. En la misma olla fríe la cebolla, ajo y la pasta de ají amarillo, revolviendo por 5 minutos. Incorpora el cilantro y espinaca licuado, fríe por 3 minutos. Agrega la cerveza, caldo de pollo, y agrega el pollo en la olla. Hierve, tapa y baja el fuego. Cuece por 20 minutos. Corrige la sazón con más sal y pimienta si fuera necesario. En otra olla calienta 1 cucharada de aceite. Incorpora el arroz y revuélvelo bien. Agrega las arvejitas, zanahorias, pimiento, maíz, y 3 1/2 tazas del caldo que utilizaste para cocinar el pollo. Deja que rompa hervor, tapa, baja el fuego al mínimo y deja cocer por 20 a 25 minutos. Revuelve con un tenedor y volver a tapar. Cuando el arroz esté a punto, servir en cuatro platos, poner encima una pierna de pollo y Salsa Criolla al costado. Si quieren también un poco del juguito en el que se coció el pollo. Para hacer la Salsa Criolla, corta 1/2 cebolla roja en láminas muy delgadas a lo largo, lava bien y escurre. Mezcla con 1/2 tomate cortado en tiras muy finas, hojas de cilantro, sal, pimienta, jugo de 1 limón y 1 cucharada de aceite de oliva. Si desean le pueden agregar tiritas de ají.\",\n   \t\"video\": \"https://www.youtube.com/watch?v=rmnkJ4M3TJU\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/recetas/:recetaId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"recetas",
+								":recetaId"
+							],
+							"variable": [
+								{
+									"key": "recetaId",
+									"value": "18500c6a-b54f-4aa3-885e-6bb29ccc62df"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"receta_id\": 12345678,\n    \"nombre\": \"Arroz con pollo o pato Peruano\",\n    \"descripcion\": \"Este es uno de los platos favoritos en las mesas peruanas, ya sea con pato –tradicional en el norte del Perú- o con pollo. Es delicioso y tiene muchas variaciones. El arroz puede hacerse graneado o como un risotto y, aunque es verde y tiene bastante cilantro su sabor es bastante sutil. Pueden agregar otros vegetales, si desean.\",\n    \"foto\": \"http://comidasperuanas.net/wp-content/uploads/2015/07/Arroz-con-Pollo-Peruano-730x430.jpg\",\n    \"preparacion\": \"En una licuadora, licúa cilantro junto con la espinaca y agua como para hacer una pasta homogénea. Reserva. Seca el pollo con papel toalla y sazona con sal y pimienta. En una olla se calienta el aceite a fuego medio y se fríe el pollo hasta que esté dorado por ambos lados, unos 7 minutos. Retira de la olla y ponlo en un plato. En la misma olla fríe la cebolla, ajo y la pasta de ají amarillo, revolviendo por 5 minutos. Incorpora el cilantro y espinaca licuado, fríe por 3 minutos. Agrega la cerveza, caldo de pollo, y agrega el pollo en la olla. Hierve, tapa y baja el fuego. Cuece por 20 minutos. Corrige la sazón con más sal y pimienta si fuera necesario. En otra olla calienta 1 cucharada de aceite. Incorpora el arroz y revuélvelo bien. Agrega las arvejitas, zanahorias, pimiento, maíz, y 3 1/2 tazas del caldo que utilizaste para cocinar el pollo. Deja que rompa hervor, tapa, baja el fuego al mínimo y deja cocer por 20 a 25 minutos. Revuelve con un tenedor y volver a tapar. Cuando el arroz esté a punto, servir en cuatro platos, poner encima una pierna de pollo y Salsa Criolla al costado. Si quieren también un poco del juguito en el que se coció el pollo. Para hacer la Salsa Criolla, corta 1/2 cebolla roja en láminas muy delgadas a lo largo, lava bien y escurre. Mezcla con 1/2 tomate cortado en tiras muy finas, hojas de cilantro, sal, pimienta, jugo de 1 limón y 1 cucharada de aceite de oliva. Si desean le pueden agregar tiritas de ají.\",\n    \"video\": \"https://www.youtube.com/watch?v=rmnkJ4M3TJU\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Actualizar receta no existente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Codigo de estado es 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Obtener mensaje de error\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"La receta con el id proporcionado no ha sido encontrada.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombre\": \"Arroz con pollo o pato Peruano\",\n  \t \"descripcion\": \"Este es uno de los platos favoritos en las mesas peruanas, ya sea con pato –tradicional en el norte del Perú- o con pollo. Es delicioso y tiene muchas variaciones. El arroz puede hacerse graneado o como un risotto y, aunque es verde y tiene bastante cilantro su sabor es bastante sutil. Pueden agregar otros vegetales, si desean.\",\n    \"foto\": \"http://comidasperuanas.net/wp-content/uploads/2015/07/Arroz-con-Pollo-Peruano-730x430.jpg\",\n   \t\"preparacion\": \"En una licuadora, licúa cilantro junto con la espinaca y agua como para hacer una pasta homogénea. Reserva. Seca el pollo con papel toalla y sazona con sal y pimienta. En una olla se calienta el aceite a fuego medio y se fríe el pollo hasta que esté dorado por ambos lados, unos 7 minutos. Retira de la olla y ponlo en un plato. En la misma olla fríe la cebolla, ajo y la pasta de ají amarillo, revolviendo por 5 minutos. Incorpora el cilantro y espinaca licuado, fríe por 3 minutos. Agrega la cerveza, caldo de pollo, y agrega el pollo en la olla. Hierve, tapa y baja el fuego. Cuece por 20 minutos. Corrige la sazón con más sal y pimienta si fuera necesario. En otra olla calienta 1 cucharada de aceite. Incorpora el arroz y revuélvelo bien. Agrega las arvejitas, zanahorias, pimiento, maíz, y 3 1/2 tazas del caldo que utilizaste para cocinar el pollo. Deja que rompa hervor, tapa, baja el fuego al mínimo y deja cocer por 20 a 25 minutos. Revuelve con un tenedor y volver a tapar. Cuando el arroz esté a punto, servir en cuatro platos, poner encima una pierna de pollo y Salsa Criolla al costado. Si quieren también un poco del juguito en el que se coció el pollo. Para hacer la Salsa Criolla, corta 1/2 cebolla roja en láminas muy delgadas a lo largo, lava bien y escurre. Mezcla con 1/2 tomate cortado en tiras muy finas, hojas de cilantro, sal, pimienta, jugo de 1 limón y 1 cucharada de aceite de oliva. Si desean le pueden agregar tiritas de ají.\",\n   \t\"video\": \"https://www.youtube.com/watch?v=rmnkJ4M3TJU\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/recetas/:recetaId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"recetas",
+						":recetaId"
+					],
+					"variable": [
+						{
+							"key": "recetaId",
+							"value": "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Actualizar receta no existente",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nombre\": \"Arroz con pollo o pato Peruano\",\n  \t \"descripcion\": \"Este es uno de los platos favoritos en las mesas peruanas, ya sea con pato –tradicional en el norte del Perú- o con pollo. Es delicioso y tiene muchas variaciones. El arroz puede hacerse graneado o como un risotto y, aunque es verde y tiene bastante cilantro su sabor es bastante sutil. Pueden agregar otros vegetales, si desean.\",\n    \"foto\": \"http://comidasperuanas.net/wp-content/uploads/2015/07/Arroz-con-Pollo-Peruano-730x430.jpg\",\n   \t\"preparacion\": \"En una licuadora, licúa cilantro junto con la espinaca y agua como para hacer una pasta homogénea. Reserva. Seca el pollo con papel toalla y sazona con sal y pimienta. En una olla se calienta el aceite a fuego medio y se fríe el pollo hasta que esté dorado por ambos lados, unos 7 minutos. Retira de la olla y ponlo en un plato. En la misma olla fríe la cebolla, ajo y la pasta de ají amarillo, revolviendo por 5 minutos. Incorpora el cilantro y espinaca licuado, fríe por 3 minutos. Agrega la cerveza, caldo de pollo, y agrega el pollo en la olla. Hierve, tapa y baja el fuego. Cuece por 20 minutos. Corrige la sazón con más sal y pimienta si fuera necesario. En otra olla calienta 1 cucharada de aceite. Incorpora el arroz y revuélvelo bien. Agrega las arvejitas, zanahorias, pimiento, maíz, y 3 1/2 tazas del caldo que utilizaste para cocinar el pollo. Deja que rompa hervor, tapa, baja el fuego al mínimo y deja cocer por 20 a 25 minutos. Revuelve con un tenedor y volver a tapar. Cuando el arroz esté a punto, servir en cuatro platos, poner encima una pierna de pollo y Salsa Criolla al costado. Si quieren también un poco del juguito en el que se coció el pollo. Para hacer la Salsa Criolla, corta 1/2 cebolla roja en láminas muy delgadas a lo largo, lava bien y escurre. Mezcla con 1/2 tomate cortado en tiras muy finas, hojas de cilantro, sal, pimienta, jugo de 1 limón y 1 cucharada de aceite de oliva. Si desean le pueden agregar tiritas de ají.\",\n   \t\"video\": \"https://www.youtube.com/watch?v=rmnkJ4M3TJU\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/recetas/:recetaId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"recetas",
+								":recetaId"
+							],
+							"variable": [
+								{
+									"key": "recetaId",
+									"value": "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"La receta con el id proporcionado no ha sido encontrada.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener todas las recetas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/recetas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"recetas"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener todas las recetas",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/recetas",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"recetas"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "[\n    {\n        \"receta_id\": 12345678,\n        \"nombre\": \"Arroz con pollo Peruano\",\n        \"descripcion\": \"Este es uno de los platos favoritos en las mesas peruanas, ya sea con pato –tradicional en el norte del Perú- o con pollo. Es delicioso y tiene muchas variaciones. El arroz puede hacerse graneado o como un risotto y, aunque es verde y tiene bastante cilantro su sabor es bastante sutil. Pueden agregar otros vegetales, si desean.\",\n        \"foto\": \"http://comidasperuanas.net/wp-content/uploads/2015/07/Arroz-con-Pollo-Peruano-730x430.jpg\",\n        \"preparacion\": \"En una licuadora, licúa cilantro junto con la espinaca y agua como para hacer una pasta homogénea. Reserva. Seca el pollo con papel toalla y sazona con sal y pimienta. En una olla se calienta el aceite a fuego medio y se fríe el pollo hasta que esté dorado por ambos lados, unos 7 minutos. Retira de la olla y ponlo en un plato. En la misma olla fríe la cebolla, ajo y la pasta de ají amarillo, revolviendo por 5 minutos. Incorpora el cilantro y espinaca licuado, fríe por 3 minutos. Agrega la cerveza, caldo de pollo, y agrega el pollo en la olla. Hierve, tapa y baja el fuego. Cuece por 20 minutos. Corrige la sazón con más sal y pimienta si fuera necesario. En otra olla calienta 1 cucharada de aceite. Incorpora el arroz y revuélvelo bien. Agrega las arvejitas, zanahorias, pimiento, maíz, y 3 1/2 tazas del caldo que utilizaste para cocinar el pollo. Deja que rompa hervor, tapa, baja el fuego al mínimo y deja cocer por 20 a 25 minutos. Revuelve con un tenedor y volver a tapar. Cuando el arroz esté a punto, servir en cuatro platos, poner encima una pierna de pollo y Salsa Criolla al costado. Si quieren también un poco del juguito en el que se coció el pollo. Para hacer la Salsa Criolla, corta 1/2 cebolla roja en láminas muy delgadas a lo largo, lava bien y escurre. Mezcla con 1/2 tomate cortado en tiras muy finas, hojas de cilantro, sal, pimienta, jugo de 1 limón y 1 cucharada de aceite de oliva. Si desean le pueden agregar tiritas de ají.\",\n        \"video\": \"https://www.youtube.com/watch?v=rmnkJ4M3TJU\"\n    },\n    {\n        \"receta_id\": 10000000,\n        \"nombre\": \"Pupusas de Queso y Calabacín\",\n        \"description\": \"Al cocinar las pupusas el queso se derrite y se mezcla maravillosamente con la suave masa de tortilla que lo envuelve y que se convierte en una de las comidas tradicionales favoritas en El Salvador y en otros países centroamericanos.\",\n        \"foto\": \"http://images-gmi-pmc.edge-generalmills.com/08819965-a16e-432c-ad1b-874871c2c783.jpg\",\n        \"preparacion\": \"Ralla el calabacín y combínalo con el quesillo rallado y la sal. Amasa bien y deja reposar por unos minutos..Usando porciones de 1/2 taza de masa haz tortillas.Coloca porciones del relleno en el centro, como de 1 cucharada. Cierra y palmea, humedeciendo las manos, si fuera necesario, para hacer las pupusas.Cocina en una sartén caliente y sirve con curtido.\"\n        \"video\": \"https://www.youtube.com/watch?v=w2D86Tsb2xg\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Obtener una receta",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Codigo de estado es 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "javascript"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/recetas/:recetaId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"recetas",
+						":recetaId"
+					],
+					"variable": [
+						{
+							"key": "recetaId",
+							"value": "18500c6a-b54f-4aa3-885e-6bb29ccc62df"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener una receta",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/recetas/:recetaId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"recetas",
+								":recetaId"
+							],
+							"variable": [
+								{
+									"key": "recetaId",
+									"value": "18500c6a-b54f-4aa3-885e-6bb29ccc62df"
+								}
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"id\": \"18500c6a-b54f-4aa3-885e-6bb29ccc62df\",\n    \"nombre\": \"Arroz con pollo Peruano\",\n    \"descripcion\": \"Este es uno de los platos favoritos en las mesas peruanas.\",\n    \"foto\": \"http://comidasperuanas.net/wp-content/uploads/2015/07/Arroz-con-Pollo-Peruano-730x430.jpg\",\n    \"preparacion\": \"En una licuadora, licúa cilantro junto con la espinaca y agua como para hacer una pasta homogénea.\",\n    \"video\": \"https://www.youtube.com/watch?v=rmnkJ4M3TJU\",\n    \"culturagastronomica\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener una receta no existente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Codigo de estado es 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Obtener mensaje de error\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"La receta con el id proporcionado no ha sido encontrada\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/recetas/:recetaId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"recetas",
+						":recetaId"
+					],
+					"variable": [
+						{
+							"key": "recetaId",
+							"value": "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener una receta no existente",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/recetas/:recetaId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"recetas",
+								":recetaId"
+							],
+							"variable": [
+								{
+									"key": "recetaId",
+									"value": "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n   \"statusCode\": 404,\n   \"message\": \"La receta con el ID proporcionado no existe\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Borrar una receta",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Codigo de estado es 204\", function () {",
+							"   pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/recetas/:recetaId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"recetas",
+						":recetaId"
+					],
+					"variable": [
+						{
+							"key": "recetaId",
+							"value": "18500c6a-b54f-4aa3-885e-6bb29ccc62df"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Borrar una receta",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/recetas/:recetaId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"recetas",
+								":recetaId"
+							],
+							"variable": [
+								{
+									"key": "recetaId",
+									"value": "18500c6a-b54f-4aa3-885e-6bb29ccc62df"
+								}
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Borrar una receta no existente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Codigo de estado es 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Obtener mensaje de error\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"La receta con el id proporcionado no ha sido encontrada\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/recetas/:recetaId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"recetas",
+						":recetaId"
+					],
+					"variable": [
+						{
+							"key": "recetaId",
+							"value": "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Borrar una receta no existente",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/recetas/:recetaId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"recetas",
+								":recetaId"
+							],
+							"variable": [
+								{
+									"key": "recetaId",
+									"value": "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"La receta con el id proporcionado no ha sido encontrada\"\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "localhost:3000/api/v1"
+		}
+	]
+}

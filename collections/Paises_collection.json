@@ -1,0 +1,618 @@
+{
+	"info": {
+		"_postman_id": "1842513b-370e-4cbb-aca4-9674c5b8b5c8",
+		"name": "Paises",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15486601"
+	},
+	"item": [
+		{
+			"name": "Agregar pais",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()",
+							"pm.globals.set(\"receta_id\", data.id);",
+							"",
+							"pm.test(\"Codigo de estado es 201\", function () {",
+							"   pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Peru\",\n    \"id\": \"53096c80-3236-11ed-a261-0242ac120002\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/paises",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"paises"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Agregar pais",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Peru\",\n    \"id\": \"53096c80-3236-11ed-a261-0242ac120002\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/paises",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"paises"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"nombre\": \"Peru\",\n    \"id\": \"53096c80-3236-11ed-a261-0242ac120002\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener todos los paises",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Numero de paises > ' + 0, function () {",
+							"   var data = pm.response.json()",
+							"   pm.expect(data.length).to.greaterThan(0)",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/paises",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"paises"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener todos los paises",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/paises",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"paises"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"53096c80-3236-11ed-a261-0242ac120002\",\n        \"nombre\": \"Peru\",\n        \"culturasgastronomicas\": []\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Obtener un pais",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Codigo de estado es 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/paises/:paisId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"paises",
+						":paisId"
+					],
+					"variable": [
+						{
+							"key": "paisId",
+							"value": "53096c80-3236-11ed-a261-0242ac120002"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener un pais",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/paises/:paisId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"paises",
+								":paisId"
+							],
+							"variable": [
+								{
+									"key": "paisId",
+									"value": "53096c80-3236-11ed-a261-0242ac120002"
+								}
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Obtener un pais no existente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Codigo de estado es 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Obtener mensaje de error\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"El pais con el id proporcionado no ha sido encontrado\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/paises/:paisId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"paises",
+						":paisId"
+					],
+					"variable": [
+						{
+							"key": "paisId",
+							"value": "13965d30-3239-11ed-a261-0242ac120002"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener un pais no existente",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/paises/:paisId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"paises",
+								":paisId"
+							],
+							"variable": [
+								{
+									"key": "paisId",
+									"value": "13965d30-3239-11ed-a261-0242ac120002"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"El pais con el id proporcionado no ha sido encontrado\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Actualizar un pais",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Codigo de estado es 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"53096c80-3236-11ed-a261-0242ac120002\",\n    \"nombre\": \"Republica del Peru\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/paises/:paisId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"paises",
+						":paisId"
+					],
+					"variable": [
+						{
+							"key": "paisId",
+							"value": "53096c80-3236-11ed-a261-0242ac120002"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Actualizar un pais",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"53096c80-3236-11ed-a261-0242ac120002\",\n    \"nombre\": \"Republica del Peru\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/paises/:paisId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"paises",
+								":paisId"
+							],
+							"variable": [
+								{
+									"key": "paisId",
+									"value": "53096c80-3236-11ed-a261-0242ac120002"
+								}
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Actualizar un pais no existente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Codigo de estado es 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Obtener mensaje de error\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"El pais con el id proporcionado no ha sido encontrado\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"13965d30-3239-11ed-a261-0242ac120002\",\n    \"nombre\": \"Republica del Ecuador\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/paises/:paisId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"paises",
+						":paisId"
+					],
+					"variable": [
+						{
+							"key": "paisId",
+							"value": "13965d30-3239-11ed-a261-0242ac120002"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Actualizar un pais no existente",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"13965d30-3239-11ed-a261-0242ac120002\",\n    \"nombre\": \"Republica del Ecuador\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/paises/:paisId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"paises",
+								":paisId"
+							],
+							"variable": [
+								{
+									"key": "paisId",
+									"value": "13965d30-3239-11ed-a261-0242ac120002"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"El pais con el id proporcionado no ha sido encontrado\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Borrar un pais",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Codigo de estado es 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/paises/:paisId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"paises",
+						":paisId"
+					],
+					"variable": [
+						{
+							"key": "paisId",
+							"value": "53096c80-3236-11ed-a261-0242ac120002"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Borrar un pais",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/paises/:paisId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"paises",
+								":paisId"
+							],
+							"variable": [
+								{
+									"key": "paisId",
+									"value": "53096c80-3236-11ed-a261-0242ac120002"
+								}
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Borrar un pais no existente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Codigo de estado es 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Obtener mensaje de error\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"El pais con el id proporcionado no ha sido encontrado\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/paises/:paisId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"paises",
+						":paisId"
+					],
+					"variable": [
+						{
+							"key": "paisId",
+							"value": "13965d30-3239-11ed-a261-0242ac120002"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Borrar un pais no existente",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/paises/:paisId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"paises",
+								":paisId"
+							],
+							"variable": [
+								{
+									"key": "paisId",
+									"value": "13965d30-3239-11ed-a261-0242ac120002"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"El pais con el id proporcionado no ha sido encontrado\"\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000/api/v1",
+			"type": "string"
+		}
+	]
+}

@@ -23,7 +23,7 @@ export class RecetaService {
     }
 
     async create(receta: RecetaEntity): Promise<RecetaEntity> {
-        return await this.recetaRepository.save(receta);
+        return this.recetaRepository.save(receta);
     }
 
     async update(id: string, receta: RecetaEntity): Promise<RecetaEntity> {
