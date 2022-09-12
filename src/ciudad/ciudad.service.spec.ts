@@ -58,13 +58,13 @@ describe('CiudadService', () => {
 
     it('findOne debe retornar un Ciudad por id', async () => {
         const storedCiudad: CiudadEntity = CiudadesList[0];
-        const Ciudad: CiudadEntity = await service.finOne(storedCiudad.id);
+        const Ciudad: CiudadEntity = await service.findOne(storedCiudad.id);
         expect(Ciudad).not.toBeNull;
         expect(Ciudad.nombre).toEqual(storedCiudad.nombre)
     });
 
     it('findOne lanzar excepcion para un Ciudad invalido', async () => {
-        await expect(() => service.finOne("0")).rejects.toHaveProperty("message", "El Ciudad con el id proporcionado no ha sido encontrado")
+        await expect(() => service.findOne("0")).rejects.toHaveProperty("message", "El Ciudad con el id proporcionado no ha sido encontrado")
     });
 
 });
