@@ -1,0 +1,1541 @@
+{
+	"info": {
+		"_postman_id": "9de45b75-bed3-4abf-a104-2d867de88882",
+		"name": "Pais-Cultura",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15486601"
+	},
+	"item": [
+		{
+			"name": "Poblar pais",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()",
+							"pm.globals.set(\"receta_id\", data.id);",
+							"",
+							"pm.test(\"Codigo de estado es 201\", function () {",
+							"   pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Peru\",\n    \"id\": \"53096c80-3236-11ed-a261-0242ac120002\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/paises",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"paises"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Agregar pais",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Peru\",\n    \"id\": \"53096c80-3236-11ed-a261-0242ac120002\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/paises",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"paises"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"nombre\": \"Peru\",\n    \"id\": \"53096c80-3236-11ed-a261-0242ac120002\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Poblar pais 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()",
+							"pm.globals.set(\"receta_id\", data.id);",
+							"",
+							"pm.test(\"Codigo de estado es 201\", function () {",
+							"   pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Peru\",\n    \"id\": \"53096c80-3236-11ed-a261-0242ac120002\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/paises",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"paises"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Poblar cultura gastronomica",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()",
+							"pm.globals.set(\"region_id\", data.id);",
+							"",
+							"pm.test(\"Codigo de estado es 201\", function () {",
+							"   pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\":\"Peruana\",\n    \"descripcion\":\"Cultura gastronomica de Peru \",\n    \"id\": \"97040fd3-7d59-4795-8523-0c9c42fbe56b\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/culturasgastronomicas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturasgastronomicas"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Agregar una nueva cultura gastronÃ³mica",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/culturagastronomica",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturagastronomica"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "[ \r\n    { \r\n        \"status_code\": 200,\r\n        \"message\":\"Agregada correctamente\"\r\n    } \r\n\r\n] "
+				}
+			]
+		},
+		{
+			"name": "Agregar un pais a una cultura gastronomica",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()",
+							"pm.globals.set(\"region_id\", data.id);",
+							"",
+							"pm.test(\"Codigo de estado es 201\", function () {",
+							"   pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/culturasgastronomicas/:culturaId/paises/:paisId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturasgastronomicas",
+						":culturaId",
+						"paises",
+						":paisId"
+					],
+					"variable": [
+						{
+							"key": "culturaId",
+							"value": "97040fd3-7d59-4795-8523-0c9c42fbe56b"
+						},
+						{
+							"key": "paisId",
+							"value": "53096c80-3236-11ed-a261-0242ac120002"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Agregar un pais a una cultura gastronomica",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/culturasgastronomicas/:culturaId/paises/:paisId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturasgastronomicas",
+								":culturaId",
+								"paises",
+								":paisId"
+							],
+							"variable": [
+								{
+									"key": "culturaId",
+									"value": "97040fd3-7d59-4795-8523-0c9c42fbe56b"
+								},
+								{
+									"key": "paisId",
+									"value": null
+								}
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"id\": \"97040fd3-7d59-4795-8523-0c9c42fbe56b\",\n    \"nombre\": \"Peruana\",\n    \"descripcion\": \"Cultura gastronomica de Peru \",\n    \"region\": null,\n    \"recetas\": [],\n    \"paises\": [\n        {\n            \"id\": \"53096c80-3236-11ed-a261-0242ac120002\",\n            \"nombre\": \"Peru\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Agregar un pais a una cultura gastronomica no existente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Codigo de estado es 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Obtener mensaje de error\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"La cultura gastronomica con el id proporcionado no ha sido encontrada\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/culturasgastronomicas/:culturaId/paises/:paisId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturasgastronomicas",
+						":culturaId",
+						"paises",
+						":paisId"
+					],
+					"variable": [
+						{
+							"key": "culturaId",
+							"value": "00000000-0000-0000-0000-000000000000"
+						},
+						{
+							"key": "paisId",
+							"value": "53096c80-3236-11ed-a261-0242ac120002"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Agregar un pais a una cultura gastronomica no existente",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/culturasgastronomicas/:culturaId/paises/:paisId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturasgastronomicas",
+								":culturaId",
+								"paises",
+								":paisId"
+							],
+							"variable": [
+								{
+									"key": "culturaId",
+									"value": "00000000-0000-0000-0000-000000000000"
+								},
+								{
+									"key": "paisId",
+									"value": "53096c80-3236-11ed-a261-0242ac120002"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"La cultura gastronomica con el id proporcionado no ha sido encontrada\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Agregar un pais no existente a una cultura gastronomica",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Codigo de estado es 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Obtener mensaje de error\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"El pais con el id proporcionado no ha sido encontrado\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/culturasgastronomicas/:culturaId/paises/:paisId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturasgastronomicas",
+						":culturaId",
+						"paises",
+						":paisId"
+					],
+					"variable": [
+						{
+							"key": "culturaId",
+							"value": "97040fd3-7d59-4795-8523-0c9c42fbe56b"
+						},
+						{
+							"key": "paisId",
+							"value": "00000000-0000-0000-0000-000000000000"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Agregar un pais no existente a una cultura gastronomica",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/culturasgastronomicas/:culturaId/paises/:paisId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturasgastronomicas",
+								":culturaId",
+								"paises",
+								":paisId"
+							],
+							"variable": [
+								{
+									"key": "culturaId",
+									"value": "97040fd3-7d59-4795-8523-0c9c42fbe56b"
+								},
+								{
+									"key": "paisId",
+									"value": "00000000-0000-0000-0000-000000000000"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"El pais con el id proporcionado no ha sido encontrado\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener listado de paises de una cultura gastronomica",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Numero de recetas > ' + 0, function () {",
+							"   var data = pm.response.json()",
+							"   pm.expect(data.length).to.greaterThan(0)",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/culturasgastronomicas/:culturaId/paises",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturasgastronomicas",
+						":culturaId",
+						"paises"
+					],
+					"variable": [
+						{
+							"key": "culturaId",
+							"value": "97040fd3-7d59-4795-8523-0c9c42fbe56b"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener listado de paises de una cultura gastronomica",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/culturasgastronomicas/:culturaId/paises",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturasgastronomicas",
+								":culturaId",
+								"paises"
+							],
+							"variable": [
+								{
+									"key": "culturaId",
+									"value": "97040fd3-7d59-4795-8523-0c9c42fbe56b"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"53096c80-3236-11ed-a261-0242ac120002\",\n        \"nombre\": \"Peru\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Obtener listado de paises de una cultura gastronomica no existente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Codigo de estado es 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Obtener mensaje de error\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"La cultura gastronomica con el id proporcionado no ha sido encontrada\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/culturasgastronomicas/:culturaId/paises",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturasgastronomicas",
+						":culturaId",
+						"paises"
+					],
+					"variable": [
+						{
+							"key": "culturaId",
+							"value": "00000000-0000-0000-0000-000000000000"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener listado de paises de una cultura gastronomica no existente",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/culturasgastronomicas/:culturaId/paises",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturasgastronomicas",
+								":culturaId",
+								"paises"
+							],
+							"variable": [
+								{
+									"key": "culturaId",
+									"value": "00000000-0000-0000-0000-000000000000"
+								}
+							]
+						}
+					},
+					"code": 404,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"La cultura gastronomica con el id proporcionado no ha sido encontrada\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener un pais de una cultura gastronomica",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/culturasgastronomicas/:culturaId/paises/:paisId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturasgastronomicas",
+						":culturaId",
+						"paises",
+						":paisId"
+					],
+					"variable": [
+						{
+							"key": "culturaId",
+							"value": "97040fd3-7d59-4795-8523-0c9c42fbe56b"
+						},
+						{
+							"key": "paisId",
+							"value": "53096c80-3236-11ed-a261-0242ac120002"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener un pais de una cultura gastronomica",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/culturasgastronomicas/:culturaId/paises/:paisId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturasgastronomicas",
+								":culturaId",
+								"paises",
+								":paisId"
+							],
+							"variable": [
+								{
+									"key": "culturaId",
+									"value": "97040fd3-7d59-4795-8523-0c9c42fbe56b"
+								},
+								{
+									"key": "paisId",
+									"value": "53096c80-3236-11ed-a261-0242ac120002"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"id\": \"53096c80-3236-11ed-a261-0242ac120002\",\n    \"nombre\": \"Peru\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener un pais de una cultura gastronomica no existente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Codigo de estado es 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Obtener mensaje de error\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"La cultura gastronomica con el id proporcionado no ha sido encontrada\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/culturasgastronomicas/:culturaId/paises/:paisId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturasgastronomicas",
+						":culturaId",
+						"paises",
+						":paisId"
+					],
+					"variable": [
+						{
+							"key": "culturaId",
+							"value": "00000000-0000-0000-0000-000000000000"
+						},
+						{
+							"key": "paisId",
+							"value": "53096c80-3236-11ed-a261-0242ac120002"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener un pais de una cultura gastronomica no existente",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/culturasgastronomicas/:culturaId/paises/:paisId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturasgastronomicas",
+								":culturaId",
+								"paises",
+								":paisId"
+							],
+							"variable": [
+								{
+									"key": "culturaId",
+									"value": "00000000-0000-0000-0000-000000000000"
+								},
+								{
+									"key": "paisId",
+									"value": "53096c80-3236-11ed-a261-0242ac120002"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"La cultura gastronomica con el id proporcionado no ha sido encontrada\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener un pais no existente de una cultura gastronomica",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/culturasgastronomicas/:culturaId/paises/:paisId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturasgastronomicas",
+						":culturaId",
+						"paises",
+						":paisId"
+					],
+					"variable": [
+						{
+							"key": "culturaId",
+							"value": "97040fd3-7d59-4795-8523-0c9c42fbe56b"
+						},
+						{
+							"key": "paisId",
+							"value": "00000000-0000-0000-0000-000000000000"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener un pais no existente de una cultura gastronomica",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/culturasgastronomicas/:culturaId/paises/:paisId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturasgastronomicas",
+								":culturaId",
+								"paises",
+								":paisId"
+							],
+							"variable": [
+								{
+									"key": "culturaId",
+									"value": "97040fd3-7d59-4795-8523-0c9c42fbe56b"
+								},
+								{
+									"key": "paisId",
+									"value": "00000000-0000-0000-0000-000000000000"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"El pais con el id proporcionado no ha sido encontrado\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener un pais no asociado a una cultura gastronomica",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Codigo de estado es 412\", function () {",
+							"   pm.response.to.have.status(412);",
+							"});",
+							"",
+							"pm.test(\"Obtener mensaje de error\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"El pais con el id proporcionado no esta asociado a la cultura gastronomica\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/culturasgastronomicas/:culturaId/paises/:paisId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturasgastronomicas",
+						":culturaId",
+						"paises",
+						":paisId"
+					],
+					"variable": [
+						{
+							"key": "culturaId",
+							"value": "97040fd3-7d59-4795-8523-0c9c42fbe56b"
+						},
+						{
+							"key": "paisId",
+							"value": "53096c80-3236-11ed-a261-0242ac120002"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener un pais no asociado a una cultura gastronomica",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/culturasgastronomicas/:culturaId/paises/:paisId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturasgastronomicas",
+								":culturaId",
+								"paises",
+								":paisId"
+							],
+							"variable": [
+								{
+									"key": "culturaId",
+									"value": "97040fd3-7d59-4795-8523-0c9c42fbe56b"
+								},
+								{
+									"key": "paisId",
+									"value": "53096c80-3236-11ed-a261-0242ac120002"
+								}
+							]
+						}
+					},
+					"status": "Precondition Failed",
+					"code": 412,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 412,\n    \"message\": \"El pais con el id proporcionado no esta asociado a la cultura gastronomica\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Actualizar un pais de una cultura gastronomica",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Codigo de estado es 200\", function () {",
+							"   pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Republica del Peru\",\n    \"id\": \"53096c80-3236-11ed-a261-0242ac120002\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/culturasgastronomicas/:culturaId/paises",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturasgastronomicas",
+						":culturaId",
+						"paises"
+					],
+					"variable": [
+						{
+							"key": "culturaId",
+							"value": "97040fd3-7d59-4795-8523-0c9c42fbe56b"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Actualizar un pais de una cultura gastronomica",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Republica del Peru\",\n    \"id\": \"53096c80-3236-11ed-a261-0242ac120002\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/culturasgastronomicas/:culturaId/paises",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturasgastronomicas",
+								":culturaId",
+								"paises"
+							],
+							"variable": [
+								{
+									"key": "culturaId",
+									"value": "97040fd3-7d59-4795-8523-0c9c42fbe56b"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"id\": \"97040fd3-7d59-4795-8523-0c9c42fbe56b\",\n    \"nombre\": \"Peruana\",\n    \"descripcion\": \"Cultura gastronomica de Peru \",\n    \"paises\": [\n        {\n            \"id\": \"53096c80-3236-11ed-a261-0242ac120002\",\n            \"nombre\": \"Peru\"\n        },\n        {\n            \"nombre\": \"Republica del Peru\",\n            \"id\": \"53096c80-3236-11ed-a261-0242ac120002\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Actualizar un pais de una cultura gastronomica no existente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Codigo de estado es 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Obtener mensaje de error\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"La cultura gastronomica con el id proporcionado no ha sido encontrada\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Republica del Peru\",\n    \"id\": \"53096c80-3236-11ed-a261-0242ac120002\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/culturasgastronomicas/:culturaId/paises",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturasgastronomicas",
+						":culturaId",
+						"paises"
+					],
+					"variable": [
+						{
+							"key": "culturaId",
+							"value": "00000000-0000-0000-0000-000000000000"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Actualizar un pais de una cultura gastronomica no existente",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Republica del Peru\",\n    \"id\": \"53096c80-3236-11ed-a261-0242ac120002\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/culturasgastronomicas/:culturaId/paises",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturasgastronomicas",
+								":culturaId",
+								"paises"
+							],
+							"variable": [
+								{
+									"key": "culturaId",
+									"value": "00000000-0000-0000-0000-000000000000"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"La cultura gastronomica con el id proporcionado no ha sido encontrada\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Actualizar un pais no existente de una cultura gastronomica",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Codigo de estado es 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Obtener mensaje de error\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"El pais con el id proporcionado no ha sido encontrado\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"Republica del Peru\",\n    \"id\": \"00000000-0000-0000-0000-000000000000\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/culturasgastronomicas/:culturaId/paises",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturasgastronomicas",
+						":culturaId",
+						"paises"
+					],
+					"variable": [
+						{
+							"key": "culturaId",
+							"value": "97040fd3-7d59-4795-8523-0c9c42fbe56b"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Actualizar un pais no existente de una cultura gastronomica",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Republica del Peru\",\n    \"id\": \"00000000-0000-0000-0000-000000000000\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/culturasgastronomicas/:culturaId/paises",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturasgastronomicas",
+								":culturaId",
+								"paises"
+							],
+							"variable": [
+								{
+									"key": "culturaId",
+									"value": "97040fd3-7d59-4795-8523-0c9c42fbe56b"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"El pais con el id proporcionado no ha sido encontrado\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Borrar un pais de una cultura gastronomica",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Codigo de estado es 204\", function () {",
+							"   pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/culturasgastronomicas/:culturaId/paises/:paisId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturasgastronomicas",
+						":culturaId",
+						"paises",
+						":paisId"
+					],
+					"variable": [
+						{
+							"key": "culturaId",
+							"value": "97040fd3-7d59-4795-8523-0c9c42fbe56b"
+						},
+						{
+							"key": "paisId",
+							"value": "53096c80-3236-11ed-a261-0242ac120002"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Borrar un pais de una cultura gastronomica",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/culturasgastronomicas/:culturaId/paises/:paisId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturasgastronomicas",
+								":culturaId",
+								"paises",
+								":paisId"
+							],
+							"variable": [
+								{
+									"key": "culturaId",
+									"value": "97040fd3-7d59-4795-8523-0c9c42fbe56b"
+								},
+								{
+									"key": "paisId",
+									"value": "53096c80-3236-11ed-a261-0242ac120002"
+								}
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Borrar un pais de una cultura gastronomica no existente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Codigo de estado es 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Obtener mensaje de error\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"La cultura gastronomica con el id proporcionado no ha sido encontrada\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/culturasgastronomicas/:culturaId/paises/:paisId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturasgastronomicas",
+						":culturaId",
+						"paises",
+						":paisId"
+					],
+					"variable": [
+						{
+							"key": "culturaId",
+							"value": "00000000-0000-0000-0000-000000000000"
+						},
+						{
+							"key": "paisId",
+							"value": "53096c80-3236-11ed-a261-0242ac120002"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Borrar un pais de una cultura gastronomica no existente",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/culturasgastronomicas/:culturaId/paises/:paisId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturasgastronomicas",
+								":culturaId",
+								"paises",
+								":paisId"
+							],
+							"variable": [
+								{
+									"key": "culturaId",
+									"value": "97040fd3-7d59-4795-8523-0c9c42fbe56b"
+								},
+								{
+									"key": "paisId",
+									"value": "53096c80-3236-11ed-a261-0242ac120002"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"La cultura gastronomica con el id proporcionado no ha sido encontrada\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Borrar un pais no existente de una cultura gastronomica",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Codigo de estado es 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Obtener mensaje de error\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"El pais con el id proporcionado no ha sido encontrado\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/culturasgastronomicas/:culturaId/paises/:paisId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturasgastronomicas",
+						":culturaId",
+						"paises",
+						":paisId"
+					],
+					"variable": [
+						{
+							"key": "culturaId",
+							"value": "97040fd3-7d59-4795-8523-0c9c42fbe56b"
+						},
+						{
+							"key": "paisId",
+							"value": "00000000-0000-0000-0000-000000000000"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Borrar un pais no existente de una cultura gastronomica",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/culturasgastronomicas/:culturaId/paises/:paisId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturasgastronomicas",
+								":culturaId",
+								"paises",
+								":paisId"
+							],
+							"variable": [
+								{
+									"key": "culturaId",
+									"value": "97040fd3-7d59-4795-8523-0c9c42fbe56b"
+								},
+								{
+									"key": "paisId",
+									"value": "00000000-0000-0000-0000-000000000000"
+								}
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Borrar un pais que no estaba asociado a una cultura gastronomica",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Codigo de estado es 412\", function () {",
+							"   pm.response.to.have.status(412);",
+							"});",
+							"",
+							"pm.test(\"Obtener mensaje de error\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"El pais con el id proporcionado no esta asociado a la cultura gastronomica\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/culturasgastronomicas/:culturaId/paises/:paisId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"culturasgastronomicas",
+						":culturaId",
+						"paises",
+						":paisId"
+					],
+					"variable": [
+						{
+							"key": "culturaId",
+							"value": "97040fd3-7d59-4795-8523-0c9c42fbe56b"
+						},
+						{
+							"key": "paisId",
+							"value": "53096c80-3236-11ed-a261-0242ac120003"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Borrar un pais que no estaba asociado a una cultura gastronomica",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/culturasgastronomicas/:culturaId/paises/:paisId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"culturasgastronomicas",
+								":culturaId",
+								"paises",
+								":paisId"
+							],
+							"variable": [
+								{
+									"key": "culturaId",
+									"value": "97040fd3-7d59-4795-8523-0c9c42fbe56b"
+								},
+								{
+									"key": "paisId",
+									"value": "53096c80-3236-11ed-a261-0242ac120003"
+								}
+							]
+						}
+					},
+					"status": "Precondition Failed",
+					"code": 412,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 412,\n    \"message\": \"El pais con el id proporcionado no esta asociado a la cultura gastronomica\"\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000/api/v1",
+			"type": "string"
+		}
+	]
+}

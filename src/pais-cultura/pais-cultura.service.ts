@@ -57,7 +57,7 @@ export class PaisCulturaService {
         const culturaPais = culturagastronomica.paises.find(e => e.id === pais.id);
 
         if (!culturaPais)
-            throw new BusinessLogicException("El pais con el id proporcionado no esta asociado a la cultura gastronomica", BusinessError.NOT_FOUND)
+            throw new BusinessLogicException("El pais con el id proporcionado no esta asociado a la cultura gastronomica", BusinessError.PRECONDITION_FAILED)
         
         return culturaPais;     
     }
@@ -73,8 +73,9 @@ export class PaisCulturaService {
         const paises: PaisEntity[] = culturagastronomica.paises;
         for (let i = 0; i < paises.length; i++){
             const pais: PaisEntity = await this.paisRepository.findOne({where: {id: paisToAdd.id}})
-            if (!pais)
-            throw new BusinessLogicException("El pais con el id proporcionado no ha sido encontrado", BusinessError.NOT_FOUND);
+            if (!pais) {
+                throw new BusinessLogicException("El pais con el id proporcionado no ha sido encontrado", BusinessError.NOT_FOUND);
+            }
         }
 
         culturagastronomica.paises.push(paisToAdd);
@@ -93,8 +94,8 @@ export class PaisCulturaService {
         
         const culturaPais: PaisEntity = culturagastronomica.paises.find(e => e.id === paisId)
         if (!culturaPais) {
-            throw new BusinessLogicException("La cultura gastronomica con el id proporcionado no esta asociada al pais", BusinessError.NOT_FOUND)}
-            
+            throw new BusinessLogicException("El pais con el id proporcionado no esta asociado a la cultura gastronomica", BusinessError.PRECONDITION_FAILED)
+        }
         culturagastronomica.paises = culturagastronomica.paises.filter(e => e.id !== paisId)
         await this.culturaGastronomicaRepository.save(culturagastronomica);
     }
