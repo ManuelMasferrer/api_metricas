@@ -28,7 +28,7 @@ export class PaisCulturaController {
     @Put(':culturaId/paises')
     async associateRecetaToCultura(@Param('culturaId') culturaId: string, @Body() paisDto: PaisDto){
         const pais: PaisEntity = plainToInstance(PaisEntity, paisDto);
-        return await this.paisCulturaService.updateCulturasPais(culturaId, pais);
+        return this.paisCulturaService.updateCulturasPais(culturaId, pais);
     }
 
     @Delete(':culturaId/paises/:paisId')
