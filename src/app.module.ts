@@ -1,3 +1,5 @@
+import { AuthModule } from './auth/auth.module';
+import { UsuarioModule } from './usuario/usuario.module';
 import { CulturaRegionModule } from './cultura-region/cultura-region.module';
 import { RegionModule } from './region/region.module';
 import { CulturaGastronomicaModule } from './culturagastronomica/culturagastronomica.module';
@@ -26,6 +28,8 @@ import { CulturaProductoModule } from './cultura-producto/cultura-producto.modul
 
 @Module({
   imports: [
+    AuthModule,
+    UsuarioModule,
     CulturaRegionModule,
     RegionModule,
     CulturaGastronomicaModule,
@@ -46,13 +50,13 @@ import { CulturaProductoModule } from './cultura-producto/cultura-producto.modul
       username: 'postgres',
       password: 'postgres',
       database: 'culturagastronomica',
-      entities: [RegionEntity, 
-        CulturaGastronomicaEntity, 
-        RecetaEntity, 
-        PaisEntity, 
-        ProductoEntity, 
-        CiudadEntity, 
-        RestauranteEntity, 
+      entities: [RegionEntity,
+        CulturaGastronomicaEntity,
+        RecetaEntity,
+        PaisEntity,
+        ProductoEntity,
+        CiudadEntity,
+        RestauranteEntity,
         CategoriaproductoEntity],
       dropSchema: true,
       synchronize: true,

@@ -1,5 +1,6 @@
-import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, UseGuards, UseInterceptors } from '@nestjs/common';
 import { plainToInstance } from 'class-transformer';
+import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 import { BusinessErrorsInterceptor } from 'src/shared/interceptors/business-errors.interceptor';
 import { CulturagastronomicaDto } from './culturagastronomica.dto';
 import { CulturaGastronomicaEntity } from './culturagastronomica.entity';
@@ -9,30 +10,30 @@ import { CulturagastronomicaService } from './culturagastronomica.service';
 @UseInterceptors(BusinessErrorsInterceptor)
 export class CulturagastronomicaController {
     constructor(private readonly culturaService: CulturagastronomicaService){}
-    
+    @UseGuards(JwtAuthGuard)
     @Get()
     async findAll(){
         return await this.culturaService.findAll();
     }
-
+    @UseGuards(JwtAuthGuard)
     @Get(':culturaId')
     async findOne(@Param('culturaId') culturaId: string){
         return await this.culturaService.finOne(culturaId);
     }
-    
+    @UseGuards(JwtAuthGuard)
     @Post()
     async create(@Body() culturaDto: CulturagastronomicaDto){
         const cultura: CulturaGastronomicaEntity = plainToInstance(CulturaGastronomicaEntity, culturaDto);
         return await this.culturaService.create(cultura);
         
     }
-
+    @UseGuards(JwtAuthGuard)
     @Put(':culturaId')
     async update(@Param('culturaId') culturaId: string, @Body() culturaDto: CulturagastronomicaDto){
         const cultura: CulturaGastronomicaEntity = plainToInstance(CulturaGastronomicaEntity, culturaDto);
         return await this.culturaService.update(culturaId, cultura);
     }
-
+    @UseGuards(JwtAuthGuard)
     @Delete(':regionId')
     @HttpCode(204)
     async delete(@Param('regionId') regionId: string){
