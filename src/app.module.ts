@@ -1,3 +1,5 @@
+import { AuthModule } from './auth/auth.module';
+import { UsuarioModule } from './usuario/usuario.module';
 import { CulturaRegionModule } from './cultura-region/cultura-region.module';
 import { RegionModule } from './region/region.module';
 import { CulturaGastronomicaModule } from './culturagastronomica/culturagastronomica.module';
@@ -12,7 +14,6 @@ import { PaisModule } from './pais/pais.module';
 import { RecetaEntity } from './receta/receta.entity';
 import { PaisEntity } from './pais/pais.entity';
 import { CulturaRecetaModule } from './cultura-receta/cultura-receta.module';
-import { CulturaPaisModule } from './cultura-pais/cultura-pais.module';
 import { PaisCulturaModule } from './pais-cultura/pais-cultura.module';
 import { CiudadModule } from './ciudad/ciudad.module';
 import { CategoriaproductoModule } from './categoriaproducto/categoriaproducto.module';
@@ -29,13 +30,14 @@ import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
+    AuthModule,
+    UsuarioModule,
     CulturaRegionModule,
     RegionModule,
     CulturaGastronomicaModule,
     RecetaModule,
     PaisModule,
     CulturaRecetaModule,
-    CulturaPaisModule,
     PaisCulturaModule,
     CiudadModule,
     CategoriaproductoModule,
@@ -50,13 +52,13 @@ import { AuthModule } from './auth/auth.module';
       username: 'postgres',
       password: 'postgres',
       database: 'culturagastronomica',
-      entities: [RegionEntity, 
-        CulturaGastronomicaEntity, 
-        RecetaEntity, 
-        PaisEntity, 
-        ProductoEntity, 
-        CiudadEntity, 
-        RestauranteEntity, 
+      entities: [RegionEntity,
+        CulturaGastronomicaEntity,
+        RecetaEntity,
+        PaisEntity,
+        ProductoEntity,
+        CiudadEntity,
+        RestauranteEntity,
         CategoriaproductoEntity],
       dropSchema: true,
       synchronize: true,

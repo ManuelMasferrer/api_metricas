@@ -7,6 +7,9 @@ export class CategoriaproductoDto {
     @IsNotEmpty()
     readonly nombre: string;
 
+    @IsNotEmpty()
+    @IsString()
     readonly id: string;
+
 
 }
