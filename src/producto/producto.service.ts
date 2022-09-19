@@ -67,9 +67,9 @@ export class ProductoService {
     */
    async delete(id: string) {
         const producto: ProductoEntity = await this.productoRepository.findOne({where:{id}});
-        if (!producto)
-        throw new BusinessLogicException("El producto no existe", BusinessError.NOT_FOUND);
-    
+        if (!producto) {
+          throw new BusinessLogicException("El producto no existe", BusinessError.NOT_FOUND);
+        }
         await this.productoRepository.remove(producto);
     }
 }

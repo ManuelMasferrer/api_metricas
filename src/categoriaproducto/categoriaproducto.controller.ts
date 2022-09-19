@@ -1,11 +1,8 @@
 import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, UseInterceptors } from '@nestjs/common';
-import { ProductoService } from '../producto/producto.service';
-import { ProductoEntity } from '../producto/producto.entity';
 import { BusinessErrorsInterceptor } from '../shared/interceptors/business-errors.interceptor';
 import { CategoriaproductoDto } from './categoriaproducto.dto';
 import { CategoriaproductoEntity } from '../categoriaproducto/categoriaproducto.entity';
 import {CategoriaproductoService}  from '../categoriaproducto/categoriaproducto.service';
-
 import { plainToInstance } from 'class-transformer';
 
 
@@ -23,7 +20,7 @@ export class CategoriaproductoController {
         return this.categoriaProductoService.findOne(categoriaId);
     }
 
-    @Post()
+    @Post(':categoriaId')
     async create(@Body() CategoriaProductoDto: CategoriaproductoDto) {
         const categoriaProducto: CategoriaproductoEntity = plainToInstance(CategoriaproductoEntity, CategoriaProductoDto);
         return this.categoriaProductoService.create(categoriaProducto);

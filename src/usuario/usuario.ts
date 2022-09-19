@@ -11,5 +11,6 @@ export class Usuario {
         this.username = username;
         this.password = password;
         this.roles = roles;
+
     }
 }
