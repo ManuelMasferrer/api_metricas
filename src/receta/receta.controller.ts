@@ -1,9 +1,13 @@
-import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, Request, UseGuards, UseInterceptors } from '@nestjs/common';
 import { RecetaService } from './receta.service';
 import { BusinessErrorsInterceptor } from '../shared/interceptors/business-errors.interceptor';
 import { RecetaDto } from './receta.dto';
 import { RecetaEntity } from './receta.entity';
 import { plainToInstance } from 'class-transformer';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+import { HasRoles } from '../usuario/roles.decorator';
+import { Role } from '../usuario/role.enum';
+import { RolesGuard } from '../auth/guards/roles.guard';
 
 @Controller('recetas')
 @UseInterceptors(BusinessErrorsInterceptor)
@@ -20,7 +24,10 @@ export class RecetaController {
         return await this.recetaService.findOne(recetaId);
     }
 
+
+    @UseGuards(JwtAuthGuard, RolesGuard)
     @Post()
+    @HasRoles(Role.Editor, Role.Admin)
     async create(@Body() recetaDto: RecetaDto){
         const receta: RecetaEntity = plainToInstance(RecetaEntity, recetaDto);
         return await this.recetaService.create(receta);
