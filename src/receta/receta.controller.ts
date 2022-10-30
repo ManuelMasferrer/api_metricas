@@ -31,8 +31,8 @@ export class RecetaController {
     @UseGuards(JwtAuthGuard, RolesGuard)
     @Post()
     @HasRoles(Role.Editor, Role.Admin)
-    async create(@Body() recetaDto: RecetaDto){
-        const receta: RecetaEntity = plainToInstance(RecetaEntity, recetaDto);
+    async create(@Body() receta: RecetaEntity){
+        // const receta: RecetaEntity = plainToInstance(RecetaEntity, recetaDto);
         return await this.recetaService.create(receta);
     }
 
