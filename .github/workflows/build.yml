@@ -15,8 +15,10 @@ jobs:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       - name: install dependencies
         run: npm install
-      - name: test and coverage
-        run: npm test --coverage
+      - name: test
+        run: npm test
+      - name: write test report
+        run: sonar-scanner
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
