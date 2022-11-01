@@ -55,16 +55,9 @@ describe('RecetaController', () =>{
             const result = recetasList[0];
             jest.spyOn(recetaService, 'findOne').mockResolvedValue(result);
             expect(await recetaController.findOne('d3645100-59ab-11ed-9f7e-c578b8de1b93')).toBe(result);
-        });
-
-    describe('findOne', () => {
-        it('debe retornar una receta', async() => {
-            const result = recetasList[0];
-            jest.spyOn(recetaService, 'findOne').mockResolvedValue(result);
-            expect(await recetaController.findOne('d3645100-59ab-11ed-9f7e-c578b8de1b93')).toBe(result);
-        });
-
-
+        });        
     });
+
+    
 
 });
