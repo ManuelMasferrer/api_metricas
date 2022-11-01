@@ -4,10 +4,10 @@ import { PaisDto } from './pais.dto';
 import { PaisEntity } from './pais.entity';
 import { PaisService } from './pais.service';
 import { plainToInstance } from 'class-transformer';
-import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
-import { RolesGuard } from 'src/auth/guards/roles.guard';
-import { HasRoles } from 'src/usuario/roles.decorator';
-import { Role } from 'src/usuario/role.enum';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+import { RolesGuard } from '../auth/guards/roles.guard';
+import { HasRoles } from '../usuario/roles.decorator';
+import { Role } from '../usuario/role.enum';
 
 @Controller('paises')
 @UseInterceptors(BusinessErrorsInterceptor)
