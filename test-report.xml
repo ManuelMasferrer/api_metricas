@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testExecutions version="1">
+  <file path="/Users/msm/MISO/apis/MISW4403_202214_Equipo28/src/cultura-receta/cultura-receta.controller.spec.ts">
+    <testCase name="CulturaRecetaService findAll debe retornar un arreglo de recetas asociadas a una cultura" duration="142"/>
+    <testCase name="CulturaRecetaService findRecetaFromCultura debe retornar una receta asociada a una cultura" duration="36"/>
+    <testCase name="CulturaRecetaService findCulturaFromReceta debe retornar la cultura asociada a una receta" duration="30"/>
+  </file>
+</testExecutions>
