@@ -31,8 +31,6 @@ describe('PaisController', () =>{
     const seedDatabase = async () =>{
         repository.clear();
         paisesList = [];
-        // const region = new RegionEntity();
-        // region.nombre = faker.commerce.productName();
         
         for(let i = 0; i < 5; i++){
             const pais: PaisEntity = await repository.save({
@@ -41,11 +39,6 @@ describe('PaisController', () =>{
             paisesList.push(pais);
             
         }
-        // culturaGastronomicaData.nombre = faker.company.name();
-        // culturaGastronomicaData.descripcion = faker.commerce.productDescription();
-        // culturaGastronomicaData.region= regionData;
-        // culturaGastronomicaData.recetas= [];
-        // culturaGastronomicaData.paises= [];
     }
 
     describe('findAll', () => {
@@ -57,7 +50,7 @@ describe('PaisController', () =>{
     });
 
     describe('findOne', () => {
-        it('debe retornar una receta', async() => {
+        it('debe retornar un pais', async() => {
             const result = paisesList[0];
             jest.spyOn(service, 'findOne').mockResolvedValue(result);
             expect(await controller.findOne('d3645100-59ab-11ed-9f7e-c578b8de1b93')).toBe(result);
