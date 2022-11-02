@@ -25,7 +25,7 @@ export class AuthService {
         const payload = { username: req.user.username, sub: req.user.id, roles: req.user.roles };
         console.log(payload);
         return {
-            token: this.jwtService.sign(payload, { privateKey: constantes.JWT_SECRET }, { algorithm: 'none' }),
+            token: this.jwtService.sign(payload, { privateKey: constantes.JWT_SECRET, algorithm: 'none' }),
         };
     }
 }
