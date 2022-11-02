@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
-    <file path="/Users/msm/MISO/apis/MISW4403_202214_Equipo28/src/pais/pais.controller.spec.ts">
-        <testCase name="RecetaController findAll debe retornar un arreglo de paises" duration="195"/>
-        <testCase name="RecetaController findOne debe retornar una receta" duration="42"/>
+    <file path="/Users/msm/MISO/apis/MISW4403_202214_Equipo28/src/culturagastronomica/culturagastronomica.controller.spec.ts">
     </file>
 </testExecutions>
