@@ -8,7 +8,7 @@ import { PaisEntity } from "./pais.entity";
 import { PaisService } from './pais.service';
 
 
-describe('RecetaController', () =>{
+describe('PaisController', () =>{
     let controller: PaisController;
     let service: PaisService;
     let paisesList: PaisEntity[];

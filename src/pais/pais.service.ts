@@ -20,7 +20,6 @@ export class PaisService {
         const pais: PaisEntity = await this.paisRepository.findOne({where: {id}});
         if (!pais)
             throw new BusinessLogicException("El pais con el id proporcionado no ha sido encontrado", BusinessError.NOT_FOUND);
-
         return pais;
     }
 

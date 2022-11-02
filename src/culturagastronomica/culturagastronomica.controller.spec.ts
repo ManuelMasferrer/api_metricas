@@ -67,6 +67,5 @@ describe('RecetaController', () =>{
         });        
     });
 
-    
 
 });

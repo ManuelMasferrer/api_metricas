@@ -4,7 +4,7 @@ import { RegionEntity } from '../region/region.entity';
 import { BusinessErrorsInterceptor } from '../shared/interceptors/business-errors.interceptor';
 import { CulturaRegionService } from './cultura-region.service';
 import { plainToInstance } from 'class-transformer';
-import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 
 @Controller('culturasgastronomicas')
 @UseInterceptors(BusinessErrorsInterceptor)

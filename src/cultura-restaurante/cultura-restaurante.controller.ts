@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, UseInterceptors } from '@nestjs/common';
 import { plainToInstance } from 'class-transformer';
-import { RestauranteDto } from 'src/restaurante/restaurante.dto';
-import { RestauranteEntity } from 'src/restaurante/restaurante.entity';
+import { RestauranteDto } from '../restaurante/restaurante.dto';
+import { RestauranteEntity } from '../restaurante/restaurante.entity';
 import { BusinessErrorsInterceptor } from '../shared/interceptors/business-errors.interceptor';
 import { CulturaRestauranteService } from './cultura-restaurante.service';
 

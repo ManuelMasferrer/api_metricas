@@ -1,5 +1,190 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
+    <file path="/Users/msm/MISO/apis/MISW4403_202214_Equipo28/src/app.controller.spec.ts">
+        <testCase name="AppController root should return &quot;Hello World!&quot;" duration="17"/>
+    </file>
+    <file path="/Users/msm/MISO/apis/MISW4403_202214_Equipo28/src/categoriaproducto/categoriaproducto.service.spec.ts">
+        <testCase name="CategoriaproductoService debe ser definido" duration="327"/>
+        <testCase name="CategoriaproductoService findAll debe retornar todas las categorias" duration="210"/>
+        <testCase name="CategoriaproductoService findOne lanzar excepcion para una categorias invalida" duration="74"/>
+    </file>
+    <file path="/Users/msm/MISO/apis/MISW4403_202214_Equipo28/src/ciudad/ciudad.service.spec.ts">
+        <testCase name="CiudadService el servicio debe estar definido" duration="401"/>
+        <testCase name="CiudadService findAll debe retornar todos los Ciudades" duration="42"/>
+        <testCase name="CiudadService findOne debe retornar un Ciudad por id" duration="31"/>
+        <testCase name="CiudadService findOne lanzar excepcion para un Ciudad invalido" duration="238"/>
+    </file>
+    <file path="/Users/msm/MISO/apis/MISW4403_202214_Equipo28/src/producto/producto.service.spec.ts">
+        <testCase name="ProductoService el servicio debe estar definido" duration="327"/>
+        <testCase name="ProductoService findAll deberia retornar todos los productos" duration="42"/>
+        <testCase name="ProductoService findOne deberia retornar un producto por id" duration="171"/>
+        <testCase name="ProductoService findOne deberia retornar una excepción por producto invalido" duration="35"/>
+        <testCase name="ProductoService Crear un producto nuevo" duration="32"/>
+        <testCase name="ProductoService Actualizar o modificar un producto" duration="32"/>
+        <testCase name="ProductoService Actualización invalida dado a un producto invalido" duration="171"/>
+        <testCase name="ProductoService Eliminar un producto" duration="35"/>
+        <testCase name="ProductoService Eliminación fallida por un producto invalido" duration="30"/>
+    </file>
+    <file path="/Users/msm/MISO/apis/MISW4403_202214_Equipo28/src/pais/pais.service.spec.ts">
+        <testCase name="PaisService el servicio debe estar definido" duration="349"/>
+        <testCase name="PaisService findAll debe retornar todos los paises" duration="191"/>
+        <testCase name="PaisService findOne debe retornar un pais por id" duration="33"/>
+        <testCase name="PaisService findOne lanzar excepcion para un pais invalido" duration="33"/>
+        <testCase name="PaisService Actualizar o modificar un pais" duration="158"/>
+        <testCase name="PaisService update arroja una excepcion para un pais invalido" duration="45"/>
+        <testCase name="PaisService delete debe eliminar un pais" duration="34"/>
+        <testCase name="PaisService delete arroja una excepcion para un pais invalido" duration="36"/>
+    </file>
+    <file path="/Users/msm/MISO/apis/MISW4403_202214_Equipo28/src/region/region.service.spec.ts">
+        <testCase name="RegionService debe ser definido" duration="393"/>
+        <testCase name="RegionService findAll debe retornar todas las regiones gastronomicas" duration="43"/>
+        <testCase name="RegionService findOne debe retornar una region gastronomica por id" duration="235"/>
+        <testCase name="RegionService findOne lanzar excepcion para una region gastronomica invalida" duration="109"/>
+        <testCase name="RegionService Actualizar o modificar una region gastronomica" duration="157"/>
+        <testCase name="RegionService update actualizacion invalida dado a una region invalida" duration="30"/>
+        <testCase name="RegionService delete fallido por una region gastronomica invalida" duration="35"/>
+    </file>
+    <file path="/Users/msm/MISO/apis/MISW4403_202214_Equipo28/src/cultura-region/cultura-region.service.spec.ts">
+        <testCase name="CulturaRegion debe ser definido" duration="463"/>
+        <testCase name="CulturaRegion addCulturaRegion agregar Cultura a Region" duration="162"/>
+        <testCase name="CulturaRegion findCulturaRegionId econtrar Cultura por una id region " duration="39"/>
+        <testCase name="CulturaRegion findCulturaRegionId econtrar Cultura por una id region no existente " duration="32"/>
+        <testCase name="CulturaRegion findRegionCultura econtrar Cultura por una id region no existente " duration="191"/>
+        <testCase name="CulturaRegion findRegionCulturaId econtrar region por una id cultura " duration="43"/>
+        <testCase name="CulturaRegion UpdateRegion associateRegionaCulturaId" duration="171"/>
+        <testCase name="CulturaRegion deleteRegionIdCulturaId eliminar una cultura no existente" duration="37"/>
+    </file>
+    <file path="/Users/msm/MISO/apis/MISW4403_202214_Equipo28/src/receta/receta.service.spec.ts">
+        <testCase name="RecetaService el servicio debe estar definido" duration="391"/>
+        <testCase name="RecetaService findAll debe retornar el listado de recetas" duration="198"/>
+        <testCase name="RecetaService findOne debe retornar una receta identificada con un id" duration="167"/>
+        <testCase name="RecetaService findOne debe generar una excepcion al solicitar una receta invalida" duration="34"/>
+        <testCase name="RecetaService create debe crear un nuevo museo" duration="31"/>
+        <testCase name="RecetaService update debe actualizar una receta" duration="31"/>
+        <testCase name="RecetaService update arroja una excepcion para una receta invalida" duration="212"/>
+        <testCase name="RecetaService delete debe eliminar una receta" duration="45"/>
+        <testCase name="RecetaService delete arroja una excepcion para una receta invalida" duration="142"/>
+    </file>
+    <file path="/Users/msm/MISO/apis/MISW4403_202214_Equipo28/src/restaurante/restaurante.service.spec.ts">
+        <testCase name="RestauranteService findAll debe retornar el listado de restaurantes" duration="560"/>
+        <testCase name="RestauranteService findOne debe retornar un restaurante identificada con un id" duration="215"/>
+        <testCase name="RestauranteService findOne debe generar una excepcion al solicitar una restaurante invalido" duration="53"/>
+        <testCase name="RestauranteService create debe crear un nuevo restaurante" duration="37"/>
+        <testCase name="RestauranteService update debe actualizar un restaurante" duration="32"/>
+        <testCase name="RestauranteService update arroja una excepcion para una restaurante invalido" duration="161"/>
+        <testCase name="RestauranteService delete debe eliminar una restaurante" duration="33"/>
+        <testCase name="RestauranteService delete arroja una excepcion para un restaurante invalida" duration="33"/>
+        <testCase name="RestauranteService should be defined" duration="28"/>
+    </file>
+    <file path="/Users/msm/MISO/apis/MISW4403_202214_Equipo28/src/culturagastronomica/culturagastronomica.service.spec.ts">
+        <testCase name="CulturagastronomicaService debe ser definido" duration="466"/>
+        <testCase name="CulturagastronomicaService findAll debe retornar todo listado de culturas gastronomicas" duration="123"/>
+        <testCase name="CulturagastronomicaService findOne debe retornar una cultura gastronomica por id" duration="48"/>
+        <testCase name="CulturagastronomicaService findOne lanzar excepcion para una cultura gastronomica invalida" duration="165"/>
+        <testCase name="CulturagastronomicaService Crear una cultura gastronomica nueva" duration="40"/>
+        <testCase name="CulturagastronomicaService Actualizar o modificar una cultura gastronomica" duration="35"/>
+        <testCase name="CulturagastronomicaService update actualizacion invalida dado a una cultura invalida" duration="175"/>
+        <testCase name="CulturagastronomicaService delete eliminar una cultura gastronomica" duration="53"/>
+        <testCase name="CulturagastronomicaService delete fallido por una cultura gastronomica invalida" duration="158"/>
+    </file>
+    <file path="/Users/msm/MISO/apis/MISW4403_202214_Equipo28/src/receta/receta.controller.spec.ts">
+        <testCase name="RecetaController findAll debe retornar un arreglo de recetas" duration="635"/>
+        <testCase name="RecetaController findOne debe retornar una receta" duration="50"/>
+    </file>
+    <file path="/Users/msm/MISO/apis/MISW4403_202214_Equipo28/src/cultura-restaurante/cultura-restaurante.service.spec.ts">
+        <testCase name="CulturaRestauranteService should be defined" duration="342"/>
+        <testCase name="CulturaRestauranteService addCulturaRestaurante agregar un Restaurante a una Cultura" duration="157"/>
+        <testCase name="CulturaRestauranteService addCulturaRestaurante debe producir una excepcion para un restaurante invalido" duration="163"/>
+        <testCase name="CulturaRestauranteService addCulturaRestaurante debe producir una excepcion para una cultura gastronomica invalida" duration="45"/>
+        <testCase name="CulturaRestauranteService findRestauranteByCulturaIdRestauranteId debe retornar un restaurante de una cultura gastronomica" duration="42"/>
+        <testCase name="CulturaRestauranteService findRestauranteByCulturaIdRestauranteId debe arrojar una excepcion para un restaurante invalido" duration="160"/>
+        <testCase name="CulturaRestauranteService findRestauranteByCulturaIdRestauranteId debe arrojar una excepcion para una cultura gastronomica invalida" duration="35"/>
+        <testCase name="CulturaRestauranteService findRestauranteByCulturaIdRestauranteId debe arrojar una excepcion para una receta no asociada a una cultura gastronomica" duration="32"/>
+        <testCase name="CulturaRestauranteService findRestauranteByCulturaId debe retornar los restaurantes de una cultura gastronomica" duration="32"/>
+        <testCase name="CulturaRestauranteService findRestauranteByCulturaId debe arrojar una excepcion para una cultura gastronomica invalida" duration="225"/>
+        <testCase name="CulturaRestauranteService associateRestauranteCultura debe actualizar la lista de restaurantes de una cultura gastronomica" duration="75"/>
+        <testCase name="CulturaRestauranteService associateRestauranteCultura debe arrojar una excepcion para una cultura gastronomica invalida" duration="39"/>
+        <testCase name="CulturaRestauranteService associateRestauranteCultura debe arrojar una excepcion para un restaurante invalido" duration="31"/>
+        <testCase name="CulturaRestauranteService deleteRestauranteToCultura debe eliminar un restaurante de una cultura gastronomica" duration="77"/>
+        <testCase name="CulturaRestauranteService deleteRestauranteToCultura debe arrojar una excepcion para un restaurante invalido" duration="34"/>
+        <testCase name="CulturaRestauranteService deleteRestauranteToCultura debe arrojar una excepcion para una cultura gastronomica invalida" duration="43"/>
+        <testCase name="CulturaRestauranteService deleteRestauranteToCultura debe arrojar una excepcion para un restaurante no asociado a una cultura gastronomica" duration="42"/>
+    </file>
+    <file path="/Users/msm/MISO/apis/MISW4403_202214_Equipo28/src/cultura-receta/cultura-receta.service.spec.ts">
+        <testCase name="CulturaRecetaService el servicio debe estar definido" duration="425"/>
+        <testCase name="CulturaRecetaService addRecetaCultura debe agregar una receta a una cultura" duration="68"/>
+        <testCase name="CulturaRecetaService addRecetaToCultura debe producir una excepcion para una receta invalida" duration="33"/>
+        <testCase name="CulturaRecetaService addRecetaToCultura debe producir una excepcion para una cultura gastronomica invalida" duration="178"/>
+        <testCase name="CulturaRecetaService findRecetaFromCultura debe retornar una receta de una cultura gastronomica" duration="50"/>
+        <testCase name="CulturaRecetaService findRecetaFromCultura debe arrojar una excepcion para una receta invalida" duration="30"/>
+        <testCase name="CulturaRecetaService findRecetaFromCultura debe arrojar una excepcion para una cultura gastronomica invalida" duration="175"/>
+        <testCase name="CulturaRecetaService findRecetaFromCultura should debe arrojar una excepcion para una receta no asociada a una cultura gastronomica" duration="42"/>
+        <testCase name="CulturaRecetaService findRecetasFromCultura debe retornar las recetas de una cultura gastronomica" duration="35"/>
+        <testCase name="CulturaRecetaService findRecetasFromCultura debe arrojar una excepcion para una cultura gastronomica invalida" duration="152"/>
+        <testCase name="CulturaRecetaService findCulturaFromReceta debe retornar la cultura gastronomica a la que pertenece una receta" duration="25"/>
+        <testCase name="CulturaRecetaService findCulturaFromReceta debe arrojar una excepcion para una receta invalida" duration="29"/>
+        <testCase name="CulturaRecetaService associateRecetaCultura debe actualizar la lista de recetas de una cultura gastronomica" duration="30"/>
+        <testCase name="CulturaRecetaService associateRecetaCultura debe arrojar una excepcion para una cultura gastronomica invalida" duration="33"/>
+        <testCase name="CulturaRecetaService associateRecetaCultura debe arrojar una excepcion para una receta invalida" duration="62"/>
+        <testCase name="CulturaRecetaService deleteRecetaToCultura debe eliminar una receta de una cultura gastronomica" duration="33"/>
+        <testCase name="CulturaRecetaService deleteRecetaToCultura debe arrojar una excepcion para una receta invalida" duration="36"/>
+        <testCase name="CulturaRecetaService deleteRecetaToCultura debe arrojar una excepcion para una cultura gastronomica invalida" duration="37"/>
+        <testCase name="CulturaRecetaService deleteRecetaToCultura debe arrojar una excepcion para una receta no asociada a una cultura gastronomica" duration="33"/>
+    </file>
+    <file path="/Users/msm/MISO/apis/MISW4403_202214_Equipo28/src/pais-cultura/pais-cultura.service.spec.ts">
+        <testCase name="PaisCulturaService el servicio debe estar definido" duration="396"/>
+        <testCase name="PaisCulturaService addPaisToCultura debe agregar un pais a una cultura" duration="250"/>
+        <testCase name="PaisCulturaService addPaisToCultura debe producir una excepcion para un pais invalido" duration="37"/>
+        <testCase name="PaisCulturaService addPaisToCultura debe producir una excepcion para una cultura gastronomica invalida" duration="29"/>
+        <testCase name="PaisCulturaService findPaisFromCultura debe retornar un pais desde una cultura gastronomica" duration="245"/>
+        <testCase name="PaisCulturaService findPaisFromCultura debe arrojar una excepcion para una cultura invalida" duration="31"/>
+        <testCase name="PaisCulturaService findPaisFromCultura debe arrojar una excepcion para un pais invalido" duration="31"/>
+        <testCase name="PaisCulturaService findPaisFromCultura debe arrojar una excepcion para una cultura gastronomica no asociada a un pais" duration="30"/>
+        <testCase name="PaisCulturaService findPaisesFromCultura debe retornar los paises asociados a una cultura gastronomica" duration="34"/>
+        <testCase name="PaisCulturaService findPaisesFromCultura debe arrojar una excepcion para un pais invalido" duration="154"/>
+        <testCase name="PaisCulturaService findCulturasFromPais debe retornar las culturas gastronomicas de un pais" duration="33"/>
+        <testCase name="PaisCulturaService findCulturasFromPais debe arrojar una excepcion para un pais invalido" duration="29"/>
+        <testCase name="PaisCulturaService updateCulturasFromPais debe actualizar la lista de culturas gastronomicas de un pais" duration="28"/>
+        <testCase name="PaisCulturaService updateCulturasFromPais debe arrojar una excepcion para un pais invalido" duration="28"/>
+        <testCase name="PaisCulturaService updateCulturasFromPais debe arrojar una excepcion para una cultura gastronomica invalida" duration="88"/>
+        <testCase name="PaisCulturaService deleteCulturaFromPais debe eliminar una cultura gastronomica de un pais" duration="39"/>
+        <testCase name="PaisCulturaService deleteCulturaFromPais debe arrojar una excepcion para una cultura gastronomica invalida" duration="24"/>
+        <testCase name="PaisCulturaService deleteCulturaFromPais debe arrojar una excepcion para un pais invalido" duration="27"/>
+    </file>
+    <file path="/Users/msm/MISO/apis/MISW4403_202214_Equipo28/src/auth/auth.service.spec.ts">
+        <testCase name="AuthService should be defined" duration="16"/>
+    </file>
+    <file path="/Users/msm/MISO/apis/MISW4403_202214_Equipo28/src/usuario/usuario.service.spec.ts">
+        <testCase name="UsuarioService should be defined" duration="14"/>
+    </file>
+    <file path="/Users/msm/MISO/apis/MISW4403_202214_Equipo28/src/cultura-producto/cultura-producto.service.spec.ts">
+        <testCase name="CulturaProductoService should be defined" duration="469"/>
+        <testCase name="CulturaProductoService addCulturaProducto agregar un Producto a una Cultura" duration="180"/>
+        <testCase name="CulturaProductoService addCulturaProducto debe producir una excepcion para un producto invalido" duration="182"/>
+        <testCase name="CulturaProductoService addCulturaProducto debe producir una excepcion para una cultura gastronomica invalida" duration="47"/>
+        <testCase name="CulturaProductoService findProductoByCulturaIdProductoId debe retornar un producto de una cultura gastronomica" duration="44"/>
+        <testCase name="CulturaProductoService findProductoByCulturaIdProductoId debe arrojar una excepcion para un producto invalido" duration="184"/>
+        <testCase name="CulturaProductoService findProductoByCulturaIdProductoId debe arrojar una excepcion para una cultura gastronomica invalida" duration="55"/>
+        <testCase name="CulturaProductoService findProductoByCulturaIdProductoId debe arrojar una excepcion para un producto no asociada a una cultura gastronomica" duration="166"/>
+        <testCase name="CulturaProductoService findProductoByCulturaId debe retornar los productos de una cultura gastronomica" duration="43"/>
+        <testCase name="CulturaProductoService findProductoByCulturaId debe arrojar una excepcion para una cultura gastronomica invalida" duration="38"/>
+        <testCase name="CulturaProductoService associateProductoCultura debe actualizar la lista de productos de una cultura gastronomica" duration="109"/>
+        <testCase name="CulturaProductoService associateProductoCultura debe arrojar una excepcion para una cultura gastronomica invalida" duration="44"/>
+        <testCase name="CulturaProductoService associateProductoCultura debe arrojar una excepcion para un producto invalido" duration="44"/>
+        <testCase name="CulturaProductoService deleteProductoToCultura debe eliminar un producto de una cultura gastronomica" duration="50"/>
+        <testCase name="CulturaProductoService deleteProductoToCultura debe arrojar una excepcion para un producto invalido" duration="56"/>
+        <testCase name="CulturaProductoService deleteProductoToCultura debe arrojar una excepcion para una cultura gastronomica invalida" duration="54"/>
+        <testCase name="CulturaProductoService deleteProductoToCultura debe arrojar una excepcion para un restaurante no asociado a una cultura gastronomica" duration="37"/>
+    </file>
+    <file path="/Users/msm/MISO/apis/MISW4403_202214_Equipo28/src/pais/pais.controller.spec.ts">
+        <testCase name="PaisController findAll debe retornar un arreglo de paises" duration="147"/>
+        <testCase name="PaisController findOne debe retornar una receta" duration="33"/>
+    </file>
+    <file path="/Users/msm/MISO/apis/MISW4403_202214_Equipo28/src/app.module.spec.ts">
+        <testCase name="AppModule should compile the module" duration="706"/>
+    </file>
     <file path="/Users/msm/MISO/apis/MISW4403_202214_Equipo28/src/culturagastronomica/culturagastronomica.controller.spec.ts">
+        <testCase name="RecetaController findAll debe retornar un arreglo de culturas" duration="130"/>
+        <testCase name="RecetaController findOne debe retornar una receta" duration="42"/>
     </file>
 </testExecutions>
