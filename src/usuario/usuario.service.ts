@@ -11,7 +11,7 @@ export class UsuarioService {
        {id: 4, username: "usuarioBorrarTodos", password: "%gvNu#1LY2M8", roles: [Role.Borrar]}
     ];
     async findOne(username: string): Promise<Usuario | undefined> {
-        return this.usuarios.find( (usuario) => usuario.username === username);
+        return this.usuarios.find( (usuario) => usuario.username == username);
     }
 }
 
