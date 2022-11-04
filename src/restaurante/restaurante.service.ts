@@ -34,7 +34,8 @@ export class RestauranteService {
         const restaurante: RestauranteEntity = await this.restauranteRepository.findOne({where: {id}, relations: ["culturaGastronomica"] } );
         if (!restaurante)
           throw new BusinessLogicException("El restaurante con el id proporcionado no ha sido encontrado.", BusinessError.NOT_FOUND);
-        return restaurante; 
+        return restaurante;
+        console.log(restaurante.culturagastronomica) 
     }
 
      /*
