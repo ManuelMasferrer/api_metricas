@@ -7,7 +7,7 @@ async function bootstrap() {
   app.enableVersioning({
     type: VersioningType.URI,
     prefix: 'api/v',
-    defaultVersion: '1',
+    defaultVersion: '1.1',
   });
   app.useGlobalPipes(new ValidationPipe());
   await app.listen(3000);
