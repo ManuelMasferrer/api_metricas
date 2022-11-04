@@ -29,7 +29,6 @@ describe('CiudadService', () => {
       repository.clear();
       CiudadesList = [];
       restaurantesList = []
-      // restaurante.nombre = faker.commerce.productName();
       
       for(let i = 0; i < 5; i++){
 
@@ -37,14 +36,9 @@ describe('CiudadService', () => {
               nombre: faker.address.cityName(),
               restaurantes: restaurantesList,
           })
-          CiudadesList.push(Ciudad);
-          
+          CiudadesList.push(Ciudad);   
       }
-      // restaurante.nombre = faker.company.name();
-      // restaurante.michelin = faker.commerce.productDescription();
-      // restaurante.fechaMichelin= faker.date.birthdate().toString();
-      
-    }
+    };
 
     it('el servicio debe estar definido', () =>{
         expect(service).toBeDefined();
