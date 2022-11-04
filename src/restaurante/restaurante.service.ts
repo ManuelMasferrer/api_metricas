@@ -55,7 +55,7 @@ export class RestauranteService {
         return this.restauranteRepository.save(restaurante);
     }
     /*
-    ELIMINAR PRODUCTO
+    ELIMINAR RESTAURANTE
     */
    async delete(id: string) {
         const restaurante: RestauranteEntity = await this.restauranteRepository.findOne({where:{id}});
