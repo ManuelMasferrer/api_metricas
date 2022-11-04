@@ -21,7 +21,7 @@ export class CulturaProductoController {
 
     @Get(':culturaId/productos')
     async findProductosFromCultura(@Param('culturaId') culturaId: string){
-       return this.culturaProductoService.findProductosByCulturaId(culturaId, productoId);
+       return this.culturaProductoService.findProductosByCulturaId(culturaId);
     }
 
     @Put(':culturaId/productos')
