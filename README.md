@@ -1,6 +1,8 @@
-# Proyecto para desarrollar las actividades de la asignatura  metricas de software.
+# Proyecto para desarrollar las actividades de la asignatura Métricas de software.
 
-Integrantes del equipo:
+Este repositorio contiene una aplicación consistente en una API REST desarrollada en Typescript con el framework Nest.JS
+
+## Integrantes del equipo:
 
 | Nombre | Email |
 | ------ | ----- |
