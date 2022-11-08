@@ -36,5 +36,5 @@ export class CulturaProductoController {
        return this.culturaProductoService.deleteProductoToCultura(culturaId, productoId);
     }
 
-
 }
+

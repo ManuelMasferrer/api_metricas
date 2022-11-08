@@ -192,7 +192,7 @@ describe('CulturaProductoService', () => {
   });
 
   it('deleteProductoToCultura debe arrojar una excepcion para una cultura gastronomica invalida', async () => {
-    const producto: ProductoEntity = productosList[0];
+    const producto: ProductoEntity = productosList[1];
     await expect(()=> service.deleteProductoToCultura("0", producto.id)).rejects.toHaveProperty("message", "La cultura gastronomica con el id proporcionado no ha sido encontrada"); 
   });
 
