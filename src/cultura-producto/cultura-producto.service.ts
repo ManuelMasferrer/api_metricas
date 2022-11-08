@@ -43,7 +43,6 @@ export class CulturaProductoService {
 
         if(!culturaProducto)
             throw new BusinessLogicException("El producto con el id proporcionado no esta asociado a la cultura gastronomica", BusinessError.PRECONDITION_FAILED)
-        
         return culturaProducto;    
    
     }  
