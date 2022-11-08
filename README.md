@@ -1,7 +1,8 @@
-# Enlaces
+# Proyecto para desarrollar las actividades de la asignatura  metricas de software.
 
-- [Jenkins](http://157.253.238.75:8080/jenkins-misovirtual/)
-- [Sonar](http://157.253.238.75:8080/sonar-misovirtual/)
-- [GitInspector](https://misw-4104-web.github.io/MISW4403_202214_Equipo28/reports/)
+Integrantes del equipo:
 
-Proyecto de prueba para la asignatura  metricas de software
+| Nombre | Email |
+| ------ | ----- |
+| Fabián Andrés Rojas Polania | fa.rojasp1@uniandes.edu.co  |
+| Manuel Sánchez Masferrer 		| ma.sanchezm12@uniandes.edu.co |
