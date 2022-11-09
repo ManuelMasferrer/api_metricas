@@ -69,12 +69,5 @@ describe('findRecetaFromCultura', () => {
     });        
 });
 
-describe('findCulturaFromReceta', () => {
-    it('debe retornar la cultura asociada a una receta', async() => {
-        const result = culturagastronomica;
-        jest.spyOn(service, 'findCulturaFromReceta').mockResolvedValue(result);
-        expect(await controller.findCulturaFromReceta('d3645100-59ab-11ed-9f7e-c578b8de1b93')).toBe(result);
-    });        
-});
 
 });
