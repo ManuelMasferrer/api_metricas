@@ -4,7 +4,7 @@ import { Usuario } from './usuario.entity';
 
 @Injectable()
 export class UsuarioService {
-    usuarios = [
+    private readonly usuarios = [
        {id: 1, username: "admin", password: "a5CM6@1*rs65", roles: [Role.Admin]},
        {id: 2, username: "usuarioLectorTodos", password: "&@#M9279BwGp", roles: [Role.Lector] },
        {id: 3, username: "usuarioEditorTodos", password: "Xo376B0a#Jdg", roles: [Role.Editor] },
