@@ -57,7 +57,7 @@ describe('CategoriaproductoService', () => {
     });
 
     it('findOne lanzar excepcion para una categorias invalida', async () => {
-        await expect(() => service.findOne("0")).rejects.toHaveProperty("message", "La categoria con el id no a sido encontrada")
+        await expect(() => service.findOne("0")).rejects.toHaveProperty("message", "La categoria con id no ha sido encontrada")
     });
 
     it('delete  eliminar una categoria  no existente',async () => {
