@@ -56,9 +56,19 @@ describe('CategoriaproductoService', () => {
         expect(categorias).toHaveLength(CategoriaproductoList.length);
     });
 
-   it('findOne lanzar excepcion para una categorias invalida', async () => {
+    it('findOne lanzar excepcion para una categorias invalida', async () => {
         await expect(() => service.findOne("0")).rejects.toHaveProperty("message", "La categoria con el id no a sido encontrada")
     });
+
+    it('delete  eliminar una categoria  no existente',async () => {
+
+      const newCategoriaproducto: CategoriaproductoEntity = await repository.save({
+          nombre: faker.address.country()
+      })
+
+      await service.delete (newCategoriaproducto.id);
+      await expect(() => service.delete("0")).rejects.toHaveProperty("message", "La categoria con id no ha sido encontrada")
+  });
  
 });
 
